@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Final-Project-Java.iml" filepath="$PROJECT_DIR$/.idea/Final-Project-Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/proxy-books-service/proxy-books-service.iml" filepath="$PROJECT_DIR$/proxy-books-service/proxy-books-service.iml" />
+    </modules>
+  </component>
+</project>
