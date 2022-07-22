@@ -14,7 +14,7 @@ public interface LoanedBookController {
     void returnBook(Long ean);
 
     // USER ADMIN
-    List<LoanedBook> findAll();
+    List<LoanedBook> findAllLoanedBooks();
 
     List<LoanedBook> findByEan(Long ean);
 

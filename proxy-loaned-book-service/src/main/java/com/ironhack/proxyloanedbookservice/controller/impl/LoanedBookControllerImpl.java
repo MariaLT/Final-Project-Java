@@ -37,7 +37,7 @@ public class LoanedBookControllerImpl implements LoanedBookController {
 
     @GetMapping("/loanedBooks")
     @ResponseStatus(HttpStatus.OK)
-    public List<LoanedBook> findAll() {
+    public List<LoanedBook> findAllLoanedBooks() {
         return loanedBookService.findAll();
     }
 
@@ -72,6 +72,7 @@ public class LoanedBookControllerImpl implements LoanedBookController {
     }
 
     @GetMapping("/loanedBooks/overdue")
+    @ResponseStatus(HttpStatus.OK)
     public List<LoanedBook> findByLoanState_Overdue() {
         return loanedBookService.findByLoanState_Overdue();
     }

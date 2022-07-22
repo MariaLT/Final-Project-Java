@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface BookController {
 
-    List<Book> findAll();
+    List<Book> findAllBooks();
 
-    Book findByEan(Long ean);
+    Book findBooksByEan(Long ean);
 
     Book create(Book book);
 

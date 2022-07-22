@@ -22,13 +22,13 @@ public class BookControllerImpl implements BookController {
 
     @GetMapping("/books")
     @ResponseStatus(HttpStatus.OK)
-    public List<Book> findAll() {
+    public List<Book> findAllBooks() {
         return bookService.findAll();
     }
 
     @GetMapping("/books/{ean}")
     @ResponseStatus(HttpStatus.OK)
-    public Book findByEan(@PathVariable Long ean) {
+    public Book findBooksByEan(@PathVariable Long ean) {
         return bookService.findByEan(ean);
     }
 

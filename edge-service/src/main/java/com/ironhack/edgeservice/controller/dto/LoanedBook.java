@@ -1,39 +1,30 @@
-package com.ironhack.proxyloanedbookservice.models;
+package com.ironhack.edgeservice.controller.dto;
 
-import com.ironhack.proxyloanedbookservice.enums.LoanState;
+import com.ironhack.edgeservice.enums.LoanState;
 import com.sun.istack.NotNull;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "info_loaned_book")
 public class LoanedBook {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loanedBookId;
-    @NotNull
     private Long ean;
     private LoanState loanState;
     private LocalDate loanDate;
     private LocalDate returnDate;
     private Long userId;
 
-
     public LoanedBook() {
     }
 
-    public LoanedBook(Long ean, LoanState loanState, LocalDate loanDate, LocalDate returnDate, Long userId) {
+    public LoanedBook(Long loanedBookId, Long ean, LoanState loanState,
+                      LocalDate loanDate, LocalDate returnDate, Long userId) {
+        this.loanedBookId = loanedBookId;
         this.ean = ean;
         this.loanState = loanState;
         this.loanDate = loanDate;
         this.returnDate = returnDate;
         this.userId = userId;
-    }
-
-    public Long getEan() {
-        return ean;
     }
 
     public Long getLoanedBookId() {
@@ -42,6 +33,10 @@ public class LoanedBook {
 
     public void setLoanedBookId(Long loanedBookId) {
         this.loanedBookId = loanedBookId;
+    }
+
+    public Long getEan() {
+        return ean;
     }
 
     public void setEan(Long ean) {
@@ -80,4 +75,3 @@ public class LoanedBook {
         this.userId = userId;
     }
 }
-
