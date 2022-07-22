@@ -27,7 +27,8 @@ public class BookControllerImpl implements BookController {
         return null;
     }
 
-    @Override
+    @GetMapping("/books/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Book findById(Long id) {
         return null;
     }

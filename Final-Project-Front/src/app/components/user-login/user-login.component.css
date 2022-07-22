@@ -1,0 +1,18 @@
+.form-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  /*background-color: bisque;*/
+  margin-left: 40%;
+  width: 20%;
+  height: 30%;
+  color: black;
+}
+
+.input-container{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  margin:auto;
+}
+

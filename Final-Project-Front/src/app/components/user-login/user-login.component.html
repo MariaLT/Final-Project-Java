@@ -1,0 +1,28 @@
+<p>user-login works!</p>
+
+<div class="form-container">
+
+  <div class="input-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="Email"
+             formControlName="email">
+      <mat-error class="error-msg" *ngIf="emailInput.hasError('required') &&
+            (emailInput.touched || emailInput.dirty)">
+        Email is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="input-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'"
+             placeholder="Password"
+             formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</div>
