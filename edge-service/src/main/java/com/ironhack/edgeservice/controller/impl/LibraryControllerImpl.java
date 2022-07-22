@@ -3,6 +3,7 @@ package com.ironhack.edgeservice.controller.impl;
 import com.ironhack.edgeservice.client.BookClient;
 import com.ironhack.edgeservice.client.LoanedBookClient;
 import com.ironhack.edgeservice.controller.dto.Book;
+import com.ironhack.edgeservice.controller.dto.LoanStateDTO;
 import com.ironhack.edgeservice.controller.dto.LoanedBook;
 import com.ironhack.edgeservice.controller.dto.LoanedDTO;
 import com.ironhack.edgeservice.controller.interfaces.LibraryController;
@@ -105,5 +106,17 @@ public class LibraryControllerImpl implements LibraryController {
     @ResponseStatus(HttpStatus.OK)
     public List<LoanedBook> findByLoanState_Overdue() {
         return loanedBookClient.findByLoanState_Overdue();
+    }
+
+    @PatchMapping("/library/loanedBooks/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateStatus(Long id, LoanStateDTO loanStateDTO) {
+        loanedBookClient.updateStatus(id, loanStateDTO);
+    }
+
+    @PatchMapping("/library/loanedBooks")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateStatusLoans() {
+        loanedBookClient.updateStatusLoans();
     }
 }

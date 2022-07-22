@@ -1,7 +1,9 @@
 package com.ironhack.edgeservice.client;
 
+import com.ironhack.edgeservice.controller.dto.LoanStateDTO;
 import com.ironhack.edgeservice.controller.dto.LoanedBook;
 import com.ironhack.edgeservice.controller.dto.LoanedDTO;
+import com.ironhack.edgeservice.enums.LoanState;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -42,4 +44,10 @@ public interface LoanedBookClient {
     @GetMapping("/loanedBooks/overdue")
     List<LoanedBook> findByLoanState_Overdue();
 
+    @PatchMapping("/loanedBooks/{id}/status")
+    void updateStatus(@PathVariable Long id, @RequestBody LoanStateDTO loanStateDTO);
+
+
+    @PatchMapping("/loanedBooks/status")
+    void updateStatusLoans();
 }

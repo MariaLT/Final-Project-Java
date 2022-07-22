@@ -1,6 +1,7 @@
 package com.ironhack.proxyloanedbookservice.controller.impl;
 
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanedDTO;
+import com.ironhack.proxyloanedbookservice.controller.dto.LoanStateDTO;
 import com.ironhack.proxyloanedbookservice.controller.interfaces.LoanedBookController;
 import com.ironhack.proxyloanedbookservice.models.LoanedBook;
 import com.ironhack.proxyloanedbookservice.repository.LoanedBookRepository;
@@ -8,7 +9,6 @@ import com.ironhack.proxyloanedbookservice.service.interfaces.LoanedBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -75,5 +75,17 @@ public class LoanedBookControllerImpl implements LoanedBookController {
     @ResponseStatus(HttpStatus.OK)
     public List<LoanedBook> findByLoanState_Overdue() {
         return loanedBookService.findByLoanState_Overdue();
+    }
+
+    @PatchMapping("/loanedBooks/{id}/status")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateStatus(@PathVariable Long id, @RequestBody LoanStateDTO loanStateDTO) {
+        loanedBookService.updateStatus(id, loanStateDTO.getLoanState());
+    }
+
+    @PatchMapping("/loanedBooks/status")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateStatusLoans() {
+        loanedBookService.updateStatusLoans();
     }
 }

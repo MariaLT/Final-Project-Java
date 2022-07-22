@@ -1,8 +1,8 @@
 package com.ironhack.proxyloanedbookservice.controller.interfaces;
 
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanedDTO;
+import com.ironhack.proxyloanedbookservice.controller.dto.LoanStateDTO;
 import com.ironhack.proxyloanedbookservice.models.LoanedBook;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -27,5 +27,9 @@ public interface LoanedBookController {
     List<LoanedBook> findByLoanState_Loaned();
 
     List<LoanedBook> findByLoanState_Overdue();
+
+    void updateStatus(Long id, LoanStateDTO loanStateDTO);
+
+    void updateStatusLoans();
 
 }

@@ -1,6 +1,7 @@
 package com.ironhack.edgeservice.controller.interfaces;
 
 import com.ironhack.edgeservice.controller.dto.Book;
+import com.ironhack.edgeservice.controller.dto.LoanStateDTO;
 import com.ironhack.edgeservice.controller.dto.LoanedBook;
 import com.ironhack.edgeservice.controller.dto.LoanedDTO;
 import org.springframework.web.bind.annotation.*;
@@ -47,5 +48,7 @@ public interface LibraryController {
 
     List<LoanedBook> findByLoanState_Overdue();
 
+    void updateStatus(Long id, LoanStateDTO loanStateDTO);
 
+    void updateStatusLoans();
 }

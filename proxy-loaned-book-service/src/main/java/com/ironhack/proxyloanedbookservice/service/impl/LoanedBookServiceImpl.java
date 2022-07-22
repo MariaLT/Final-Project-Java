@@ -115,5 +115,23 @@ public class LoanedBookServiceImpl implements LoanedBookService {
         }
         return loanedBook;
     }
+
+    @Override
+    public void updateStatus(Long id, LoanState loanState) {
+        LoanedBook loanedBook = loanedBookRepository.findById(id)
+                .orElseThrow(
+                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
+        loanedBook.setLoanState(loanState);
+    }
+
+    @Override
+    public void updateStatusLoans() {
+        List<LoanedBook> loanedBooks = loanedBookRepository.findAll();
+        for (LoanedBook loanedBook : loanedBooks) {
+            if (loanedBook.getLoanDate().isBefore(LocalDate.now())) {
+                loanedBook.setLoanState(LoanState.OVERDUE);
+            }
+        }
+    }
 }
 
