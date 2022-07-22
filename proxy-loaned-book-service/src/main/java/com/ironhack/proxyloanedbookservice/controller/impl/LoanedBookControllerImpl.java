@@ -8,14 +8,19 @@ import com.ironhack.proxyloanedbookservice.service.interfaces.LoanedBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class LoanedBookControllerImpl implements LoanedBookController {
     @Autowired
     private LoanedBookRepository loanedBookRepository;
     @Autowired
     private LoanedBookService loanedBookService;
 
+    //    USER STUDENT
     @PostMapping("/loanedBooks")
     @ResponseStatus(HttpStatus.CREATED)
     public LoanedBook loaningBook(@RequestBody LoanedDTO loanedDTO) {
@@ -25,7 +30,49 @@ public class LoanedBookControllerImpl implements LoanedBookController {
     @PatchMapping("/loanedBooks/{ean}")
     @ResponseStatus(HttpStatus.OK)
     public void returnBook(@PathVariable Long ean) {
+        loanedBookService.returnBook(ean);
+    }
 
+    //    USER ADMIN
 
+    @GetMapping("/loanedBooks")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LoanedBook> findAll() {
+        return loanedBookService.findAll();
+    }
+
+    @GetMapping("/loanedBooks/{ean}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LoanedBook> findByEan(@PathVariable Long ean) {
+        return loanedBookService.findByEan(ean);
+    }
+
+    @GetMapping("/loanedBooks/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LoanedBook> findByUserId(@PathVariable Long userId) {
+        return loanedBookService.findByUserId(userId);
+    }
+
+    @GetMapping("/loanedBooks/available")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LoanedBook> findByLoanState_Available() {
+        return loanedBookService.findByLoanState_Available();
+    }
+
+    @GetMapping("/loanedBooks/lost")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LoanedBook> findByLoanState_Lost() {
+        return loanedBookService.findByLoanState_Lost();
+    }
+
+    @GetMapping("/loanedBooks/loaned")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LoanedBook> findByLoanState_Loaned() {
+        return loanedBookService.findByLoanState_Loaned();
+    }
+
+    @GetMapping("/loanedBooks/overdue")
+    public List<LoanedBook> findByLoanState_Overdue() {
+        return loanedBookService.findByLoanState_Overdue();
     }
 }
