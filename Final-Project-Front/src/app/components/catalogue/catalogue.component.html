@@ -1,0 +1,13 @@
+<div class="container">
+
+  <div class="book" *ngFor="let book of bookList; let i = index ">
+    Title: {{book.title}}
+    <img src="{{book.image}}" alt="">
+
+
+  </div>
+
+</div>
+
+<!--<pagination-controls (pageChange)="page = $event; bookList = []; getAllBooks()"></pagination-controls>-->
+<!--| paginate: { itemsPerPage: 24, currentPage: page, totalItems: totalBooks-->

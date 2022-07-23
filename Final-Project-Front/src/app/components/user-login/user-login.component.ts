@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from "@angular/router";
+import {User} from "../../models/User";
+import {AuthService} from "../../services/authentication/auth.service";
+import {Role} from "../../models/Role";
 
 
 @Component({
@@ -8,24 +12,57 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
-
+  librarianRole: Role;
+  studentRole: Role;
   hide = true;
+  loginForm: FormGroup;
+  usernameInput: FormControl;
+  passwordInput: FormControl
 
-  userForm: FormGroup;
-  emailInput: FormControl;
-  passwordInput: FormControl;
-
-  constructor() {
-    this.emailInput = new FormControl('', [Validators.required, Validators.email]);
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.usernameInput = new FormControl('', [Validators.required]);
     this.passwordInput = new FormControl('', [Validators.required]);
-
-    this.userForm = new FormGroup({
-      email: this.emailInput,
+    this.loginForm = new FormGroup({
+      username: this.usernameInput,
       password: this.passwordInput
     });
+    this.librarianRole = new Role(null, 'LIBRARIAN');
+    this.studentRole = new Role(null, 'STUDENT');
+
   }
 
   ngOnInit(): void {
+  }
+
+  login() {
+    this.authService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(
+      (user: User) => {
+        console.log('Login successful');
+        console.log(user);
+        // Store user in local storage to keep user logged in between page refreshes
+        localStorage.removeItem('currentUser');
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        alert('Login successful');
+
+        // for (const role of user.roles) {
+        //
+        //
+        //   if (user.roles.includes('this.librarianRole')) {
+        //     console.log('Librarian logged in');
+        //     this.router.navigate(['/librarian-home']);
+        //   } else if (user.roles.roleName === 'STUDENT') {
+        //     console.log('Student logged in');
+        //     this.router.navigate(['/student-home']);
+        //   }
+        //
+        // }
+      }
+      , error => alert('Login failed'));
+
+
   }
 
 

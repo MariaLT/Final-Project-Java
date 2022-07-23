@@ -1,1 +1,29 @@
-<p>nav-bar works!</p>
+
+<div class = "header">
+  <p class = "title">The Librarium</p>
+</div>
+<div class="container-navbar">
+  <div class="navbar-menu">
+    <div class="navbar-item">
+      <a [routerLink]="['/user-login']">
+        <h1>Login</h1>
+      </a>
+    </div>
+    <div class="navbar-item">
+      <a [routerLink]="['/student-home']">
+        <h1>Student</h1>
+      </a>
+    </div>
+    <div class="navbar-item">
+      <a [routerLink]="['/librarian-home']">
+        <h1>Librarian</h1>
+      </a>
+    </div>
+    <div class="navbar-item">
+      <a [routerLink]="['/catalogue']">
+        <h1>Catalogue</h1>
+      </a>
+    </div>
+  </div>
+</div>
+

@@ -1,18 +1,40 @@
 .form-container {
   display: flex;
   flex-flow: column;
-  justify-content: space-evenly;
-  /*background-color: bisque;*/
-  margin-left: 40%;
-  width: 20%;
-  height: 30%;
+  justify-content: center;
+  margin-top: 10%;
+  margin-left: 30%;
+  width: 40%;
+  height: 100%;
   color: black;
+}
+.card {
+ justify-content: center;
+  background-color: #f6ebd9;
+  font-size: 2em;
+  font-weight: bold;
+  padding: 5%;
+  border-radius: 0.5em;
+
+}
+.login-container{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
 }
 
 .input-container{
   display: flex;
   flex-flow: column;
-  justify-content: space-around;
+  justify-content: space-between;
   margin:auto;
+  height: auto;
+  width: auto;
 }
+mat-form-field{
+color: #5d360f;
 
+}

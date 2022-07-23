@@ -1,0 +1,17 @@
+.container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(23%, 1fr));
+  grid-gap: 16px;
+  padding: 20px;
+}
+img{
+  max-width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+.book{
+  width: 100%;
+  height: 300px;
+  display: grid;
+  text-align: center;
+}

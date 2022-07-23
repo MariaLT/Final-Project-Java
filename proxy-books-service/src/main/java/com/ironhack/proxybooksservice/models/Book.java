@@ -16,10 +16,10 @@ public class Book {
     private String title;
     private String author;
     private String genre;
-    private String pagNumber;
+    private int pagNumber;
     @Column(name = "lang")
     private String language;
-    private LocalDate publicationYear;
+    private int publicationYear;
     private String publisher;
     @Column(name = "url")
     private String image;
@@ -28,8 +28,8 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long ean, String title, String author, String genre, String pagNumber, String language,
-                LocalDate publicationYear, String publisher, String image, String plot) {
+    public Book(Long ean, String title, String author, String genre, int pagNumber, String language,
+                int publicationYear, String publisher, String image, String plot) {
         this.ean = ean;
         this.title = title;
         this.author = author;
@@ -74,11 +74,11 @@ public class Book {
         this.genre = genre;
     }
 
-    public String getPagNumber() {
+    public int getPagNumber() {
         return pagNumber;
     }
 
-    public void setPagNumber(String pagNumber) {
+    public void setPagNumber(int pagNumber) {
         this.pagNumber = pagNumber;
     }
 
@@ -90,11 +90,11 @@ public class Book {
         this.language = language;
     }
 
-    public LocalDate getPublicationYear() {
+    public int getPublicationYear() {
         return publicationYear;
     }
 
-    public void setPublicationYear(LocalDate publicationYear) {
+    public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
     }
 
