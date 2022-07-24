@@ -11,17 +11,23 @@ export class BooksService {
   private readonly BASE_URL = 'http://localhost:8080/library/books';
   private readonly BASE_URL_PROXY_BOOKS = 'http://localhost:8081/books';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.BASE_URL );
+    return this.http.get<Book[]>(this.BASE_URL);
   }
 
   getBookByEan(ean: number): Observable<Book> {
     return this.http.get<Book>(`${this.BASE_URL}/${ean}`);
   }
 
-  getBookByEanpROXY(ean: number): Observable<Book> {
-    return this.http.get<Book>(`${this.BASE_URL_PROXY_BOOKS}/${ean}`);
+  createBook(book: Book): Observable<Book> {
+    return this.http.post<Book>(this.BASE_URL, book);
   }
+
+  deleteBook(ean: number): void {
+    this.http.delete(`${this.BASE_URL}/${ean}`);
+  }
+
 }

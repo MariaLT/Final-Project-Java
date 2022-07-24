@@ -1,0 +1,44 @@
+form-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin: auto;
+  width: auto;
+  height: auto;
+}
+
+/*.card {*/
+/*  display: flex;*/
+/*  flex-flow: column;*/
+/*  justify-content: center;*/
+/*  background-color: #f6ebd9;*/
+/*  font-size: 2em;*/
+/*  font-weight: bold;*/
+/*  padding: 5%;*/
+/*  border-radius: 0.5em;*/
+/*  width: 70%;*/
+
+/*}*/
+
+.book-container{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.input-container{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+}
+form{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  height: auto;
+  width: auto;
+}

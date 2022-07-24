@@ -1,7 +1,35 @@
-<p>book-details works!</p>
+<div class="container">
 
-<p>Title: {{book.title}}</p>
+<!--
 
-<mat-card-actions>
-  <button mat-raised-button [routerLink]="['/catalogue']">Back</button>
-</mat-card-actions>
+    publication_year int,
+    publisher        VARCHAR(250),
+    url              VARCHAR(250),
+    plot             VARCHAR(1500),-->
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title><p>{{book.title}}</mat-card-title>
+      <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{book.image}}" alt="">
+    <mat-card-content>
+      <p>Ean: {{book.ean}}</p>
+      <p>Genre: {{book.genre}}</p>
+      <p>Pages number: {{book.pagNumber}}</p>
+      <p>Language: {{book.language}}</p>
+      <p>Publication year: {{book.publicationYear}}</p>
+      <p>Publisher: {{book.publisher}}</p>
+      <p>Argumento: {{book.plot}}</p>
+
+    </mat-card-content>
+    <mat-card-actions class="loan">
+      <button  mat-raised-button color="primary">Prestar</button>
+    </mat-card-actions>
+  </mat-card>
+
+
+  <mat-card-actions class="back">
+    <button mat-raised-button [routerLink]="['/catalogue']">Back</button>
+  </mat-card-actions>
+
+</div>

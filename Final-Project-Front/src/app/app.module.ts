@@ -18,6 +18,7 @@ import {MatInputModule} from "@angular/material/input";
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { RegisterBookComponent } from './components/register-book/register-book.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
     UserLoginComponent,
     CatalogueComponent,
     FooterComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    RegisterBookComponent
   ],
   imports: [
     BrowserModule,

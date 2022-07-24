@@ -1,0 +1,40 @@
+img {
+  max-width: 200px;
+  display: block;
+  margin: auto;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: auto;
+  height: 100%;
+  width: 60%;
+  margin: auto;
+  padding: 5%;
+
+}
+mat-card{
+  background-color: #eae1e1;
+
+}
+mat-card-content{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  padding: 5%;
+  text-align: justify;
+}
+.loan{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10%;
+}
+.back{
+  /*margin-left: 0.1%;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+

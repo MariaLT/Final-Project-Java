@@ -1,0 +1,94 @@
+<form (ngSubmit)="createBookRegister()">
+  <mat-card class="card">
+    <form (ngSubmit)="createBookRegister()" [formGroup]="bookForm">
+      <mat-card-content>
+        <div class="book-container">
+          <div class="input-container">
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>EAN</mat-label>
+              <input type="number" matInput formControlName="ean" placeholder="EAN">
+              <mat-error *ngIf="eanInput.hasError('required') && eanInput.touched">
+                EAN is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>TITLE</mat-label>
+              <input type="text" matInput formControlName="title" placeholder="Title">
+              <mat-error *ngIf="titleInput.hasError('required') && titleInput.touched">
+                Title is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>AUTHOR</mat-label>
+              <input type="text" matInput formControlName="author" placeholder="Author">
+              <mat-error *ngIf="authorInput.hasError('required') && authorInput.touched">
+                Author is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>PAGES NUMBER</mat-label>
+              <input type="number" matInput formControlName="pagNumber" placeholder="Pages number">
+              <mat-error *ngIf="pagNumberInput.hasError('required') && pagNumberInput.touched">
+                The number of pages is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>LANGUAGE</mat-label>
+              <input type="text" matInput formControlName="language" placeholder="Language">
+              <mat-error *ngIf="languageInput.hasError('required') && languageInput.touched">
+                Language is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>PUBLICATION YEAR</mat-label>
+              <input type="number" matInput formControlName="publicationYear" placeholder="Publication year">
+              <mat-error *ngIf="publicationYearInput.hasError('required') && publicationYearInput.touched">
+                Publication year is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>PUBLISHER</mat-label>
+              <input type="text" matInput formControlName="publisher" placeholder="Publisher">
+              <mat-error *ngIf="publisherInput.hasError('required') && publisherInput.touched">
+                Publisher is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>FRONT PAGE</mat-label>
+              <input type="text" matInput formControlName="image" placeholder="Front page">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>PLOT</mat-label>
+              <input type="text" matInput formControlName="plot" placeholder="Plot">
+              <mat-error *ngIf="plotInput.hasError('required') && plotInput.touched">
+                Plot is required
+              </mat-error>
+            </mat-form-field>
+
+
+            <div class="buttons">
+              <button type="submit" mat-raised-button color="accent" class="full-width"
+                      [disabled]="bookForm.invalid">Submit
+              </button>
+              <!-- <button type="submit" mat-raised-button color="accent" class="full-width"
+               [disabled]="loginForm.invalid">LOGIN</button>-->
+
+              <button mat-raised-button color="accent" class="full-width"
+                      [routerLink]="['/librarian-home']">Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</form>

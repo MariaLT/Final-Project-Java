@@ -64,6 +64,9 @@ export class Book {
     this._publicationYear = value;
   }
 
+  get publisher(): string {
+    return this._publisher;
+  }
   set publisher(value: string) {
     this._publisher = value;
   }
