@@ -1,12 +1,14 @@
 export class Book {
 
+
   constructor(
+    private _ean:number,
     private _title: string,
     private _author: string,
     private _genre: string,
     private _pagNumber: number,
     private _language: string,
-    private _publicationYear: Date,
+    private _publicationYear: number,
     private _publisher: string,
     private _image: string,
     private _plot: string
@@ -14,6 +16,13 @@ export class Book {
 
   }
 
+  get ean(): number {
+    return this._ean;
+  }
+
+  set ean(value: number) {
+    this._ean = value;
+  }
   get author(): string {
     return this._author;
   }
@@ -46,16 +55,13 @@ export class Book {
     this._language = value;
   }
 
-  get publicationYear(): Date {
+
+  get publicationYear(): number {
     return this._publicationYear;
   }
 
-  set publicationYear(value: Date) {
+  set publicationYear(value: number) {
     this._publicationYear = value;
-  }
-
-  get publisher(): string {
-    return this._publisher;
   }
 
   set publisher(value: string) {

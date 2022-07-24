@@ -16,6 +16,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { CatalogueComponent } from './components/catalogue/catalogue.component';
     LibrarianHomeComponent,
     NavBarComponent,
     UserLoginComponent,
-    CatalogueComponent
+    CatalogueComponent,
+    FooterComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,

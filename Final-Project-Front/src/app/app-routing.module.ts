@@ -5,6 +5,7 @@ import {LibrarianHomeComponent} from "./components/librarian-home/librarian-home
 import {AuthGuardService} from "./services/authentication/auth-guard.service";
 import {UserLoginComponent} from "./components/user-login/user-login.component";
 import {CatalogueComponent} from "./components/catalogue/catalogue.component";
+import {BookDetailsComponent} from "./components/book-details/book-details.component";
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
     path: 'catalogue',
     canActivate: [AuthGuardService],
     component: CatalogueComponent
+  },
+  {
+    path: 'catalogue/:ean',
+    canActivate: [AuthGuardService],
+    component: BookDetailsComponent
   }
 ];
 

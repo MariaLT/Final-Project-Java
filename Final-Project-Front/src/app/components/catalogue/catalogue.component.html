@@ -1,12 +1,13 @@
 <div class="container">
-
-  <div class="book" *ngFor="let book of bookList; let i = index ">
-    Title: {{book.title}}
-    <img src="{{book.image}}" alt="">
-
-
-  </div>
-
+  <mat-card class="book" *ngFor="let book of bookList">
+    <mat-card-header>
+      <mat-card-title>Title: {{book.title}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{book.image}}" alt="">
+    <mat-card-actions>
+      <button mat-raised-button [routerLink]="['/catalogue',book.ean]">Details</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
 
 <!--<pagination-controls (pageChange)="page = $event; bookList = []; getAllBooks()"></pagination-controls>-->

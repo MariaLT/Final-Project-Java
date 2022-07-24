@@ -31,7 +31,7 @@ public class BookServiceImpl implements BookService {
     public Book findByEan(Long ean) {
         Book book = bookRepository.findById(ean).orElseThrow(()->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
-        return null;
+        return book;
     }
 
     @Override
