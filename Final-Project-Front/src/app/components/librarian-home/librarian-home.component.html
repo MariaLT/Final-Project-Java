@@ -1,3 +1,5 @@
+<div class="management-container">
+  <h1>Catalogue Management</h1>
 
   <mat-card-header>
     <mat-card-title>Create book register</mat-card-title>
@@ -7,4 +9,52 @@
     </button>
   </mat-card-header>
 
+  <mat-card-header>
+    <mat-card-title>Delete book register</mat-card-title>
+    <button (click)="openDeleteBook()"
+            mat-mini-fab color="accent">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-header>
+  <div class="delete" *ngIf="goDelete">
+    <form (ngSubmit)="onSubmit()" [formGroup]="bookForm">
+    <mat-card-header>
+      <mat-card-title>Delete book register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>EAN</mat-label>
+        <input type="number" matInput formControlName="ean" placeholder="EAN">
+        <mat-error *ngIf="eanToDeleteInput.hasError('required') && eanToDeleteInput.touched">
+          EAN is required
+        </mat-error>
+      </mat-form-field>
 
+      <div class="buttons">
+        <button type="submit"  mat-raised-button color="accent" class="full-width"
+        >Submit
+          <!--[disabled]="bookForm.invalid"-->
+        </button>
+        <button mat-raised-button color="warn" class="full-width"
+                (click)="goBack()">Close
+        </button>
+      </div>
+
+    </mat-card-content>
+
+
+    </form>
+  </div>
+  <div *ngIf="isDeleted">
+    <p>Book deleted</p>
+  </div>
+
+</div>
+
+<!-- <mat-form-field class="full-width" appearance="outline">
+                <mat-label>TITLE</mat-label>
+                <input type="text" matInput formControlName="title" placeholder="Title">
+                <mat-error *ngIf="titleInput.hasError('required') && titleInput.touched">
+                  Title is required
+                </mat-error>
+              </mat-form-field>-->

@@ -15,11 +15,11 @@ export class RegisterBookComponent implements OnInit {
 
   bookForm: FormGroup;
   eanInput: FormControl;
-  titleInput : FormControl;
+  titleInput: FormControl;
   authorInput: FormControl;
-  genreInput:FormControl;
+  genreInput: FormControl;
   pagNumberInput: FormControl;
-  languageInput:FormControl;
+  languageInput: FormControl;
   publicationYearInput: FormControl;
   publisherInput: FormControl;
   imageInput: FormControl;
@@ -59,14 +59,26 @@ export class RegisterBookComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  createBookRegister() {
-    this.bookService.createBook(this.book).subscribe(
-      bookBack => {
-        this.book = bookBack;
+  onSubmit() {
+    console.log('Book submitted');
+    const book: Book = new Book(
+      this.bookForm.get("ean")?.value,
+      this.bookForm.get("title")?.value,
+      this.bookForm.get("author")?.value,
+      this.bookForm.get("genre")?.value,
+      this.bookForm.get("pagNumber")?.value,
+      this.bookForm.get("language")?.value,
+      this.bookForm.get("publicationYear")?.value,
+      this.bookForm.get("publisher")?.value,
+      this.bookForm.get("image")?.value,
+      this.bookForm.get("plot")?.value);
+    console.log(book);
+    this.bookService.createBook(book).subscribe(
+      data => {
+        console.log(data);
       }
     );
+    this.bookForm.reset();
   }
-
 
 }

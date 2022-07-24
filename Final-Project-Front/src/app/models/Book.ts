@@ -2,7 +2,7 @@ export class Book {
 
 
   constructor(
-    private _ean:number,
+    private _ean: number,
     private _title: string,
     private _author: string,
     private _genre: string,
@@ -23,6 +23,7 @@ export class Book {
   set ean(value: number) {
     this._ean = value;
   }
+
   get author(): string {
     return this._author;
   }
@@ -67,6 +68,7 @@ export class Book {
   get publisher(): string {
     return this._publisher;
   }
+
   set publisher(value: string) {
     this._publisher = value;
   }
@@ -86,6 +88,7 @@ export class Book {
   set plot(value: string) {
     this._plot = value;
   }
+
   get title(): string {
     return this._title;
   }
@@ -94,5 +97,19 @@ export class Book {
     this._title = value;
   }
 
+  public toJSON(): any {
+    return {
+      ean: this._ean,
+      title: this._title,
+      author: this._author,
+      genre: this._genre,
+      pagNumber: this._pagNumber,
+      language: this._language,
+      publicationYear: this._publicationYear,
+      publisher: this._publisher,
+      image: this._image,
+      plot: this._plot
+    };
+  }
 }
 

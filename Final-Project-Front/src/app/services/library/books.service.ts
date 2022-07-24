@@ -26,8 +26,8 @@ export class BooksService {
     return this.http.post<Book>(this.BASE_URL, book);
   }
 
-  deleteBook(ean: number): void {
-    this.http.delete(`${this.BASE_URL}/${ean}`);
+  deleteBook(ean: number): Observable<number>{
+    return this.http.delete<number>(`${this.BASE_URL}/${ean}`);
   }
 
 }

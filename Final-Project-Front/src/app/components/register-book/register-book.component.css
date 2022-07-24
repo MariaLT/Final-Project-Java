@@ -1,0 +1,46 @@
+mat-card-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
+}
+h1{
+  font-size: 2em;
+}
+.container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin: auto;
+  width: 90%;
+  height: auto;
+}
+.book-container{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: left;
+  margin: auto;
+}
+.input-container-two-items{
+  /*background-color: green;*/
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  margin: 0%;
+}
+.two-items{
+  width: 100%;
+}
+.buttons{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+button{
+  justify-content: space-between;
+  margin: 2%;
+  width: 10%;
+  height: auto;
+}

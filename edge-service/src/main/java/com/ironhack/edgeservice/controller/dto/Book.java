@@ -10,7 +10,7 @@ public class Book {
     private String genre;
     private int pagNumber;
     private String language;
-    private LocalDate publicationYear;
+    private int publicationYear;
     private String publisher;
     private String image;
     private String plot;
@@ -19,7 +19,7 @@ public class Book {
     }
 
     public Book(Long ean, String title, String author, String genre, int pagNumber, String language,
-                LocalDate publicationYear, String publisher, String image, String plot) {
+                int publicationYear, String publisher, String image, String plot) {
         this.ean = ean;
         this.title = title;
         this.author = author;
@@ -80,11 +80,11 @@ public class Book {
         this.language = language;
     }
 
-    public LocalDate getPublicationYear() {
+    public int getPublicationYear() {
         return publicationYear;
     }
 
-    public void setPublicationYear(LocalDate publicationYear) {
+    public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
     }
 

@@ -40,7 +40,8 @@ public class BookServiceImpl implements BookService {
         if (bookOptional.isPresent()) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Book already exists");
         }
-        return bookOptional.get();
+
+        return book;
     }
 
     @Override
