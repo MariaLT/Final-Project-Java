@@ -1,4 +1,4 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar xmlns="http://www.w3.org/1999/html"></app-nav-bar>
 
 <div class="management-container">
   <h1>Catalogue Management</h1>
@@ -31,7 +31,8 @@
         </mat-form-field>
 
         <div class="buttons">
-          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width" (click)="deleteBook()"
+          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
+                  (click)="deleteBook()"
           >Submit
 
           </button>
@@ -65,7 +66,8 @@
         </mat-form-field>
 
         <div class="buttons">
-          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width" (click)="createLoanedBookRegister()"
+          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
+                  (click)="createLoanedBookRegister()"
           >Submit
 
           </button>
@@ -106,7 +108,8 @@
         </mat-form-field>
 
         <div class="buttons">
-          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width" (click)="showSingleBook()"
+          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
+                  (click)="showSingleBook()"
           >Submit
 
           </button>
@@ -120,7 +123,6 @@
   </div>
 
 
-
   <mat-card-header>
     <mat-card-title>All loaned Books</mat-card-title>
     <button (click)="showAllLoanedBooks()" (click)="increaseCounter()"
@@ -131,32 +133,34 @@
   <mat-card-content>
     <div *ngIf="isAllLoanedBook">
       <div *ngFor="let loanedBook of allLoanedBooks">
-        <p>Loaned book id: {{loanedBook.loanedBookId}}</p>
+        <!--        <p>Loaned book id: {{loanedBook.loanedBookId}}</p>-->
         <p>Ean: {{loanedBook.ean}}</p>
-        <p>User ID: {{loanedBook.userId}}</p>
-        <p>Loan date: {{loanedBook.loanDate}}</p>
-        <p>Return date: {{loanedBook.returnDate}}</p>
+        <p>State: {{loanedBook.loanState}}</p>
+        <!--        <p>User ID: {{loanedBook.userId}}</p>-->
+        <!--        <p>Loan date: {{loanedBook.loanDate}}</p>-->
+        <!--        <p>Return date: {{loanedBook.returnDate}}</p>-->
       </div>
     </div>
   </mat-card-content>
 
 
-
   <mat-card-header>
     <mat-card-title>Overdue Books</mat-card-title>
-    <button (click)="showOverdueBooks()"  (click)="increaseCounter()"
+    <button (click)="showOverdueBooks()" (click)="increaseCounter()"
             mat-mini-fab color="accent">
       <mat-icon>hourglass_empty</mat-icon>
     </button>
   </mat-card-header>
   <mat-card-content>
     <div *ngIf="isOverdueBook">
-      <div *ngFor="let overdueBooks of overdueBooks">
-        <p>Loaned book id: {{overdueBooks.loanedBookId}}</p>
-        <p>Ean: {{overdueBooks.ean}}</p>
-        <p>User ID: {{overdueBooks.userId}}</p>
-        <p>Loan date: {{overdueBooks.loanDate}}</p>
-        <p>Return date: {{overdueBooks.returnDate}}</p>
+      <div *ngFor="let overdueBook of overdueBooks">
+
+        <!--        <p>Loaned book id: {{overdueBooks.loanedBookId}}</p>-->
+        <p>Ean: {{overdueBook.ean}}</p>
+        <p>State: {{overdueBook.loanState}}</p>
+        <!--        <p>User ID: {{overdueBooks.userId}}</p>-->
+        <!--        <p>Loan date: {{overdueBooks.loanDate}}</p>-->
+        <!--        <p>Return date: {{overdueBooks.returnDate}}</p>-->
       </div>
     </div>
   </mat-card-content>
@@ -164,27 +168,41 @@
 
   <mat-card-header>
     <mat-card-title>Available Books</mat-card-title>
-    <button (click)="showAvailableBooks()"  (click)="increaseCounter()"
+    <button (click)="showAvailableBooks()" (click)="increaseCounter()"
             mat-mini-fab color="accent">
       <mat-icon>book</mat-icon>
     </button>
   </mat-card-header>
   <mat-card-content>
     <div *ngIf="isAvailableBook">
-      <div *ngFor="let availableBook of availableBooks">
-        <p>Loaned book id: {{availableBook.loanedBookId}}</p>
+      <div *ngFor="let availableBook of availableBooks | paginate: { itemsPerPage: 5, currentPage: page,
+    totalItems: totalAvailableBooks }">
+
+        <!--        <p>Loaned book id: {{availableBook.loanedBookId}}</p>-->
         <p>Ean: {{availableBook.ean}}</p>
-        <p>User ID: {{availableBook.userId}}</p>
-        <p>Loan date: {{availableBook.loanDate}}</p>
-        <p>Return date: {{availableBook.returnDate}}</p>
+        <p>Title: {{getTitleBook(availableBook.ean)}}</p>
+        <p>State: {{availableBook.loanState}}</p>
+        <!--        <p>User ID: {{availableBook.userId}}</p>-->
+        <!--        <p>Loan date: {{availableBook.loanDate}}</p>-->
+        <!--        <p>Return date: {{availableBook.returnDate}}</p>-->
       </div>
+
+
+      <!--      <mat-paginator [length]="100"
+                           [pageSize]="10"
+                           [pageSizeOptions]="[5, 10, 25, 100]"
+                           aria-label="Select page">
+            </mat-paginator>-->
+      <pagination-controls
+        (pageChange)="page = $event; availableBooks = []; showAvailableBooksPag()"></pagination-controls>
     </div>
+
   </mat-card-content>
 
 
   <mat-card-header>
     <mat-card-title>Loaned Books</mat-card-title>
-    <button (click)="showLoanedBooks()"  (click)="increaseCounter()"
+    <button (click)="showLoanedBooks()" (click)="increaseCounter()"
             mat-mini-fab color="accent">
       <mat-icon>nature_people</mat-icon>
     </button>
@@ -192,11 +210,12 @@
   <mat-card-content>
     <div *ngIf="isLoanedBook">
       <div *ngFor="let loanedBook of loanedBooks">
-        <p>Loaned book id: {{loanedBook.loanedBookId}}</p>
+        <!--        <p>Loaned book id: {{loanedBook.loanedBookId}}</p>-->
         <p>Ean: {{loanedBook.ean}}</p>
-        <p>User ID: {{loanedBook.userId}}</p>
-        <p>Loan date: {{loanedBook.loanDate}}</p>
-        <p>Return date: {{loanedBook.returnDate}}</p>
+        <p>State: {{loanedBook.loanState}}</p>
+        <!--        <p>User ID: {{loanedBook.userId}}</p>-->
+        <!--        <p>Loan date: {{loanedBook.loanDate}}</p>-->
+        <!--        <p>Return date: {{loanedBook.returnDate}}</p>-->
       </div>
     </div>
   </mat-card-content>
@@ -204,7 +223,7 @@
 
   <mat-card-header>
     <mat-card-title>Lost Books</mat-card-title>
-    <button (click)="showLostBooks()"  (click)="increaseCounter()"
+    <button (click)="showLostBooks()" (click)="increaseCounter()"
             mat-mini-fab color="accent">
       <mat-icon>error</mat-icon>
     </button>
@@ -212,11 +231,12 @@
   <mat-card-content>
     <div *ngIf="isLostBook">
       <div *ngFor="let lostBook of lostBooks">
-        <p>Loaned book id: {{lostBook.loanedBookId}}</p>
+        <!--        <p>Loaned book id: {{lostBook.loanedBookId}}</p>-->
         <p>Ean: {{lostBook.ean}}</p>
-        <p>User ID: {{lostBook.userId}}</p>
-        <p>Loan date: {{lostBook.loanDate}}</p>
-        <p>Return date: {{lostBook.returnDate}}</p>
+        <!--        <p>User ID: {{lostBook.userId}}</p>-->
+        <p>State: {{lostBook.loanState}}</p>
+        <!--        <p>Loan date: {{lostBook.loanDate}}</p>-->
+        <!--        <p>Return date: {{lostBook.returnDate}}</p>-->
       </div>
     </div>
   </mat-card-content>

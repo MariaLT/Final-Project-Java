@@ -95,7 +95,7 @@
 
             <mat-form-field  class="full-width" appearance="outline">
               <mat-label>PLOT</mat-label>
-              <input type="text" class="plot" matInput formControlName="plot" placeholder="Plot">
+              <textarea type="text" class="plot" matInput formControlName="plot" placeholder="Plot"></textarea>
               <mat-error *ngIf="plotInput.hasError('required') && plotInput.touched">
                 Plot is required
               </mat-error>

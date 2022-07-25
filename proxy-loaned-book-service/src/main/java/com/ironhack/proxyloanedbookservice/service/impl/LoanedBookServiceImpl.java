@@ -129,7 +129,7 @@ public class LoanedBookServiceImpl implements LoanedBookService {
     public void updateStatusLoans() {
         List<LoanedBook> loanedBooks = loanedBookRepository.findAll();
         for (LoanedBook loanedBook : loanedBooks) {
-            if (loanedBook.getLoanDate().isAfter(loanedBook.getReturnDate())) {
+            if (loanedBook.getReturnDate().isAfter(LocalDate.now())) {
                 loanedBook.setLoanState(LoanState.OVERDUE);
             }
         }

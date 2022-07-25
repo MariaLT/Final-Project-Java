@@ -20,6 +20,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { RegisterBookComponent } from './components/register-book/register-book.component';
 import { HeaderComponent } from './components/header/header.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { HeaderComponent } from './components/header/header.component';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
+    MatPaginatorModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

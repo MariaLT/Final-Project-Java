@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Book} from "../../models/Book";
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BooksService} from "../../services/library/books.service";
 import {LibrarianService} from "../../services/library/librarian.service";
 import {LoanedBook} from "../../models/LoanedBook";
-import {LoanState} from "../../models/LoanState";
+import {MatPaginator} from "@angular/material/paginator";
+import {Book} from "../../models/Book";
+
 
 @Component({
   selector: 'app-librarian-home',
@@ -13,7 +15,7 @@ import {LoanState} from "../../models/LoanState";
 })
 export class LibrarianHomeComponent implements OnInit {
 
-  // Controls for close buttons and invisible divs
+    // Controls for close buttons and invisible divs
 
   goDelete: boolean;
   goCreateLoanedBookRegister: boolean;
@@ -35,6 +37,12 @@ export class LibrarianHomeComponent implements OnInit {
   availableBooks: LoanedBook [];
   loanedBooks: LoanedBook[];
   lostBooks : LoanedBook[];
+
+  book : Book;
+
+  totalAvailableBooks : number;
+
+  page : number = 1;
 
   constructor(
     private bookService: BooksService,
@@ -65,6 +73,13 @@ export class LibrarianHomeComponent implements OnInit {
     this.availableBooks = [];
     this.loanedBooks = [];
     this.lostBooks = [];
+
+    this.book = new Book(0, '', '', '', 0, '', 0,
+      '', '', '');
+
+    this.totalAvailableBooks = 0;
+
+
   }
 
 
@@ -158,10 +173,17 @@ export class LibrarianHomeComponent implements OnInit {
         bookListBack => {
           this.availableBooks = bookListBack;
         });
+      this.totalAvailableBooks = this.availableBooks.length;
       this.isAvailableBook = true;
     } else {
       this.isAvailableBook = false;
     }
+  }
+  showAvailableBooksPag(){
+    this.librarianService.getAvailableBooks().subscribe(
+      bookListBack => {
+        this.availableBooks = bookListBack;
+      });
   }
 
   // Show all loaned books register loaned
@@ -189,4 +211,16 @@ export class LibrarianHomeComponent implements OnInit {
       this.isLostBook = false;
     }
   }
+
+  getTitleBook(ean:number) : string {
+    this.bookService.getBookByEan(ean).subscribe(
+      bookBack => {
+        console.log(bookBack);
+        this.book = bookBack;
+      });
+    return this.book.title;
+  }
 }
+
+
+
