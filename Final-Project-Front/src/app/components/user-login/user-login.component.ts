@@ -19,6 +19,8 @@ export class UserLoginComponent implements OnInit {
   usernameInput: FormControl;
   passwordInput: FormControl
 
+  currentUser: User;
+
   constructor(
     private authService: AuthService,
     private router: Router
@@ -32,6 +34,7 @@ export class UserLoginComponent implements OnInit {
     this.librarianRole = new Role(null, 'LIBRARIAN');
     this.studentRole = new Role(null, 'STUDENT');
 
+    this.currentUser = new User(null, '', '', new Array<Role>());
   }
 
   ngOnInit(): void {
@@ -42,28 +45,32 @@ export class UserLoginComponent implements OnInit {
       (user: User) => {
         console.log('Login successful');
         console.log(user);
+        this.currentUser = user;
+
+
         // Store user in local storage to keep user logged in between page refreshes
         localStorage.removeItem('currentUser');
         localStorage.setItem('currentUser', JSON.stringify(user));
-        alert('Login successful');
 
-        // for (const role of user.roles) {
-        //
-        //
-        //   if (user.roles.includes('this.librarianRole')) {
-        //     console.log('Librarian logged in');
-        //     this.router.navigate(['/librarian-home']);
-        //   } else if (user.roles.roleName === 'STUDENT') {
-        //     console.log('Student logged in');
-        //     this.router.navigate(['/student-home']);
-        //   }
-        //
-        // }
+        alert('Login successful');
+        this.loginForm.reset()
+        console.log(this.currentUser.id);
+        for (let role of user.roles) {
+          if (role.name === 'LIBRARIAN') {
+            console.log('Librarian logged in');
+            this.router.navigate(['/librarian-home']);
+          } else if (role.name === 'STUDENT') {
+            console.log('Student logged in');
+            this.router.navigate(['/student-home']);
+          }
+
+        }
       }
       , error => alert('Login failed'));
-
 
   }
 
 
+
 }
+

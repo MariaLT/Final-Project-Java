@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LoanedBookServiceImpl implements LoanedBookService {
@@ -21,16 +22,16 @@ public class LoanedBookServiceImpl implements LoanedBookService {
 
     @Override
     public LoanedBook loaningBook(LoanedDTO loanedDTO) {
-        LoanedBook loanedBook = loanedBookRepository.findByEan(loanedDTO.getEan())
-                .orElseThrow(
-                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
+/*        LoanedBook loanedBook = loanedBookRepository.findByEan(loanedDTO.getEan()).get();
 
         if (loanedBook.getLoanState().equals(LoanState.LOANED)
                 || loanedBook.getLoanState().equals(LoanState.OVERDUE)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book already loaned");
         } else if (loanedBook.getLoanState().equals(LoanState.LOST)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book lost");
-        }
+        }*/
+        LoanedBook loanedBook = new LoanedBook();
+
         loanedBook.setEan(loanedDTO.getEan());
         loanedBook.setLoanState(LoanState.LOANED);
         loanedBook.setLoanDate(LocalDate.now());
@@ -132,6 +133,22 @@ public class LoanedBookServiceImpl implements LoanedBookService {
                 loanedBook.setLoanState(LoanState.OVERDUE);
             }
         }
+    }
+
+    public LoanedBook createLoanedBook(Long ean) {
+        Optional<LoanedBook> loanedBook = loanedBookRepository.findByEan(ean);
+        if (!loanedBook.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Already created");
+        }
+        LoanedBook loanedBookBack = new LoanedBook();
+        loanedBookBack.setEan(ean);
+        loanedBookBack.setLoanState(LoanState.AVAILABLE);
+        loanedBookBack.setLoanDate(null);
+        loanedBookBack.setReturnDate(null);
+        loanedBookBack.setUserId(null);
+
+        return loanedBookBack;
+
     }
 }
 

@@ -56,7 +56,7 @@ public class LibraryControllerImpl implements LibraryController {
 
     @PostMapping("/library/loanedBooks")
     @ResponseStatus(HttpStatus.CREATED)
-    public LoanedBook loaningBook(LoanedDTO loanedDTO) {
+    public LoanedBook loaningBook(@RequestBody LoanedDTO loanedDTO) {
         return loanedBookClient.loaningBook(loanedDTO);
     }
 

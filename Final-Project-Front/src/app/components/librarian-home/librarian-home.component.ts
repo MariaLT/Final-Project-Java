@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Book} from "../../models/Book";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BooksService} from "../../services/library/books.service";
+import {LibrarianService} from "../../services/library/librarian.service";
+import {LoanedBook} from "../../models/LoanedBook";
 
 @Component({
   selector: 'app-librarian-home',
@@ -9,7 +11,7 @@ import {BooksService} from "../../services/library/books.service";
   styleUrls: ['./librarian-home.component.css']
 })
 export class LibrarianHomeComponent implements OnInit {
-
+  listOverdueBooks:boolean = false;
   goDelete: boolean = false;
   isDeleted: boolean = false;
 
@@ -17,7 +19,13 @@ export class LibrarianHomeComponent implements OnInit {
 
   eanToDeleteInput: FormControl;
 
-  constructor(private bookService: BooksService) {
+  overdueBooks : LoanedBook [];
+  availableBooks : LoanedBook [];
+
+  constructor(
+    private bookService: BooksService,
+  private librarianService: LibrarianService,
+  ) {
 
     this.eanToDeleteInput = new FormControl('', Validators.required);
 
@@ -25,6 +33,9 @@ export class LibrarianHomeComponent implements OnInit {
         ean: this.eanToDeleteInput
       }
     );
+
+    this.overdueBooks = [];
+    this.availableBooks = [];
   }
 
 
@@ -38,7 +49,7 @@ export class LibrarianHomeComponent implements OnInit {
   goBack(): void {
     this.goDelete = false;
   }
-/*this.bookForm.get("ean")?.value,*/
+
   onSubmit() {
     const ean = this.bookForm.get("ean")?.value;
     console.log(ean);
@@ -48,5 +59,25 @@ export class LibrarianHomeComponent implements OnInit {
     this.isDeleted = true;
   }
 
+  showOverdueBooks(): void {
+    this.librarianService.getOverdueBooks().subscribe(
+       bookListBack => {
+          this.overdueBooks = bookListBack;
+       });
+    this.listOverdueBooks = true;
+  }
 
+  showAvailableBooks(): void {
+    this.librarianService.getAvailableBooks().subscribe(
+       bookListBack => {
+          this.availableBooks = bookListBack;
+       });
+  }
+/*  getAllBooks() {
+    this.bookService.getAllBooks().subscribe(
+      bookListBack => {
+        this.bookList = bookListBack;
+      }
+    );
+  }*/
 }

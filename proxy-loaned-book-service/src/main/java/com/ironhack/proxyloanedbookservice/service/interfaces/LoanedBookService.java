@@ -32,4 +32,7 @@ public interface LoanedBookService {
 
     void updateStatusLoans();
 
+
+    LoanedBook createLoanedBook(Long ean);
+
 }

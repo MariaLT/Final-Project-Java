@@ -4,7 +4,7 @@ export class Role {
 
   constructor(
     private _id: number | null,
-    private _roleName: string,
+    private _name: string,
     // private _user: User
   ) {
   }
@@ -18,12 +18,12 @@ export class Role {
     this._id = value;
   }
 
-  get roleName(): string {
-    return this._roleName;
+  get name(): string {
+    return this._name;
   }
 
-  set roleName(value: string) {
-    this._roleName = value;
+  set name(value: string) {
+    this._name = value;
   }
 
   // get user(): User {

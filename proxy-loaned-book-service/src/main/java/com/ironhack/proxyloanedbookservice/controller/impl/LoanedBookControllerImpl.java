@@ -35,6 +35,13 @@ public class LoanedBookControllerImpl implements LoanedBookController {
 
     //    USER ADMIN
 
+//     no funciona
+
+/*    @PostMapping("/loanedBooks/{ean}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public LoanedBook loaningBook(@PathVariable Long ean) {
+        return loanedBookRepository.save(loanedBookService.createLoanedBook(ean));
+    }*/
     @GetMapping("/loanedBooks")
     @ResponseStatus(HttpStatus.OK)
     public List<LoanedBook> findAllLoanedBooks() {

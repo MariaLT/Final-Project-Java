@@ -10,8 +10,8 @@
       </a>
     </div>
     <div class="navbar-item">
-      <a (click)="logout()">
-        <h1>Logout</h1>
+      <a [routerLink]="['/user-login']">
+        <h1  (click)="logout()" >Logout</h1>
       </a>
     </div>
 

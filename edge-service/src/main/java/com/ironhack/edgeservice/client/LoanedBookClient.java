@@ -18,6 +18,9 @@ public interface LoanedBookClient {
     @PostMapping("/loanedBooks")
     LoanedBook loaningBook(@RequestBody LoanedDTO loanedDTO);
 
+    /* @PostMapping("/loanedBooks")
+    @ResponseStatus(HttpStatus.CREATED)
+    public LoanedBook loaningBook(@RequestBody LoanedDTO loanedDTO) */
     @PatchMapping("/loanedBooks/{ean}")
     void returnBook(@PathVariable Long ean);
 

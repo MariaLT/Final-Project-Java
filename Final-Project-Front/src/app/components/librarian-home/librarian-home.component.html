@@ -18,30 +18,29 @@
   </mat-card-header>
   <div class="delete" *ngIf="goDelete">
     <form (ngSubmit)="onSubmit()" [formGroup]="bookForm">
-    <mat-card-header>
-      <mat-card-title>Delete book register</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>EAN</mat-label>
-        <input type="number" matInput formControlName="ean" placeholder="EAN">
-        <mat-error *ngIf="eanToDeleteInput.hasError('required') && eanToDeleteInput.touched">
-          EAN is required
-        </mat-error>
-      </mat-form-field>
+      <mat-card-header>
+        <mat-card-title>Delete book register</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>EAN</mat-label>
+          <input type="number" matInput formControlName="ean" placeholder="EAN">
+          <mat-error *ngIf="eanToDeleteInput.hasError('required') && eanToDeleteInput.touched">
+            EAN is required
+          </mat-error>
+        </mat-form-field>
 
-      <div class="buttons">
-        <button type="submit"  mat-raised-button color="accent" class="full-width"
-        >Submit
-          <!--[disabled]="bookForm.invalid"-->
-        </button>
-        <button mat-raised-button color="warn" class="full-width"
-                (click)="goBack()">Close
-        </button>
-      </div>
+        <div class="buttons">
+          <button type="submit" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
+          >Submit
 
-    </mat-card-content>
+          </button>
+          <button mat-raised-button color="warn" class="full-width"
+                  (click)="goBack()">Close
+          </button>
+        </div>
 
+      </mat-card-content>
 
     </form>
   </div>
@@ -51,10 +50,38 @@
 
 </div>
 
-<!-- <mat-form-field class="full-width" appearance="outline">
-                <mat-label>TITLE</mat-label>
-                <input type="text" matInput formControlName="title" placeholder="Title">
-                <mat-error *ngIf="titleInput.hasError('required') && titleInput.touched">
-                  Title is required
-                </mat-error>
-              </mat-form-field>-->
+
+<!--borrowed books management-->
+
+<div class="management-container">
+  <h1>Borrowed Books Management</h1>
+
+  <mat-card-header>
+    <mat-card-title>Overdue Books</mat-card-title>
+    <button (click)="showOverdueBooks()"
+            mat-mini-fab color="accent">
+      <mat-icon>hourglass_empty</mat-icon>
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="overdueBooks">
+      <div *ngFor="let overdueBooks of overdueBooks">
+        <p>Loaned book id: {{overdueBooks.loanedBookId}}</p>
+        <p>Ean: {{overdueBooks.ean}}</p>
+        <p>User ID: {{overdueBooks.userId}}</p>
+        <p>Loan date: {{overdueBooks.loanDate}}</p>
+        <p>Return date: {{overdueBooks.returnDate}}</p>
+      </div>
+    </div>
+  </mat-card-content>
+
+
+  <mat-card-header>
+    <mat-card-title>Available Books</mat-card-title>
+    <button (click)="showAvailableBooks()"
+            mat-mini-fab color="accent">
+      <mat-icon>book</mat-icon>
+    </button>
+  </mat-card-header>
+</div>
+<!--<mat-icon>book</mat-icon>-->
