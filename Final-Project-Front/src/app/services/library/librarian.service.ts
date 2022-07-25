@@ -13,7 +13,23 @@ export class LibrarianService {
   constructor(private http: HttpClient) { }
 
 
-  // Listado del estado de los libros
+  // Create a new loaned book
+
+  createLoanedBook(ean: number) : Observable <LoanedBook> {
+    return this.http.post <LoanedBook>(this.BASE_URL + '/create', ean);
+  }
+
+  // All loaned books
+  getAllLoanedBooks() : Observable <LoanedBook[]> {
+    return this.http.get <LoanedBook[]>(this.BASE_URL);
+  }
+
+  // A single loaned book by ean
+  getLoanedBook(ean: number) : Observable <LoanedBook> {
+    return this.http.get <LoanedBook>(this.BASE_URL + '/' + ean);
+  }
+
+  // Loaned book by Loan States
 
   getAvailableBooks() : Observable <LoanedBook[]> {
     return this.http.get <LoanedBook[]>(this.BASE_URL + '/available');

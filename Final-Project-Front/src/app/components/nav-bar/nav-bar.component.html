@@ -1,7 +1,4 @@
 
-<div class = "header">
-  <p class = "title">The Librarium</p>
-</div>
 <div class="container-navbar">
   <div class="navbar-menu">
     <div class="navbar-item">
@@ -14,13 +11,12 @@
         <h1  (click)="logout()" >Logout</h1>
       </a>
     </div>
-
-    <div class="navbar-item">
+    <div class="navbar-item" *ngIf="isStudent">
       <a [routerLink]="['/student-home']">
         <h1>Student</h1>
       </a>
     </div>
-    <div class="navbar-item">
+    <div class="navbar-item" *ngIf="isLibrarian">
       <a [routerLink]="['/librarian-home']">
         <h1>Librarian</h1>
       </a>

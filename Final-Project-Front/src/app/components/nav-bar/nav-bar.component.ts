@@ -9,12 +9,23 @@ import {Router} from "@angular/router";
 })
 export class NavBarComponent implements OnInit {
 
+  isLibrarian: boolean;
+  isStudent : boolean;
+
   constructor(
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) {
+    this.isLibrarian = false;
+    this.isStudent = false;
+  }
 
   ngOnInit(): void {
+    if (this.authService.isLibrarian()) {
+      this.isLibrarian = true;
+    }else{
+      this.isStudent = true;
+    }
   }
 
   logout(): void {

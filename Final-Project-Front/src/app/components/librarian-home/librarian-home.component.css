@@ -2,7 +2,7 @@
   background-color: #dccdcd;
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
+  justify-content: space-between;;
   margin: 3%;
   padding: 2%;
   width: 90%;
@@ -14,7 +14,7 @@ h1{
 }
 mat-card-header{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin: 1%;
 }
 

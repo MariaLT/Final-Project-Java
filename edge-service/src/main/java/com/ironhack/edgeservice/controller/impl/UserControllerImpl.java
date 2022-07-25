@@ -42,9 +42,9 @@ public class UserControllerImpl implements UserController {
     @ResponseStatus(HttpStatus.OK)
     public UserDTO login(@AuthenticationPrincipal User user) {
         log.info("Login successful");
-       ;
-        user.setPassword(null); // NEVER RETURN PASSWORD
-        return userToDTO(userRepository.findByUsername(user.getUsername()).get());
+        User userBack = userRepository.findByUsername(user.getUsername()).get();
+        userBack.setPassword(null); // NEVER RETURN PASSWORD
+        return userToDTO(userBack);
     }
 
     private UserDTO userToDTO(User user) {

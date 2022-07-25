@@ -19,6 +19,7 @@ import { CatalogueComponent } from './components/catalogue/catalogue.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { RegisterBookComponent } from './components/register-book/register-book.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { RegisterBookComponent } from './components/register-book/register-book.
     CatalogueComponent,
     FooterComponent,
     BookDetailsComponent,
-    RegisterBookComponent
+    RegisterBookComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

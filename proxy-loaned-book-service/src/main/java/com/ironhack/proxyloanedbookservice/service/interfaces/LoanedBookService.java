@@ -16,7 +16,7 @@ public interface LoanedBookService {
     // USER ADMIN
     List<LoanedBook> findAll();
 
-    List<LoanedBook> findByEan(Long ean);
+    LoanedBook findByEan(Long ean);
 
     List<LoanedBook> findByUserId(Long userId);
 

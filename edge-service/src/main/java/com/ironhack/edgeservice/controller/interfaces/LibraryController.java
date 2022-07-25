@@ -36,7 +36,7 @@ public interface LibraryController {
 
     List<LoanedBook> findAllLoanedBooks();
 
-    List<LoanedBook> findByEan(Long ean);
+    LoanedBook findByEan(Long ean);
 
     List<LoanedBook> findByUserId(Long userId);
 

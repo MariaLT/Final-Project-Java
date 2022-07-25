@@ -3,10 +3,11 @@
   flex-flow: column;
   justify-content: center;
   margin-top: 10%;
-  margin-left: 30%;
-  width: 40%;
-  height: 100%;
+  margin-left: 20%;
+  margin-right: 20%;
   color: black;
+  width: auto;
+  height: auto;
 }
 .card {
  justify-content: center;

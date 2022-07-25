@@ -16,16 +16,19 @@ public interface LoanedBookRepository extends JpaRepository<LoanedBook, Long> {
 
     List<LoanedBook> findByUserId(Long userId);
 
-    @Query(value = "SELECT ean FROM LoanedBook WHERE loanState = 'AVAILABLE'")
+
+
+
+    @Query(value = "SELECT l FROM LoanedBook l WHERE l.loanState = 'AVAILABLE'")
     List<LoanedBook> findByLoanState_Available();
 
-    @Query(value = "SELECT ean FROM LoanedBook WHERE loanState = 'LOST'")
+    @Query(value = "SELECT l FROM LoanedBook l WHERE l.loanState = 'LOST'")
     List<LoanedBook> findByLoanState_Lost();
 
-    @Query(value = "SELECT ean FROM LoanedBook WHERE loanState = 'LOANED'")
+    @Query(value = "SELECT l FROM LoanedBook l WHERE l.loanState = 'LOANED'")
     List<LoanedBook> findByLoanState_Loaned();
 
-    @Query(value = "SELECT ean FROM LoanedBook WHERE loanState = 'OVERDUE'")
+    @Query(value = "SELECT l FROM LoanedBook l WHERE l.loanState = 'OVERDUE'")
     List<LoanedBook> findByLoanState_Overdue();
 
 

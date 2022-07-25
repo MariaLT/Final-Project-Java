@@ -1,0 +1,19 @@
+
+.header {
+  background-color: #d2bea1;
+  border: #fff solid 1px;
+  height: 18%;
+  display: flex;
+  flex-flow: column;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: #171616;
+  font-size: 500%;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+}

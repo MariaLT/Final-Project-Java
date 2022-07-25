@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {AuthService} from "./authentication/auth.service";
+import {AuthService} from "./auth.service";
 import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
-export class LibrarianGuardService {
+export class StudentGuardService {
 
   constructor(
     public auth: AuthService,
@@ -14,10 +14,11 @@ export class LibrarianGuardService {
   ) { }
 
   canActivate(): boolean {
-    if (!this.auth.isLibrarian()) {
-      this.router.navigate(['librarian-home']);
+    if (!this.auth.isStudent()) {
+      this.router.navigate(['student-home']);
       return false;
     }
     return true;
   }
+
 }

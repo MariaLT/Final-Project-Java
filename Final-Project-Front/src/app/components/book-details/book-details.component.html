@@ -1,11 +1,7 @@
+<app-nav-bar></app-nav-bar>
+
 <div class="container">
 
-<!--
-
-    publication_year int,
-    publisher        VARCHAR(250),
-    url              VARCHAR(250),
-    plot             VARCHAR(1500),-->
   <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title><p>{{book.title}}</mat-card-title>
@@ -23,7 +19,7 @@
 
     </mat-card-content>
     <mat-card-actions class="loan">
-      <button  mat-raised-button color="primary" (click)="loaningBook()">Prestar</button>
+      <button  mat-raised-button color="primary" (click)="loaningBook()">Loan</button>
     </mat-card-actions>
   </mat-card>
 

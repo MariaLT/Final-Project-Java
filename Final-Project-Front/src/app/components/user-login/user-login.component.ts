@@ -45,8 +45,6 @@ export class UserLoginComponent implements OnInit {
       (user: User) => {
         console.log('Login successful');
         console.log(user);
-        this.currentUser = user;
-
 
         // Store user in local storage to keep user logged in between page refreshes
         localStorage.removeItem('currentUser');
@@ -54,7 +52,7 @@ export class UserLoginComponent implements OnInit {
 
         alert('Login successful');
         this.loginForm.reset()
-        console.log(this.currentUser.id);
+
         for (let role of user.roles) {
           if (role.name === 'LIBRARIAN') {
             console.log('Librarian logged in');

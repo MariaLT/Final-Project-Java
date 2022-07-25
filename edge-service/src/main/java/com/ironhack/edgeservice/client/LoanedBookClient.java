@@ -18,20 +18,20 @@ public interface LoanedBookClient {
     @PostMapping("/loanedBooks")
     LoanedBook loaningBook(@RequestBody LoanedDTO loanedDTO);
 
-    /* @PostMapping("/loanedBooks")
-    @ResponseStatus(HttpStatus.CREATED)
-    public LoanedBook loaningBook(@RequestBody LoanedDTO loanedDTO) */
     @PatchMapping("/loanedBooks/{ean}")
     void returnBook(@PathVariable Long ean);
 
     //    USER ADMIN
+    @PostMapping("/loanedBooks/{ean}")
+    public LoanedBook createLoanedBookRegister(@RequestParam Long ean);
 
     @GetMapping("/loanedBooks")
     List<LoanedBook> findAllLoanedBooks();
 
     @GetMapping("/loanedBooks/{ean}")
-    List<LoanedBook> findByEan(@PathVariable Long ean);
+    LoanedBook findByEan(@PathVariable Long ean);
 
+    // No esta en el servicio de angular
     @GetMapping("/loanedBooks/{userId}")
     List<LoanedBook> findByUserId(@PathVariable Long userId);
 
@@ -49,7 +49,6 @@ public interface LoanedBookClient {
 
     @PatchMapping("/loanedBooks/{id}/status")
     void updateStatus(@PathVariable Long id, @RequestBody LoanStateDTO loanStateDTO);
-
 
     @PatchMapping("/loanedBooks/status")
     void updateStatusLoans();

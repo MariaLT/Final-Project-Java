@@ -35,13 +35,11 @@ public class LoanedBookControllerImpl implements LoanedBookController {
 
     //    USER ADMIN
 
-//     no funciona
-
-/*    @PostMapping("/loanedBooks/{ean}")
+    @PostMapping("/loanedBooks/{ean}")
     @ResponseStatus(HttpStatus.CREATED)
-    public LoanedBook loaningBook(@PathVariable Long ean) {
+    public LoanedBook createLoanedBookRegister(@RequestParam Long ean) {
         return loanedBookRepository.save(loanedBookService.createLoanedBook(ean));
-    }*/
+    }
     @GetMapping("/loanedBooks")
     @ResponseStatus(HttpStatus.OK)
     public List<LoanedBook> findAllLoanedBooks() {
@@ -50,7 +48,7 @@ public class LoanedBookControllerImpl implements LoanedBookController {
 
     @GetMapping("/loanedBooks/{ean}")
     @ResponseStatus(HttpStatus.OK)
-    public List<LoanedBook> findByEan(@PathVariable Long ean) {
+    public LoanedBook findByEan(@PathVariable Long ean) {
         return loanedBookService.findByEan(ean);
     }
 

@@ -15,6 +15,7 @@ public class LoanedBook {
     private Long loanedBookId;
     @NotNull
     private Long ean;
+    @Enumerated(EnumType.STRING)
     private LoanState loanState;
     private LocalDate loanDate;
     private LocalDate returnDate;

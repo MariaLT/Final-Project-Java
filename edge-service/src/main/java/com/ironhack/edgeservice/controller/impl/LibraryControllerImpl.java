@@ -54,6 +54,7 @@ public class LibraryControllerImpl implements LibraryController {
     //        LOANED BOOK CLIENT         //
     // ----------------------------------//
 
+    // STUDENT USER
     @PostMapping("/library/loanedBooks")
     @ResponseStatus(HttpStatus.CREATED)
     public LoanedBook loaningBook(@RequestBody LoanedDTO loanedDTO) {
@@ -66,6 +67,15 @@ public class LibraryControllerImpl implements LibraryController {
         loanedBookClient.returnBook(ean);
     }
 
+
+    // ADMIN USER
+
+    @PostMapping("/library/loanedBooks/{ean}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public LoanedBook createLoanedBookRegister(@RequestParam Long ean){
+        return loanedBookClient.createLoanedBookRegister(ean);
+    }
+
     @GetMapping("/library/loanedBooks")
     @ResponseStatus(HttpStatus.OK)
     public List<LoanedBook> findAllLoanedBooks() {
@@ -74,7 +84,7 @@ public class LibraryControllerImpl implements LibraryController {
 
     @GetMapping("/library/loanedBooks/{ean}")
     @ResponseStatus(HttpStatus.OK)
-    public List<LoanedBook> findByEan(@PathVariable Long ean) {
+    public LoanedBook findByEan(@PathVariable Long ean) {
         return loanedBookClient.findByEan(ean);
     }
 

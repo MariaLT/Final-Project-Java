@@ -62,11 +62,11 @@ public class LoanedBookServiceImpl implements LoanedBookService {
     }
 
     @Override
-    public List<LoanedBook> findByEan(Long ean) {
-        List<LoanedBook> loanedBook = loanedBookRepository.findListByEan(ean);
-        if (loanedBook == null || loanedBook.size() == 0) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No loaned books found");
-        }
+    public LoanedBook findByEan(Long ean) {
+        LoanedBook loanedBook = loanedBookRepository.findByEan(ean)
+                .orElseThrow(
+                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book does not exist"));
+
         return loanedBook;
     }
 
@@ -137,7 +137,7 @@ public class LoanedBookServiceImpl implements LoanedBookService {
 
     public LoanedBook createLoanedBook(Long ean) {
         Optional<LoanedBook> loanedBook = loanedBookRepository.findByEan(ean);
-        if (!loanedBook.isPresent()) {
+        if (loanedBook.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Already created");
         }
         LoanedBook loanedBookBack = new LoanedBook();

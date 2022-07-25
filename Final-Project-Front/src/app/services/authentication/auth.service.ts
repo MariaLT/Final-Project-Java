@@ -20,14 +20,7 @@ export class AuthService {
     return token !== null;
   }
 
-  /* for (let role of user.roles) {
-            if (role.name === 'LIBRARIAN') {
-              console.log('Librarian logged in');
-              this.router.navigate(['/librarian-home']);
-            } else if (role.name === 'STUDENT') {
-              console.log('Student logged in');
-              this.router.navigate(['/student-home']);
-            }*/
+
   isLibrarian(): boolean {
     const token: string | null = localStorage.getItem('currentUser');
     if (token !== null) {
@@ -41,6 +34,19 @@ export class AuthService {
     return false;
   }
 
+
+  isStudent(): boolean {
+    const token: string | null = localStorage.getItem('currentUser');
+    if (token !== null) {
+      const user: User = JSON.parse(token);
+      for (let role of user.roles) {
+        if (role.name === 'STUDENT') {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 
   register(username: string, password: string): Observable<User> {
 
