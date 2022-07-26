@@ -120,11 +120,11 @@ public class LibraryControllerImpl implements LibraryController {
 
     @PatchMapping("/library/loanedBooks/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateStatus(Long id, LoanStateDTO loanStateDTO) {
+    public void updateStatus (@PathVariable Long id, @RequestBody LoanStateDTO loanStateDTO) {
         loanedBookClient.updateStatus(id, loanStateDTO);
     }
 
-    @PatchMapping("/library/loanedBooks")
+    @PatchMapping("/library/loanedBooks/update")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateStatusLoans() {
         loanedBookClient.updateStatusLoans();

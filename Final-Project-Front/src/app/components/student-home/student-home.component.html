@@ -1,3 +1,23 @@
 <app-nav-bar></app-nav-bar>
 
-<p>student-home works!</p>
+<h1>Personal Area</h1>
+
+<div>
+  <h1>Loaned Books</h1>
+  <div>
+    <table>
+      <tr>
+        <th>EAN</th>
+        <th>STATE</th>
+        <th>LOAN DATE</th>
+        <th>RETURN DATE</th>
+      </tr>
+      <tr *ngFor="let loanedBook of loanedBooks">
+        <td>{{loanedBook.ean}}</td>
+        <td>{{loanedBook.loanState}}</td>
+        <td>{{loanedBook.loanDate}}</td>
+        <td>{{loanedBook.returnDate}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

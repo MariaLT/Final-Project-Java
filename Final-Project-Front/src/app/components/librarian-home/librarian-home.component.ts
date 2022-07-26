@@ -6,6 +6,7 @@ import {LibrarianService} from "../../services/library/librarian.service";
 import {LoanedBook} from "../../models/LoanedBook";
 import {MatPaginator} from "@angular/material/paginator";
 import {Book} from "../../models/Book";
+import {User} from "../../models/User";
 
 
 @Component({
@@ -15,7 +16,7 @@ import {Book} from "../../models/Book";
 })
 export class LibrarianHomeComponent implements OnInit {
 
-    // Controls for close buttons and invisible divs
+  // Controls for close buttons and invisible divs
 
   goDelete: boolean;
   goCreateLoanedBookRegister: boolean;
@@ -36,13 +37,21 @@ export class LibrarianHomeComponent implements OnInit {
   overdueBooks: LoanedBook [];
   availableBooks: LoanedBook [];
   loanedBooks: LoanedBook[];
-  lostBooks : LoanedBook[];
+  lostBooks: LoanedBook[];
 
-  book : Book;
+  userList : User[];
 
-  totalAvailableBooks : number;
+  book: Book;
+  title: string;
 
-  page : number = 1;
+  totalAvailableBooks: number;
+  totalAllLoanedBooks:number;
+  totalOverdueBooks: number;
+  totalLoanedBooks: number;
+  totalLostBooks: number;
+
+
+  page: number = 1;
 
   constructor(
     private bookService: BooksService,
@@ -74,16 +83,24 @@ export class LibrarianHomeComponent implements OnInit {
     this.loanedBooks = [];
     this.lostBooks = [];
 
+    this.userList = [];
+
     this.book = new Book(0, '', '', '', 0, '', 0,
       '', '', '');
+    this.title = '';
 
     this.totalAvailableBooks = 0;
+    this.totalAllLoanedBooks = 0;
+    this.totalOverdueBooks = 0;
+    this.totalLoanedBooks = 0;
+    this.totalLostBooks = 0;
 
 
   }
 
 
   ngOnInit(): void {
+
   }
 
   openCreateLoanedBookRegister(): void {
@@ -147,10 +164,18 @@ export class LibrarianHomeComponent implements OnInit {
         bookListBack => {
           this.allLoanedBooks = bookListBack;
         });
+      this.totalAllLoanedBooks = this.allLoanedBooks.length;
       this.isAllLoanedBook = true;
     } else {
       this.isAllLoanedBook = false;
     }
+  }
+  showAllLoanedBooksPag() {
+    this.librarianService.getAllLoanedBooks().subscribe(
+      bookListBack => {
+        this.allLoanedBooks = bookListBack;
+      });
+
   }
 
   // Show all loaned books register overdue
@@ -160,10 +185,17 @@ export class LibrarianHomeComponent implements OnInit {
         bookListBack => {
           this.overdueBooks = bookListBack;
         });
+      this.totalOverdueBooks = this.overdueBooks.length;
       this.isOverdueBook = true;
     } else {
       this.isOverdueBook = false;
     }
+  }
+  showOverdueBooksPag(){
+    this.librarianService.getOverdueBooks().subscribe(
+      bookListBack => {
+        this.overdueBooks = bookListBack;
+      });
   }
 
   // Show all loaned books register available
@@ -179,7 +211,7 @@ export class LibrarianHomeComponent implements OnInit {
       this.isAvailableBook = false;
     }
   }
-  showAvailableBooksPag(){
+  showAvailableBooksPag() {
     this.librarianService.getAvailableBooks().subscribe(
       bookListBack => {
         this.availableBooks = bookListBack;
@@ -193,10 +225,17 @@ export class LibrarianHomeComponent implements OnInit {
         bookListBack => {
           this.loanedBooks = bookListBack;
         });
+      this.totalLoanedBooks = this.loanedBooks.length;
       this.isLoanedBook = true;
     } else {
       this.isLoanedBook = false;
     }
+  }
+  showLoanedBooksPag(){
+    this.librarianService.getLoanedBooks().subscribe(
+      bookListBack => {
+        this.loanedBooks = bookListBack;
+      });
   }
 
   // Show all loaned books register lost
@@ -206,20 +245,36 @@ export class LibrarianHomeComponent implements OnInit {
         bookListBack => {
           this.lostBooks = bookListBack;
         });
+      // for (let book of this.lostBooks) {
+      //   this.bookService.getBookByEan(book.ean).subscribe(
+      //     bookBack => {
+      //       console.log(bookBack);
+      //       this.book = bookBack;
+      //     });
+      //   this.title= this.book.title;
+      // }
+      this.totalLostBooks = this.lostBooks.length;
       this.isLostBook = true;
     } else {
       this.isLostBook = false;
     }
   }
-
-  getTitleBook(ean:number) : string {
-    this.bookService.getBookByEan(ean).subscribe(
-      bookBack => {
-        console.log(bookBack);
-        this.book = bookBack;
+  showLostBooksPag(){
+    this.librarianService.getLostBooks().subscribe(
+      bookListBack => {
+        this.lostBooks = bookListBack;
       });
-    return this.book.title;
   }
+
+/*  showUsers() {
+    this.librarianService.getUsers().subscribe(
+      user => {
+        this.userList.push(user);
+      });
+  }*/
+
+
+
 }
 
 

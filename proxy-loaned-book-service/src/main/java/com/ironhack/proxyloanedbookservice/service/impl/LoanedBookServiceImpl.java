@@ -72,7 +72,7 @@ public class LoanedBookServiceImpl implements LoanedBookService {
 
     @Override
     public List<LoanedBook> findByUserId(Long userId) {
-        List<LoanedBook> loanedBook = loanedBookRepository.findByUserId(userId);
+        List<LoanedBook> loanedBook = loanedBookRepository.findAllByUserId(userId);
         if (loanedBook == null || loanedBook.size() == 0) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No loaned books found" +
                     "for this user");

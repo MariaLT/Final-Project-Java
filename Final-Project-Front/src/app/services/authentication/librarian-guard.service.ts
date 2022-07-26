@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {AuthService} from "./auth.service";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {User} from "../../models/User";
 
 @Injectable({
   providedIn: 'root'
@@ -20,4 +22,5 @@ export class LibrarianGuardService {
     }
     return true;
   }
+
 }

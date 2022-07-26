@@ -132,7 +132,8 @@
   </mat-card-header>
   <mat-card-content>
     <div *ngIf="isAllLoanedBook">
-      <div *ngFor="let loanedBook of allLoanedBooks">
+      <div *ngFor="let loanedBook of allLoanedBooks | paginate: { itemsPerPage: 5, currentPage: page,
+    totalItems: totalAllLoanedBooks}">
         <!--        <p>Loaned book id: {{loanedBook.loanedBookId}}</p>-->
         <p>Ean: {{loanedBook.ean}}</p>
         <p>State: {{loanedBook.loanState}}</p>
@@ -140,6 +141,8 @@
         <!--        <p>Loan date: {{loanedBook.loanDate}}</p>-->
         <!--        <p>Return date: {{loanedBook.returnDate}}</p>-->
       </div>
+      <pagination-controls
+        (pageChange)="page = $event; allLoanedBooks = []; showAllLoanedBooksPag()"></pagination-controls>
     </div>
   </mat-card-content>
 
@@ -153,15 +156,18 @@
   </mat-card-header>
   <mat-card-content>
     <div *ngIf="isOverdueBook">
-      <div *ngFor="let overdueBook of overdueBooks">
-
-        <!--        <p>Loaned book id: {{overdueBooks.loanedBookId}}</p>-->
-        <p>Ean: {{overdueBook.ean}}</p>
-        <p>State: {{overdueBook.loanState}}</p>
-        <!--        <p>User ID: {{overdueBooks.userId}}</p>-->
-        <!--        <p>Loan date: {{overdueBooks.loanDate}}</p>-->
-        <!--        <p>Return date: {{overdueBooks.returnDate}}</p>-->
+      <div *ngFor="let overdueBook of overdueBooks | paginate: { itemsPerPage: 5, currentPage: page,
+    totalItems: totalOverdueBooks}">
+        <mat-card>
+          <mat-card-title>Ean: {{overdueBook.ean}}</mat-card-title>
+          <mat-card-subtitle>State: {{overdueBook.loanState}}</mat-card-subtitle>
+          <mat-card-content>User ID: {{overdueBook.userId}}</mat-card-content>
+          <mat-card-content>Loan date: {{overdueBook.loanDate}}</mat-card-content>
+          <mat-card-content>Return date: {{overdueBook.returnDate}}</mat-card-content>
+        </mat-card>
       </div>
+      <pagination-controls
+        (pageChange)="page = $event; overdueBooks = []; showOverdueBooksPag()"></pagination-controls>
     </div>
   </mat-card-content>
 
@@ -177,17 +183,11 @@
     <div *ngIf="isAvailableBook">
       <div *ngFor="let availableBook of availableBooks | paginate: { itemsPerPage: 5, currentPage: page,
     totalItems: totalAvailableBooks }">
-
-        <!--        <p>Loaned book id: {{availableBook.loanedBookId}}</p>-->
-        <p>Ean: {{availableBook.ean}}</p>
-        <p>Title: {{getTitleBook(availableBook.ean)}}</p>
-        <p>State: {{availableBook.loanState}}</p>
-        <!--        <p>User ID: {{availableBook.userId}}</p>-->
-        <!--        <p>Loan date: {{availableBook.loanDate}}</p>-->
-        <!--        <p>Return date: {{availableBook.returnDate}}</p>-->
+        <mat-card>
+          <mat-card-title>Ean: {{availableBook.ean}}</mat-card-title>
+          <mat-card-subtitle>State: {{availableBook.loanState}}</mat-card-subtitle>
+        </mat-card>
       </div>
-
-
       <!--      <mat-paginator [length]="100"
                            [pageSize]="10"
                            [pageSizeOptions]="[5, 10, 25, 100]"
@@ -196,7 +196,6 @@
       <pagination-controls
         (pageChange)="page = $event; availableBooks = []; showAvailableBooksPag()"></pagination-controls>
     </div>
-
   </mat-card-content>
 
 
@@ -209,14 +208,18 @@
   </mat-card-header>
   <mat-card-content>
     <div *ngIf="isLoanedBook">
-      <div *ngFor="let loanedBook of loanedBooks">
-        <!--        <p>Loaned book id: {{loanedBook.loanedBookId}}</p>-->
-        <p>Ean: {{loanedBook.ean}}</p>
-        <p>State: {{loanedBook.loanState}}</p>
-        <!--        <p>User ID: {{loanedBook.userId}}</p>-->
-        <!--        <p>Loan date: {{loanedBook.loanDate}}</p>-->
-        <!--        <p>Return date: {{loanedBook.returnDate}}</p>-->
+      <div *ngFor="let loanedBook of loanedBooks | paginate: { itemsPerPage: 5, currentPage: page,
+    totalItems: totalLoanedBooks}">
+        <mat-card>
+          <mat-card-title>Ean: {{loanedBook.ean}}</mat-card-title>
+          <mat-card-subtitle>State: {{loanedBook.loanState}}</mat-card-subtitle>
+          <mat-card-content>User ID: {{loanedBook.userId}}</mat-card-content>
+          <mat-card-content>Loan date: {{loanedBook.loanDate}}</mat-card-content>
+          <mat-card-content>Return date: {{loanedBook.returnDate}}</mat-card-content>
+        </mat-card>
       </div>
+      <pagination-controls
+        (pageChange)="page = $event; loanedBooks = []; showLoanedBooksPag()"></pagination-controls>
     </div>
   </mat-card-content>
 
@@ -230,17 +233,31 @@
   </mat-card-header>
   <mat-card-content>
     <div *ngIf="isLostBook">
-      <div *ngFor="let lostBook of lostBooks">
-        <!--        <p>Loaned book id: {{lostBook.loanedBookId}}</p>-->
-        <p>Ean: {{lostBook.ean}}</p>
-        <!--        <p>User ID: {{lostBook.userId}}</p>-->
-        <p>State: {{lostBook.loanState}}</p>
-        <!--        <p>Loan date: {{lostBook.loanDate}}</p>-->
-        <!--        <p>Return date: {{lostBook.returnDate}}</p>-->
+      <div *ngFor="let lostBook of lostBooks | paginate: { itemsPerPage: 5, currentPage: page,
+    totalItems: totalLostBooks}">
+        <mat-card>
+          <mat-card-title>Ean: {{lostBook.ean}}</mat-card-title>
+          <mat-card-subtitle>State: {{lostBook.loanState}}</mat-card-subtitle>
+          <mat-card-content>User ID: {{lostBook.userId}}</mat-card-content>
+          <mat-card-content>Loan date: {{lostBook.loanDate}}</mat-card-content>
+          <mat-card-content>Return date: {{lostBook.returnDate}}</mat-card-content>
+        </mat-card>
       </div>
+      <pagination-controls
+        (pageChange)="page = $event; lostBooks = []; showLostBooksPag()"></pagination-controls>
     </div>
   </mat-card-content>
-
-
 </div>
+
+<!--<div class="management-container">
+  <h1>User Management</h1>
+
+  <mat-card-header>
+    <mat-card-title>Show users</mat-card-title>
+    <button (click)="showUsers()"
+            mat-mini-fab color="accent">
+      <mat-icon>plus_one</mat-icon>
+    </button>
+  </mat-card-header>
+</div>-->
 

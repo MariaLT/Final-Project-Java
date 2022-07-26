@@ -18,7 +18,7 @@
       <p>Argumento: {{book.plot}}</p>
 
     </mat-card-content>
-    <mat-card-actions class="loan">
+    <mat-card-actions class="loan" *ngIf="isStudent">
       <button  mat-raised-button color="primary" (click)="loaningBook()">Loan</button>
     </mat-card-actions>
   </mat-card>

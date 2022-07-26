@@ -47,6 +47,12 @@ public class UserControllerImpl implements UserController {
         return userToDTO(userBack);
     }
 
+    @GetMapping("/users/list")
+    @ResponseStatus(HttpStatus.OK)
+    public List<User> findAllUsers(){
+        return userService.findAllUsersSetPassword();
+    }
+
     private UserDTO userToDTO(User user) {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());

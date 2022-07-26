@@ -52,6 +52,7 @@ public class LoanedBookControllerImpl implements LoanedBookController {
         return loanedBookService.findByEan(ean);
     }
 
+    // Loaned book by user
     @GetMapping("/loanedBooks/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public List<LoanedBook> findByUserId(@PathVariable Long userId) {

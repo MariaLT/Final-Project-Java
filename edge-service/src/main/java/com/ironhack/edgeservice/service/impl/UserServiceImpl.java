@@ -66,4 +66,10 @@ public class UserServiceImpl implements UserService {
 
         return roleDTO;
     }
+
+    public List<User> findAllUsersSetPassword(){
+        List<User> users = userRepository.findAll();
+        users.forEach(user -> user.setPassword(null));
+        return users;
+    }
 }

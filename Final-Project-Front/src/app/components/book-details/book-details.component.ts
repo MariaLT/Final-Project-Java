@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {StudentService} from "../../services/library/student.service";
 import {User} from "../../models/User";
 import {LoanedDTO} from "../../models/LoanedDTO";
+import {AuthService} from "../../services/authentication/auth.service";
 
 @Component({
   selector: 'app-book-details',
@@ -17,15 +18,22 @@ export class BookDetailsComponent implements OnInit {
 
   bookEan: number;
 
+  isLibrarian: boolean;
+  isStudent : boolean;
+
   constructor(
     private bookService: BooksService,
     private studentService: StudentService,
     private activatedRoute: ActivatedRoute,
+    private authService: AuthService
   ) {
     this.book = new Book(0, '', '', '', 0, '', 0,
       '', '', '');
 
     this.bookEan = this.activatedRoute.snapshot.params['ean'];
+
+    this.isLibrarian = false;
+    this.isStudent = false;
 
   }
 
@@ -36,6 +44,12 @@ export class BookDetailsComponent implements OnInit {
         console.log(bookBack);
         this.book = bookBack;
       });
+
+    if (this.authService.isLibrarian()) {
+      this.isLibrarian = true;
+    }else{
+      this.isStudent = true;
+    }
   }
 
   currentUser : User = JSON.parse(localStorage.getItem("currentUser") as string);

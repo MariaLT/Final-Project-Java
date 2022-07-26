@@ -1,6 +1,19 @@
 import {LoanState} from "./LoanState";
 
 export class LoanedBook {
+
+
+  constructor(
+    private _loanedBookId: number,
+    private _ean: number,
+    private _loanState:LoanState,
+    private _loanDate: Date,
+    private _returnDate: Date,
+    private _userId: number| null,
+
+  ) {
+  }
+
   get loanedBookId(): number {
     return this._loanedBookId;
   }
@@ -41,25 +54,13 @@ export class LoanedBook {
     this._returnDate = value;
   }
 
-  get userId(): number {
+  get userId(): number| null {
     return this._userId;
   }
 
-  set userId(value: number) {
+  set userId(value: number| null) {
     this._userId = value;
   }
-
-  constructor(
-    private _loanedBookId: number,
-    private _ean: number,
-    private _loanState:LoanState,
-    private _loanDate: Date,
-    private _returnDate: Date,
-    private _userId: number,
-
-  ) {
-  }
-
 
 }
 

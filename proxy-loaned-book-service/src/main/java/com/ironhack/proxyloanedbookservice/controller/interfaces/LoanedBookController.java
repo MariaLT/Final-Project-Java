@@ -3,7 +3,6 @@ package com.ironhack.proxyloanedbookservice.controller.interfaces;
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanedDTO;
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanStateDTO;
 import com.ironhack.proxyloanedbookservice.models.LoanedBook;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
