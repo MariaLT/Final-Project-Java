@@ -44,7 +44,9 @@ public class LibraryControllerImpl implements LibraryController {
 
     @DeleteMapping("/library/books/{ean}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteByEan(@PathVariable Long ean) { bookClient.deleteByEan(ean); }
+    public void deleteByEan(@PathVariable Long ean) {
+        bookClient.deleteByEan(ean);
+    }
 
 
     // ----------------------------------//
@@ -58,10 +60,10 @@ public class LibraryControllerImpl implements LibraryController {
         return loanedBookClient.loaningBook(loanedDTO);
     }
 
-    @PatchMapping("/library/loanedBooks/{ean}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void returnBook(@PathVariable Long ean) {
-        loanedBookClient.returnBook(ean);
+    @GetMapping("/library/loanedBooks/return/{ean}")
+    @ResponseStatus(HttpStatus.OK)
+    public LoanedBook returnBook(@PathVariable Long ean) {
+        return loanedBookClient.returnBook(ean);
     }
 
 
@@ -69,7 +71,7 @@ public class LibraryControllerImpl implements LibraryController {
 
     @PostMapping("/library/loanedBooks/{ean}")
     @ResponseStatus(HttpStatus.CREATED)
-    public LoanedBook createLoanedBookRegister(@RequestParam Long ean){
+    public LoanedBook createLoanedBookRegister(@RequestParam Long ean) {
         return loanedBookClient.createLoanedBookRegister(ean);
     }
 
@@ -85,7 +87,7 @@ public class LibraryControllerImpl implements LibraryController {
         return loanedBookClient.findByEan(ean);
     }
 
-    @GetMapping("/library/loanedBooks/{userId}")
+    @GetMapping("/library/loanedBooks/user/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public List<LoanedBook> findByUserId(@PathVariable Long userId) {
         return loanedBookClient.findByUserId(userId);
@@ -117,7 +119,7 @@ public class LibraryControllerImpl implements LibraryController {
 
     @PatchMapping("/library/loanedBooks/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateStatus (@PathVariable Long id, @RequestBody LoanStateDTO loanStateDTO) {
+    public void updateStatus(@PathVariable Long id, @RequestBody LoanStateDTO loanStateDTO) {
         loanedBookClient.updateStatus(id, loanStateDTO);
     }
 

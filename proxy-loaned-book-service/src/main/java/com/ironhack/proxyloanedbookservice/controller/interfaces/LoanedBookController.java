@@ -12,7 +12,7 @@ public interface LoanedBookController {
     // USER STUDENT
     LoanedBook loaningBook(LoanedDTO loanedDTO);
 
-    void returnBook(Long ean);
+    LoanedBook returnBook(Long ean);
 
     // USER ADMIN
 

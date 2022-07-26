@@ -6,6 +6,7 @@ import {StudentService} from "../../services/library/student.service";
 import {User} from "../../models/User";
 import {LoanedDTO} from "../../models/LoanedDTO";
 import {AuthService} from "../../services/authentication/auth.service";
+import {LoanedBook} from "../../models/LoanedBook";
 
 @Component({
   selector: 'app-book-details',
@@ -19,7 +20,9 @@ export class BookDetailsComponent implements OnInit {
   bookEan: number;
 
   isLibrarian: boolean;
-  isStudent : boolean;
+  isStudent: boolean;
+
+  loanedBook: LoanedBook;
 
   constructor(
     private bookService: BooksService,
@@ -34,6 +37,8 @@ export class BookDetailsComponent implements OnInit {
 
     this.isLibrarian = false;
     this.isStudent = false;
+    this.loanedBook = new LoanedBook(0, 0, 'AVAILABLE', new Date(),
+      new Date(), 'NO', 0);
 
   }
 
@@ -47,22 +52,24 @@ export class BookDetailsComponent implements OnInit {
 
     if (this.authService.isLibrarian()) {
       this.isLibrarian = true;
-    }else{
+    } else {
       this.isStudent = true;
     }
   }
 
-  currentUser : User = JSON.parse(localStorage.getItem("currentUser") as string);
+  currentUser: User = JSON.parse(localStorage.getItem("currentUser") as string);
 
 
   loaningBook() {
-    let loanedDTO = new LoanedDTO(this.bookEan, this.currentUser.id);
-
-/*    this.studentService.loanBook(this.bookEan).subscribe(
-      () => {
-        console.log('Book loaned');
+    let loanedDTO = new LoanedDTO(this.book.ean, this.currentUser.id);
+    console.log(loanedDTO);
+    this.studentService.loanBook(loanedDTO).subscribe(
+      loanedBookBack => {
+        this.loanedBook= loanedBookBack;
+        console.log('Book loaned')
+        console.log(this.loanedBook);
       }
-    );*/
+    );
 
   }
 

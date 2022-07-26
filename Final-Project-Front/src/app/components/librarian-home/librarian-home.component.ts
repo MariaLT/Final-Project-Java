@@ -241,8 +241,8 @@ export class LibrarianHomeComponent implements OnInit {
     }
   }
   // Update pickedUp Loaned Book
-  updatePickUpLoanedBook(loanedBookId:number): void {
-    this.pickedUpDTO = new PickedUpDTO(loanedBookId);
+  updatePickUpLoanedBook(ean:number): void {
+    this.pickedUpDTO = new PickedUpDTO(ean);
     this.librarianService.updatePickedUpLoanedBook(this.pickedUpDTO).subscribe();
 
   }
@@ -261,20 +261,28 @@ export class LibrarianHomeComponent implements OnInit {
         bookListBack => {
           this.lostBooks = bookListBack;
         });
-      // for (let book of this.lostBooks) {
-      //   this.bookService.getBookByEan(book.ean).subscribe(
-      //     bookBack => {
-      //       console.log(bookBack);
-      //       this.book = bookBack;
-      //     });
-      //   this.title= this.book.title;
-      // }
       this.totalLostBooks = this.lostBooks.length;
       this.isLostBook = true;
     } else {
       this.isLostBook = false;
     }
   }
+
+  showTitle(ean : number) : string {
+    this.librarianService.getLoanedBook(ean).subscribe(
+      bookBack => {
+        let loanedBook = bookBack;
+      }
+    );
+    return this.book.title;
+  }
+
+  /*  showSingleBook(): void {
+    this.librarianService.getLoanedBook(this.bookForm.get("ean")?.value).subscribe(
+      loanedBookBack => {
+        this.singleLoanedBook = loanedBookBack;
+      }
+    );*/
 
   showLostBooksPag() {
     this.librarianService.getLostBooks().subscribe(

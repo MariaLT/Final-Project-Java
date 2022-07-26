@@ -14,7 +14,7 @@ public interface LoanedBookRepository extends JpaRepository<LoanedBook, Long> {
     Optional<LoanedBook> findByEan(Long ean);
     List<LoanedBook> findListByEan(Long ean);
 
-    @Query(value = "SELECT * FROM loaned_books WHERE user_id = :userId", nativeQuery = true)
+
     List<LoanedBook> findAllByUserId(Long userId);
 
 

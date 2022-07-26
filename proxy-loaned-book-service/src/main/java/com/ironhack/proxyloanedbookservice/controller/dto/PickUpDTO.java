@@ -1,23 +1,21 @@
 package com.ironhack.proxyloanedbookservice.controller.dto;
 
-import com.ironhack.proxyloanedbookservice.enums.PickedUp;
-
 public class PickUpDTO {
-    private Long loanedBookId;
+
+    private Long ean;
 
     public PickUpDTO() {
     }
 
-    public PickUpDTO( Long loanedBookId) {
-
-        this.loanedBookId = loanedBookId;
+    public PickUpDTO(Long ean) {
+        this.ean = ean;
     }
 
-    public Long getLoanedBookId() {
-        return loanedBookId;
+    public Long getEan() {
+        return ean;
     }
 
-    public void setLoanedBookId(Long loanedBookId) {
-        this.loanedBookId = loanedBookId;
+    public void setEan(Long ean) {
+        this.ean = ean;
     }
 }

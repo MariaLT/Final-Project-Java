@@ -23,15 +23,14 @@ public class LoanedBookServiceImpl implements LoanedBookService {
 
     @Override
     public LoanedBook loaningBook(LoanedDTO loanedDTO) {
-/*        LoanedBook loanedBook = loanedBookRepository.findByEan(loanedDTO.getEan()).get();
-
+        LoanedBook loanedBook = loanedBookRepository.findByEan(loanedDTO.getEan()).get();
         if (loanedBook.getLoanState().equals(LoanState.LOANED)
                 || loanedBook.getLoanState().equals(LoanState.OVERDUE)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book already loaned");
         } else if (loanedBook.getLoanState().equals(LoanState.LOST)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book lost");
-        }*/
-        LoanedBook loanedBook = new LoanedBook();
+        }
+//        LoanedBook loanedBook = new LoanedBook();
 
         loanedBook.setEan(loanedDTO.getEan());
         loanedBook.setLoanState(LoanState.LOANED);
@@ -43,7 +42,7 @@ public class LoanedBookServiceImpl implements LoanedBookService {
     }
 
     @Override
-    public void returnBook(Long ean) {
+    public LoanedBook returnBook(Long ean) {
         LoanedBook loanedBook = loanedBookRepository.findByEan(ean)
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book does not exist"));
@@ -51,6 +50,8 @@ public class LoanedBookServiceImpl implements LoanedBookService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book does not loaned");
         }
         loanedBook.setLoanState(LoanState.AVAILABLE);
+
+        return loanedBook;
 
     }
 
@@ -158,11 +159,14 @@ public class LoanedBookServiceImpl implements LoanedBookService {
 
     }
 
-    public LoanedBook updatePickUp(Long loanedBookId) {
-        LoanedBook loanedBook = loanedBookRepository.findById(loanedBookId)
+    public LoanedBook updatePickUp(Long ean) {
+        LoanedBook loanedBook = loanedBookRepository.findByEan(ean)
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Register " +
                                 "Loaned Book not found"));
+        if (loanedBook.getPickUp() == PickedUp.YES) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Already picked up");
+        }
         loanedBook.setPickUp(PickedUp.YES);
         return loanedBook;
     }

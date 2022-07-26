@@ -12,12 +12,14 @@
         <th>LOAN DATE</th>
         <th>RETURN DATE</th>
       </tr>
-      <tr *ngFor="let loanedBook of loanedBooks">
-        <td>{{loanedBook.ean}}</td>
-        <td>{{loanedBook.loanState}}</td>
-        <td>{{loanedBook.loanDate}}</td>
-        <td>{{loanedBook.returnDate}}</td>
-      </tr>
+      <div *ngFor="let loanedBook of loanedBooks, let i = index">
+        <p>{{loanedBook.ean}}</p>
+        <p>{{loanedBook.loanState}}</p>
+        <p>{{loanedBook.loanDate}}</p>
+        <p>{{loanedBook.returnDate}}</p>
+      </div>
+<!--      <button (click)="returnBook()">Return</button>-->
     </table>
+
   </div>
 </div>

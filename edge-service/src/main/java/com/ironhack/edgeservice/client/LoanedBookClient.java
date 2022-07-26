@@ -19,8 +19,8 @@ public interface LoanedBookClient {
     @PostMapping("/loanedBooks")
     LoanedBook loaningBook(@RequestBody LoanedDTO loanedDTO);
 
-    @PatchMapping("/loanedBooks/{ean}")
-    void returnBook(@PathVariable Long ean);
+    @GetMapping("/loanedBooks/return/{ean}")
+    public LoanedBook returnBook(@PathVariable Long ean);
 
     //    USER ADMIN
     @PostMapping("/loanedBooks/{ean}")
@@ -33,7 +33,7 @@ public interface LoanedBookClient {
     LoanedBook findByEan(@PathVariable Long ean);
 
     // No esta en el servicio de angular
-    @GetMapping("/loanedBooks/{userId}")
+    @GetMapping("/loanedBooks/user/{userId}")
     List<LoanedBook> findByUserId(@PathVariable Long userId);
 
     @GetMapping("/loanedBooks/available")

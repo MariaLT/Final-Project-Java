@@ -28,10 +28,10 @@ public class LoanedBookControllerImpl implements LoanedBookController {
         return loanedBookRepository.save(loanedBookService.loaningBook(loanedDTO));
     }
 
-    @PatchMapping("/loanedBooks/{ean}")
+    @GetMapping("/loanedBooks/return/{ean}")
     @ResponseStatus(HttpStatus.OK)
-    public void returnBook(@PathVariable Long ean) {
-        loanedBookService.returnBook(ean);
+    public LoanedBook returnBook(@PathVariable Long ean) {
+        return loanedBookRepository.save(loanedBookService.returnBook(ean));
     }
 
     //    USER ADMIN
@@ -54,7 +54,7 @@ public class LoanedBookControllerImpl implements LoanedBookController {
     }
 
     // Loaned book by user
-    @GetMapping("/loanedBooks/{userId}")
+    @GetMapping("/loanedBooks/user/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public List<LoanedBook> findByUserId(@PathVariable Long userId) {
         return loanedBookService.findByUserId(userId);
@@ -101,7 +101,7 @@ public class LoanedBookControllerImpl implements LoanedBookController {
     @PatchMapping("/loanedBooks/pickUp")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public LoanedBook updatePickUp(@RequestBody PickUpDTO pickUpDTO) {
-        return loanedBookRepository.save(loanedBookService.updatePickUp(pickUpDTO.getLoanedBookId()));
+        return loanedBookRepository.save(loanedBookService.updatePickUp(pickUpDTO.getEan()));
     }
 
     }

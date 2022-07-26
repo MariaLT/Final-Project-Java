@@ -4,16 +4,16 @@ export class PickedUpDTO{
 
 
   constructor(
-    private _loanedBookId: number
+    private _ean: number
   ){}
 
 
   get loanedBookId(): number {
-    return this._loanedBookId;
+    return this._ean;
   }
 
   set loanedBookId(value: number) {
-    this._loanedBookId = value;
+    this._ean = value;
   }
 }
 
