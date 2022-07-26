@@ -50,5 +50,5 @@ public interface LibraryController {
 
     void updateStatus(Long id, LoanStateDTO loanStateDTO);
 
-    void updateStatusLoans();
+    List<LoanedBook> updateStatusLoans();
 }

@@ -10,6 +10,7 @@ import {User} from "../../models/User";
 export class LibrarianService {
 
   private readonly BASE_URL = 'http://localhost:8080/library/loanedBooks'
+  readonly API_URL = 'http://localhost:8080'
 
   constructor(private http: HttpClient) {
   }
@@ -50,12 +51,13 @@ export class LibrarianService {
   }
 
   // User list
-  getUsers(): Observable<User> {
-    return this.http.get <User>('users/list');
+  getUsers(): Observable<User[]> {
+    return this.http.get <User[]>(this.API_URL+'/users/list');
   }
 
-/*  // Update loaned book
-  updateLoanedBook() {
-    this.http.patch(this.BASE_URL + '/update').subscribe();
-  }*/
+  // Update overdue loaned books
+  updateOverdueLoanedBooks(): Observable<LoanedBook[]> {
+    return this.http.get <LoanedBook[]>(this.BASE_URL + '/update');
+  }
+
 }

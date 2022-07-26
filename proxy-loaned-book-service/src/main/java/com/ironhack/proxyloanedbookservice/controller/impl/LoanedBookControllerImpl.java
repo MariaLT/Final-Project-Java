@@ -89,9 +89,11 @@ public class LoanedBookControllerImpl implements LoanedBookController {
         loanedBookService.updateStatus(id, loanStateDTO.getLoanState());
     }
 
-    @PatchMapping("/loanedBooks/status")
+    @GetMapping("/loanedBooks/status")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateStatusLoans() {
-        loanedBookService.updateStatusLoans();
+    public List<LoanedBook> updateStatusLoans() {
+        return loanedBookRepository.saveAll(loanedBookService.updateStatusLoans());
+
+
     }
 }

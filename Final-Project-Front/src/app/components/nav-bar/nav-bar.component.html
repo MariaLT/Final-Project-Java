@@ -6,7 +6,7 @@
         <h1>Login</h1>
       </a>
     </div>
-    <div class="navbar-item">
+    <div class="navbar-item" *ngIf="(isStudent||isLibrarian)">
       <a [routerLink]="['/user-login']">
         <h1  (click)="logout()" >Logout</h1>
       </a>
@@ -21,7 +21,7 @@
         <h1>Librarian</h1>
       </a>
     </div>
-    <div class="navbar-item">
+    <div class="navbar-item" *ngIf="(isStudent||isLibrarian)">
       <a [routerLink]="['/catalogue']">
         <h1>Catalogue</h1>
       </a>

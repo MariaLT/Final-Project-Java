@@ -126,13 +126,18 @@ public class LoanedBookServiceImpl implements LoanedBookService {
     }
 
     @Override
-    public void updateStatusLoans() {
+    public List<LoanedBook> updateStatusLoans() {
         List<LoanedBook> loanedBooks = loanedBookRepository.findAll();
         for (LoanedBook loanedBook : loanedBooks) {
-            if (loanedBook.getReturnDate().isAfter(LocalDate.now())) {
-                loanedBook.setLoanState(LoanState.OVERDUE);
+            if (loanedBook.getReturnDate() != null) {
+                if (loanedBook.getReturnDate().isBefore(LocalDate.now())) {
+                    loanedBook.setLoanState(LoanState.OVERDUE);
+
+                }
             }
+
         }
+        return loanedBooks;
     }
 
     public LoanedBook createLoanedBook(Long ean) {

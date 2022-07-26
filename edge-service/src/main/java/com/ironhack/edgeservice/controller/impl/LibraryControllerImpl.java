@@ -124,9 +124,9 @@ public class LibraryControllerImpl implements LibraryController {
         loanedBookClient.updateStatus(id, loanStateDTO);
     }
 
-    @PatchMapping("/library/loanedBooks/update")
+    @GetMapping("/library/loanedBooks/update")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateStatusLoans() {
-        loanedBookClient.updateStatusLoans();
+    public List<LoanedBook> updateStatusLoans() {
+        return loanedBookClient.updateStatusLoans();
     }
 }

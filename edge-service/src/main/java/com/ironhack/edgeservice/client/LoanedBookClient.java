@@ -50,6 +50,8 @@ public interface LoanedBookClient {
     @PatchMapping("/loanedBooks/{id}/status")
     void updateStatus(@PathVariable Long id, @RequestBody LoanStateDTO loanStateDTO);
 
-    @PatchMapping("/loanedBooks/status")
-    void updateStatusLoans();
+    @GetMapping("/loanedBooks/status")
+    List<LoanedBook> updateStatusLoans();
+
+
 }

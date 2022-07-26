@@ -249,15 +249,26 @@
   </mat-card-content>
 </div>
 
-<!--<div class="management-container">
+<div class="management-container">
   <h1>User Management</h1>
 
   <mat-card-header>
     <mat-card-title>Show users</mat-card-title>
-    <button (click)="showUsers()"
+    <button (click)="showUsers()" (click)="increaseCounter()"
             mat-mini-fab color="accent">
-      <mat-icon>plus_one</mat-icon>
+      <mat-icon>people</mat-icon>
     </button>
   </mat-card-header>
-</div>-->
+  <mat-card-content>
+  <div *ngIf="isShowUser">
+    <div *ngFor="let user of userList">
+      <mat-card>
+        <p>User ID: {{user.id}}</p>
+        <p>Name: {{user.username}}</p>
+      </mat-card>
+    </div>
+
+  </div>
+  </mat-card-content>
+</div>
 

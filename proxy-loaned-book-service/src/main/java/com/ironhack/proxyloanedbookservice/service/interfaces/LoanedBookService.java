@@ -30,7 +30,7 @@ public interface LoanedBookService {
 
     void updateStatus(Long id, LoanState loanState);
 
-    void updateStatusLoans();
+    List<LoanedBook> updateStatusLoans();
 
 
     LoanedBook createLoanedBook(Long ean);
