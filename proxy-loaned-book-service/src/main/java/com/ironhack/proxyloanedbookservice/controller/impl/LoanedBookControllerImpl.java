@@ -2,6 +2,7 @@ package com.ironhack.proxyloanedbookservice.controller.impl;
 
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanedDTO;
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanStateDTO;
+import com.ironhack.proxyloanedbookservice.controller.dto.PickUpDTO;
 import com.ironhack.proxyloanedbookservice.controller.interfaces.LoanedBookController;
 import com.ironhack.proxyloanedbookservice.models.LoanedBook;
 import com.ironhack.proxyloanedbookservice.repository.LoanedBookRepository;
@@ -96,4 +97,12 @@ public class LoanedBookControllerImpl implements LoanedBookController {
 
 
     }
-}
+
+    @PatchMapping("/loanedBooks/pickUp")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public LoanedBook updatePickUp(@RequestBody PickUpDTO pickUpDTO) {
+        return loanedBookRepository.save(loanedBookService.updatePickUp(pickUpDTO.getLoanedBookId()));
+    }
+
+    }
+

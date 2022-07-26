@@ -47,10 +47,14 @@ public class UserControllerImpl implements UserController {
         return userToDTO(userBack);
     }
 
-    @GetMapping("/users/list")
+    @GetMapping("/users/profile")
     @ResponseStatus(HttpStatus.OK)
-    public List<User> findAllUsers(){
-        return userService.findAllUsersSetPassword();
+    public List<UserDTO> findAllUsers(){
+        List<UserDTO> userDTOList = userService.findAll();
+        for (UserDTO userDTO : userDTOList) {
+            userDTO.setPassword(null);
+        }
+        return userDTOList;
     }
 
     private UserDTO userToDTO(User user) {

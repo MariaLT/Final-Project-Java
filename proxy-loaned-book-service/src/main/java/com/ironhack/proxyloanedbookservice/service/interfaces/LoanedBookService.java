@@ -2,6 +2,7 @@ package com.ironhack.proxyloanedbookservice.service.interfaces;
 
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanedDTO;
 import com.ironhack.proxyloanedbookservice.enums.LoanState;
+import com.ironhack.proxyloanedbookservice.enums.PickedUp;
 import com.ironhack.proxyloanedbookservice.models.LoanedBook;
 
 import java.util.List;
@@ -34,5 +35,7 @@ public interface LoanedBookService {
 
 
     LoanedBook createLoanedBook(Long ean);
+
+    public LoanedBook updatePickUp(Long loanedBookId);
 
 }

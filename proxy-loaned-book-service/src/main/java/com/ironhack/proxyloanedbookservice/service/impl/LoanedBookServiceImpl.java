@@ -2,6 +2,7 @@ package com.ironhack.proxyloanedbookservice.service.impl;
 
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanedDTO;
 import com.ironhack.proxyloanedbookservice.enums.LoanState;
+import com.ironhack.proxyloanedbookservice.enums.PickedUp;
 import com.ironhack.proxyloanedbookservice.models.LoanedBook;
 import com.ironhack.proxyloanedbookservice.repository.LoanedBookRepository;
 import com.ironhack.proxyloanedbookservice.service.interfaces.LoanedBookService;
@@ -36,6 +37,7 @@ public class LoanedBookServiceImpl implements LoanedBookService {
         loanedBook.setLoanState(LoanState.LOANED);
         loanedBook.setLoanDate(LocalDate.now());
         loanedBook.setReturnDate(LocalDate.now().plusDays(21));
+        loanedBook.setPickUp(PickedUp.NO);
         loanedBook.setUserId(loanedDTO.getUserId());
         return loanedBook;
     }
@@ -154,6 +156,15 @@ public class LoanedBookServiceImpl implements LoanedBookService {
 
         return loanedBookBack;
 
+    }
+
+    public LoanedBook updatePickUp(Long loanedBookId) {
+        LoanedBook loanedBook = loanedBookRepository.findById(loanedBookId)
+                .orElseThrow(
+                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Register " +
+                                "Loaned Book not found"));
+        loanedBook.setPickUp(PickedUp.YES);
+        return loanedBook;
     }
 }
 

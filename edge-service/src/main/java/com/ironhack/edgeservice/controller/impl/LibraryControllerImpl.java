@@ -2,10 +2,7 @@ package com.ironhack.edgeservice.controller.impl;
 
 import com.ironhack.edgeservice.client.BookClient;
 import com.ironhack.edgeservice.client.LoanedBookClient;
-import com.ironhack.edgeservice.controller.dto.Book;
-import com.ironhack.edgeservice.controller.dto.LoanStateDTO;
-import com.ironhack.edgeservice.controller.dto.LoanedBook;
-import com.ironhack.edgeservice.controller.dto.LoanedDTO;
+import com.ironhack.edgeservice.controller.dto.*;
 import com.ironhack.edgeservice.controller.interfaces.LibraryController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -128,5 +125,11 @@ public class LibraryControllerImpl implements LibraryController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public List<LoanedBook> updateStatusLoans() {
         return loanedBookClient.updateStatusLoans();
+    }
+
+    @PatchMapping("/library/loanedBooks/pickUp")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public LoanedBook updatePickUp(@RequestBody PickUpDTO pickUpDTO) {
+        return loanedBookClient.updatePickUp(pickUpDTO);
     }
 }

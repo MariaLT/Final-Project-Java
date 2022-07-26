@@ -1,7 +1,7 @@
 package com.ironhack.edgeservice.controller.dto;
 
 import com.ironhack.edgeservice.enums.LoanState;
-import com.sun.istack.NotNull;
+import com.ironhack.edgeservice.enums.PickedUp;
 
 import java.time.LocalDate;
 
@@ -12,18 +12,19 @@ public class LoanedBook {
     private LoanState loanState;
     private LocalDate loanDate;
     private LocalDate returnDate;
+
+    private PickedUp pickedUp;
     private Long userId;
 
     public LoanedBook() {
     }
 
-    public LoanedBook(Long loanedBookId, Long ean, LoanState loanState,
-                      LocalDate loanDate, LocalDate returnDate, Long userId) {
-        this.loanedBookId = loanedBookId;
+    public LoanedBook(Long ean, LoanState loanState, LocalDate loanDate, LocalDate returnDate, PickedUp pickedUp, Long userId) {
         this.ean = ean;
         this.loanState = loanState;
         this.loanDate = loanDate;
         this.returnDate = returnDate;
+        this.pickedUp = pickedUp;
         this.userId = userId;
     }
 
@@ -65,6 +66,14 @@ public class LoanedBook {
 
     public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
+    }
+
+    public PickedUp getPickedUp() {
+        return pickedUp;
+    }
+
+    public void setPickedUp(PickedUp pickedUp) {
+        this.pickedUp = pickedUp;
     }
 
     public Long getUserId() {

@@ -7,6 +7,7 @@ import {LoanedBook} from "../../models/LoanedBook";
 import {MatPaginator} from "@angular/material/paginator";
 import {Book} from "../../models/Book";
 import {User} from "../../models/User";
+import {PickedUpDTO} from "../../models/PickedUpDTO";
 
 
 @Component({
@@ -54,6 +55,8 @@ export class LibrarianHomeComponent implements OnInit {
 
   page: number = 1;
 
+  pickedUpDTO: PickedUpDTO;
+
   constructor(
     private bookService: BooksService,
     private librarianService: LibrarianService,
@@ -79,7 +82,7 @@ export class LibrarianHomeComponent implements OnInit {
       }
     );
     this.allLoanedBooks = [];
-    this.singleLoanedBook = new LoanedBook(0, 0, 'AVAILABLE', new Date(), new Date(), 0);
+    this.singleLoanedBook = new LoanedBook(0, 0, 'AVAILABLE', new Date(), new Date(),'NO', 0);
     this.overdueBooks = [];
     this.availableBooks = [];
     this.loanedBooks = [];
@@ -98,6 +101,7 @@ export class LibrarianHomeComponent implements OnInit {
     this.totalLostBooks = 0;
 
 
+    this.pickedUpDTO = new PickedUpDTO(0);
   }
 
 
@@ -235,6 +239,12 @@ export class LibrarianHomeComponent implements OnInit {
     } else {
       this.isLoanedBook = false;
     }
+  }
+  // Update pickedUp Loaned Book
+  updatePickUpLoanedBook(loanedBookId:number): void {
+    this.pickedUpDTO = new PickedUpDTO(loanedBookId);
+    this.librarianService.updatePickedUpLoanedBook(this.pickedUpDTO).subscribe();
+
   }
 
   showLoanedBooksPag() {

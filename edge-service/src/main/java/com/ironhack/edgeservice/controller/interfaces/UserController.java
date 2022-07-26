@@ -11,5 +11,5 @@ public interface UserController {
     UserDTO register(UserDTO userDTO);
     List<UserDTO> findAll();
     UserDTO login(User user);
-    List<User> findAllUsers();
+    List<UserDTO> findAllUsers();
 }

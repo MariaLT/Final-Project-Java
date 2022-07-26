@@ -3,6 +3,7 @@ package com.ironhack.edgeservice.client;
 import com.ironhack.edgeservice.controller.dto.LoanStateDTO;
 import com.ironhack.edgeservice.controller.dto.LoanedBook;
 import com.ironhack.edgeservice.controller.dto.LoanedDTO;
+import com.ironhack.edgeservice.controller.dto.PickUpDTO;
 import com.ironhack.edgeservice.enums.LoanState;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
@@ -53,5 +54,6 @@ public interface LoanedBookClient {
     @GetMapping("/loanedBooks/status")
     List<LoanedBook> updateStatusLoans();
 
-
+    @PatchMapping("/loanedBooks/pickUp")
+    public LoanedBook updatePickUp(PickUpDTO pickUpDTO);
 }

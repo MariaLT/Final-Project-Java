@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import { LoanedBook } from 'src/app/models/LoanedBook';
 import {Observable} from "rxjs";
 import {User} from "../../models/User";
+import {PickedUpDTO} from "../../models/PickedUpDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +53,7 @@ export class LibrarianService {
 
   // User list
   getUsers(): Observable<User[]> {
-    return this.http.get <User[]>(this.API_URL+'/users/list');
+    return this.http.get <User[]>(this.API_URL+'/users/profile');
   }
 
   // Update overdue loaned books
@@ -60,4 +61,9 @@ export class LibrarianService {
     return this.http.get <LoanedBook[]>(this.BASE_URL + '/update');
   }
 
+  // Update picked up loaned book
+  updatePickedUpLoanedBook(pickedUpDTO:PickedUpDTO): Observable<LoanedBook> {
+    return this.http.patch<LoanedBook>(this.BASE_URL + '/pickUp', pickedUpDTO);
+  }
 }
+

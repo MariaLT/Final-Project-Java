@@ -69,7 +69,9 @@ public class UserServiceImpl implements UserService {
 
     public List<User> findAllUsersSetPassword(){
         List<User> users = userRepository.findAll();
-        users.forEach(user -> user.setPassword(null));
+        for (User user : users) {
+            user.setPassword(null);
+        }
         return users;
     }
 }

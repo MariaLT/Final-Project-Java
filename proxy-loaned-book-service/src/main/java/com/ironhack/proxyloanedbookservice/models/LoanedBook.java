@@ -1,6 +1,7 @@
 package com.ironhack.proxyloanedbookservice.models;
 
 import com.ironhack.proxyloanedbookservice.enums.LoanState;
+import com.ironhack.proxyloanedbookservice.enums.PickedUp;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -19,19 +20,26 @@ public class LoanedBook {
     private LoanState loanState;
     private LocalDate loanDate;
     private LocalDate returnDate;
+
+    @Enumerated(EnumType.STRING)
+    private PickedUp pickedUp;
     private Long userId;
 
 
     public LoanedBook() {
     }
 
-    public LoanedBook(Long ean, LoanState loanState, LocalDate loanDate, LocalDate returnDate, Long userId) {
+    public LoanedBook(Long ean, LoanState loanState, LocalDate loanDate, LocalDate returnDate,
+                      PickedUp pickedUp, Long userId) {
         this.ean = ean;
         this.loanState = loanState;
         this.loanDate = loanDate;
         this.returnDate = returnDate;
+        this.pickedUp = pickedUp;
         this.userId = userId;
     }
+
+
 
     public Long getEan() {
         return ean;
@@ -79,6 +87,14 @@ public class LoanedBook {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public PickedUp getPickUp() {
+        return pickedUp;
+    }
+
+    public void setPickUp(PickedUp pickedUp) {
+        this.pickedUp = pickedUp;
     }
 }
 

@@ -1,4 +1,5 @@
 import {LoanState} from "./LoanState";
+import {PickedUp} from "./PickedUp";
 
 export class LoanedBook {
 
@@ -9,6 +10,7 @@ export class LoanedBook {
     private _loanState:LoanState,
     private _loanDate: Date,
     private _returnDate: Date,
+    private _pickedUp: PickedUp,
     private _userId: number| null,
 
   ) {
@@ -52,6 +54,15 @@ export class LoanedBook {
 
   set returnDate(value: Date) {
     this._returnDate = value;
+  }
+
+
+  get pickedUp(): PickedUp {
+    return this._pickedUp;
+  }
+
+  set pickedUp(value: PickedUp) {
+    this._pickedUp = value;
   }
 
   get userId(): number| null {

@@ -216,6 +216,13 @@
           <mat-card-content>User ID: {{loanedBook.userId}}</mat-card-content>
           <mat-card-content>Loan date: {{loanedBook.loanDate}}</mat-card-content>
           <mat-card-content>Return date: {{loanedBook.returnDate}}</mat-card-content>
+          <mat-card-content>
+            <p>Picked Up: {{loanedBook.pickedUp}}</p>
+            <button (click)="updatePickUpLoanedBook(loanedBook.loanedBookId)"
+                    mat-mini-fab color="accent">
+              <mat-icon>error</mat-icon>
+            </button>
+          </mat-card-content>
         </mat-card>
       </div>
       <pagination-controls

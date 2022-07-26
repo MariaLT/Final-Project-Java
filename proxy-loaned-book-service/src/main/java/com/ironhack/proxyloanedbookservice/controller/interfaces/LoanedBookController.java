@@ -2,6 +2,7 @@ package com.ironhack.proxyloanedbookservice.controller.interfaces;
 
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanedDTO;
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanStateDTO;
+import com.ironhack.proxyloanedbookservice.controller.dto.PickUpDTO;
 import com.ironhack.proxyloanedbookservice.models.LoanedBook;
 
 import java.util.List;
@@ -33,5 +34,7 @@ public interface LoanedBookController {
     void updateStatus(Long id, LoanStateDTO loanStateDTO);
 
     List<LoanedBook> updateStatusLoans();
+
+    LoanedBook updatePickUp(PickUpDTO pickUpDTO);
 
 }

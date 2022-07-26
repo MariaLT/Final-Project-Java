@@ -1,9 +1,7 @@
 package com.ironhack.edgeservice.controller.interfaces;
 
-import com.ironhack.edgeservice.controller.dto.Book;
-import com.ironhack.edgeservice.controller.dto.LoanStateDTO;
-import com.ironhack.edgeservice.controller.dto.LoanedBook;
-import com.ironhack.edgeservice.controller.dto.LoanedDTO;
+import com.ironhack.edgeservice.controller.dto.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,4 +49,6 @@ public interface LibraryController {
     void updateStatus(Long id, LoanStateDTO loanStateDTO);
 
     List<LoanedBook> updateStatusLoans();
+
+    LoanedBook updatePickUp(PickUpDTO pickUpDTO);
 }
