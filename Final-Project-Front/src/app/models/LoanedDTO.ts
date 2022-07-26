@@ -21,4 +21,11 @@ export class LoanedDTO{
   set userId(value: number | null) {
     this._userId = value;
   }
+
+  public toJSON(): any {
+    return {
+      ean: this.ean,
+      userId: this.userId
+    };
+  }
 }

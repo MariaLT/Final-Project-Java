@@ -23,14 +23,14 @@ public class LoanedBookServiceImpl implements LoanedBookService {
 
     @Override
     public LoanedBook loaningBook(LoanedDTO loanedDTO) {
-        LoanedBook loanedBook = loanedBookRepository.findByEan(loanedDTO.getEan()).get();
+/*        LoanedBook loanedBook = loanedBookRepository.findByEan(loanedDTO.getEan()).get();
         if (loanedBook.getLoanState().equals(LoanState.LOANED)
                 || loanedBook.getLoanState().equals(LoanState.OVERDUE)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book already loaned");
         } else if (loanedBook.getLoanState().equals(LoanState.LOST)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book lost");
-        }
-//        LoanedBook loanedBook = new LoanedBook();
+        }*/
+        LoanedBook loanedBook = new LoanedBook();
 
         loanedBook.setEan(loanedDTO.getEan());
         loanedBook.setLoanState(LoanState.LOANED);
@@ -50,6 +50,10 @@ public class LoanedBookServiceImpl implements LoanedBookService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book does not loaned");
         }
         loanedBook.setLoanState(LoanState.AVAILABLE);
+        loanedBook.setUserId(null);
+        loanedBook.setLoanDate(null);
+        loanedBook.setReturnDate(null);
+        loanedBook.setPickUp(null);
 
         return loanedBook;
 

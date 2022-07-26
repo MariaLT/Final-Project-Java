@@ -17,8 +17,10 @@
         <p>{{loanedBook.loanState}}</p>
         <p>{{loanedBook.loanDate}}</p>
         <p>{{loanedBook.returnDate}}</p>
+        <button (click)="returnBook(loanedBook.ean)">Return</button>
+        <p *ngIf="isOverdueLoanedBook">OVERDUEEEEEEEEEEEEEE</p>
       </div>
-<!--      <button (click)="returnBook()">Return</button>-->
+
     </table>
 
   </div>

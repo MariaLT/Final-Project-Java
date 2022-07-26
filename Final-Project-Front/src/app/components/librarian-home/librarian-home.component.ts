@@ -269,20 +269,13 @@ export class LibrarianHomeComponent implements OnInit {
   }
 
   showTitle(ean : number) : string {
-    this.librarianService.getLoanedBook(ean).subscribe(
+    this.bookService.getBookByEan(ean).subscribe(
       bookBack => {
-        let loanedBook = bookBack;
+        this.book = bookBack;
       }
     );
     return this.book.title;
   }
-
-  /*  showSingleBook(): void {
-    this.librarianService.getLoanedBook(this.bookForm.get("ean")?.value).subscribe(
-      loanedBookBack => {
-        this.singleLoanedBook = loanedBookBack;
-      }
-    );*/
 
   showLostBooksPag() {
     this.librarianService.getLostBooks().subscribe(

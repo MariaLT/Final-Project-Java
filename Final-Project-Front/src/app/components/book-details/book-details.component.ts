@@ -61,7 +61,7 @@ export class BookDetailsComponent implements OnInit {
 
 
   loaningBook() {
-    let loanedDTO = new LoanedDTO(this.book.ean, this.currentUser.id);
+    let loanedDTO = new LoanedDTO(this.bookEan, this.currentUser.id);
     console.log(loanedDTO);
     this.studentService.loanBook(loanedDTO).subscribe(
       loanedBookBack => {

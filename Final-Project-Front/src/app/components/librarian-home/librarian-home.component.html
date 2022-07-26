@@ -243,7 +243,7 @@
       <div *ngFor="let lostBook of lostBooks | paginate: { itemsPerPage: 5, currentPage: page,
     totalItems: totalLostBooks}">
         <mat-card>
-<!--          <mat-card-header>Title: {{showTitle(lostBook.ean)}}</mat-card-header>-->
+          <mat-card-header>Title: [showTitle(lostBook.ean]</mat-card-header>
           <mat-card-title>Ean: {{lostBook.ean}}</mat-card-title>
           <mat-card-subtitle>State: {{lostBook.loanState}}</mat-card-subtitle>
           <mat-card-content>User ID: {{lostBook.userId}}</mat-card-content>

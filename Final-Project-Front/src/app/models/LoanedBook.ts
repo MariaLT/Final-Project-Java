@@ -7,12 +7,11 @@ export class LoanedBook {
   constructor(
     private _loanedBookId: number,
     private _ean: number,
-    private _loanState:LoanState,
+    private _loanState: LoanState,
     private _loanDate: Date,
     private _returnDate: Date,
     private _pickedUp: PickedUp,
-    private _userId: number| null,
-
+    private _userId: number | null,
   ) {
   }
 
@@ -65,13 +64,25 @@ export class LoanedBook {
     this._pickedUp = value;
   }
 
-  get userId(): number| null {
+  get userId(): number | null {
     return this._userId;
   }
 
-  set userId(value: number| null) {
+  set userId(value: number | null) {
     this._userId = value;
   }
 
+
+  public toJSON(): any {
+    return {
+      loanedBookId: this._loanedBookId,
+      ean: this._ean,
+      loanState: this._loanState,
+      loanDate: this._loanDate,
+      returnDate: this._returnDate,
+      pickedUp: this._pickedUp,
+      userId: this._userId,
+    };
+  }
 }
 
