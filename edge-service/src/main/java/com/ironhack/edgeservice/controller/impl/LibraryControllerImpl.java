@@ -132,6 +132,6 @@ public class LibraryControllerImpl implements LibraryController {
     @PutMapping("/library/loanedBooks/pickUp/{ean}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public LoanedBook updatePickUp(@PathVariable Long ean, @RequestBody PickUpDTO pickUpDTO) {
-        return loanedBookClient.updatePickUp(pickUpDTO);
+        return loanedBookClient.updatePickUp(ean, pickUpDTO);
     }
 }

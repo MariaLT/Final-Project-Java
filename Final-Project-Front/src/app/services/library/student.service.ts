@@ -19,14 +19,10 @@ export class StudentService {
     return this.http.post<LoanedBook>(this.BASE_URL, loanedDTO);
   }
 
-  returnBook(ean: number): Observable<LoanedBook> {
-    return this.http.get<LoanedBook>(`${this.BASE_URL}/return/${ean}`);
-  }
-
   loanedBookFindByUserId(userId: number | null): Observable<LoanedBook[]> {
     return this.http.get<LoanedBook[]>(`${this.BASE_URL}/user/${userId}`);
   }
 
 }
 
-/*user/{userId}*/
+

@@ -7,8 +7,8 @@ import {User} from "../../models/User";
 import {LoanedDTO} from "../../models/LoanedDTO";
 import {AuthService} from "../../services/authentication/auth.service";
 import {LoanedBook} from "../../models/LoanedBook";
-import {LoanState} from "../../models/LoanState";
-import {PickedUp} from "../../models/PickedUp";
+import {LOAN_STATE} from "../../models/LOAN_STATE";
+import {PICKED_UP} from "../../models/PICKED_UP";
 
 @Component({
   selector: 'app-book-details',
@@ -39,8 +39,8 @@ export class BookDetailsComponent implements OnInit {
 
     this.isLibrarian = false;
     this.isStudent = false;
-    this.loanedBook = new LoanedBook( 0, LoanState.AVAILABLE, new Date(),
-      new Date(), PickedUp.NO, 0);
+    this.loanedBook = new LoanedBook( 0, LOAN_STATE.AVAILABLE, new Date(),
+      new Date(), PICKED_UP.NO, 0);
 
   }
 

@@ -1,4 +1,4 @@
-import {PickedUp} from "./PickedUp";
+import {PICKED_UP} from "./PICKED_UP";
 
 export class PickedUpDTO{
 
@@ -14,6 +14,12 @@ export class PickedUpDTO{
 
   set loanedBookId(value: number) {
     this._ean = value;
+  }
+
+  public toJSON(): any {
+    return {
+      ean: this._ean
+    };
   }
 }
 

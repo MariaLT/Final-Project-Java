@@ -1,4 +1,4 @@
-export enum LoanState{
+export enum LOAN_STATE{
 
   LOANED = 'LOANED',
   OVERDUE = 'OVERDUE',

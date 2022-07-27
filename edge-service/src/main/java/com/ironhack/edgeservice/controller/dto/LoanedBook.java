@@ -1,40 +1,32 @@
 package com.ironhack.edgeservice.controller.dto;
 
-import com.ironhack.edgeservice.enums.LoanState;
-import com.ironhack.edgeservice.enums.PickedUp;
+import com.ironhack.edgeservice.enums.LOAN_STATE;
+import com.ironhack.edgeservice.enums.PICKED_UP;
 
 import java.time.LocalDate;
 
 public class LoanedBook {
 
-//    private Long loanedBookId;
     private Long ean;
-    private LoanState loanState;
+    private LOAN_STATE LOANSTATE;
     private LocalDate loanDate;
     private LocalDate returnDate;
 
-    private PickedUp pickedUp;
+    private PICKED_UP PICKEDUP;
     private Long userId;
 
     public LoanedBook() {
     }
 
-    public LoanedBook(Long ean, LoanState loanState, LocalDate loanDate, LocalDate returnDate, PickedUp pickedUp, Long userId) {
+    public LoanedBook(Long ean, LOAN_STATE LOANSTATE, LocalDate loanDate, LocalDate returnDate, PICKED_UP PICKEDUP, Long userId) {
         this.ean = ean;
-        this.loanState = loanState;
+        this.LOANSTATE = LOANSTATE;
         this.loanDate = loanDate;
         this.returnDate = returnDate;
-        this.pickedUp = pickedUp;
+        this.PICKEDUP = PICKEDUP;
         this.userId = userId;
     }
 
-/*    public Long getLoanedBookId() {
-        return loanedBookId;
-    }
-
-    public void setLoanedBookId(Long loanedBookId) {
-        this.loanedBookId = loanedBookId;
-    }*/
 
     public Long getEan() {
         return ean;
@@ -44,12 +36,12 @@ public class LoanedBook {
         this.ean = ean;
     }
 
-    public LoanState getLoanState() {
-        return loanState;
+    public LOAN_STATE getLoanState() {
+        return LOANSTATE;
     }
 
-    public void setLoanState(LoanState loanState) {
-        this.loanState = loanState;
+    public void setLoanState(LOAN_STATE LOANSTATE) {
+        this.LOANSTATE = LOANSTATE;
     }
 
     public LocalDate getLoanDate() {
@@ -68,12 +60,12 @@ public class LoanedBook {
         this.returnDate = returnDate;
     }
 
-    public PickedUp getPickedUp() {
-        return pickedUp;
+    public PICKED_UP getPickedUp() {
+        return PICKEDUP;
     }
 
-    public void setPickedUp(PickedUp pickedUp) {
-        this.pickedUp = pickedUp;
+    public void setPickedUp(PICKED_UP PICKEDUP) {
+        this.PICKEDUP = PICKEDUP;
     }
 
     public Long getUserId() {

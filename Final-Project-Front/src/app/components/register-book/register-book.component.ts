@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Book} from "../../models/Book";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BooksService} from "../../services/library/books.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register-book',
@@ -26,7 +27,8 @@ export class RegisterBookComponent implements OnInit {
   plotInput: FormControl;
 
   constructor(
-    private bookService: BooksService
+    private bookService: BooksService,
+    private router: Router
   ) {
     this.book = new Book(0, '', '', '', 0, '', 0,
       '', '', '');
@@ -78,7 +80,8 @@ export class RegisterBookComponent implements OnInit {
         console.log(data);
       }
     );
-    this.bookForm.reset();
+    alert('Book register created');
+    this.router.navigate(['/librarian-home']);
   }
 
 }

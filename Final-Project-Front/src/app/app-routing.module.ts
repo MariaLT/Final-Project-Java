@@ -9,6 +9,7 @@ import {BookDetailsComponent} from "./components/book-details/book-details.compo
 import {RegisterBookComponent} from "./components/register-book/register-book.component";
 import {LibrarianGuardService} from "./services/authentication/librarian-guard.service";
 import {StudentGuardService} from "./services/authentication/student-guard.service";
+import {LoanedBooksComponent} from "./components/loaned-books/loaned-books.component";
 
 const routes: Routes = [
   {
@@ -28,6 +29,11 @@ const routes: Routes = [
     path: 'librarian-home',
     canActivate: [LibrarianGuardService],
     component: LibrarianHomeComponent
+  },
+  {
+    path: 'loaned-books',
+    canActivate: [LibrarianGuardService],
+    component: LoanedBooksComponent
   },
   {
     path: 'catalogue',

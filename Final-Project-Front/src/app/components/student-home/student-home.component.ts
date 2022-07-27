@@ -3,6 +3,7 @@ import {Book} from "../../models/Book";
 import {StudentService} from "../../services/library/student.service";
 import {LoanedBook} from "../../models/LoanedBook";
 import {User} from "../../models/User";
+import {BooksService} from "../../services/library/books.service";
 
 @Component({
   selector: 'app-student-home',
@@ -17,12 +18,21 @@ export class StudentHomeComponent implements OnInit {
 
   isOverdueLoanedBook : boolean;
 
+  book : Book;
+
+  title: string;
+
   constructor(
-    private studentService: StudentService
+    private studentService: StudentService,
+    private bookService: BooksService
   ) {
     this.loanedBooks = [];
     this.currentUser = JSON.parse(localStorage.getItem("currentUser") as string);
     this.isOverdueLoanedBook = false;
+
+    this.book = new Book(0, '', '', '', 0, '', 0,
+      '', '', '');
+    this.title = '';
   }
 
 
@@ -40,14 +50,6 @@ export class StudentHomeComponent implements OnInit {
     this.overdueBooks();
   }
 
-  returnBook(ean: number) {
-    this.studentService.returnBook(ean).subscribe(
-      bookBack => {
-        this.loanedBooks.splice(this.loanedBooks.indexOf(bookBack), 1);
-      }
-    );
-  }
-
   overdueBooks() {
     for (let loanedBook of this.loanedBooks) {
       if (loanedBook.loanState.includes("Overdue")) {
@@ -56,5 +58,14 @@ export class StudentHomeComponent implements OnInit {
         this.isOverdueLoanedBook = true;
       }
     }
+  }
+
+  showTitle(ean: number): string {
+    this.bookService.getBookByEan(ean).subscribe(
+      bookBack => {
+        this.book = bookBack;
+      }
+    );
+    return this.book.title;
   }
 }

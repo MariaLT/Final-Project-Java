@@ -1,5 +1,5 @@
 package com.ironhack.edgeservice.enums;
 
-public enum PickedUp {
+public enum PICKED_UP {
     YES, NO;
 }

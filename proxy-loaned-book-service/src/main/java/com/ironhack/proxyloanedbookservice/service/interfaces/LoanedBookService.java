@@ -1,8 +1,7 @@
 package com.ironhack.proxyloanedbookservice.service.interfaces;
 
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanedDTO;
-import com.ironhack.proxyloanedbookservice.enums.LoanState;
-import com.ironhack.proxyloanedbookservice.enums.PickedUp;
+import com.ironhack.proxyloanedbookservice.enums.LOAN_STATE;
 import com.ironhack.proxyloanedbookservice.models.LoanedBook;
 
 import java.util.List;
@@ -29,7 +28,7 @@ public interface LoanedBookService {
 
     List<LoanedBook> findByLoanState_Overdue();
 
-    LoanedBook updateStatus(Long id, LoanState loanState);
+    LoanedBook updateStatus(Long id, LOAN_STATE LOANSTATE);
 
     List<LoanedBook> updateStatusLoans();
 

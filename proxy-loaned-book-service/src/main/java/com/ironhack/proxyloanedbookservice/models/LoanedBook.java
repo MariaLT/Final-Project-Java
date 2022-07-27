@@ -1,7 +1,7 @@
 package com.ironhack.proxyloanedbookservice.models;
 
-import com.ironhack.proxyloanedbookservice.enums.LoanState;
-import com.ironhack.proxyloanedbookservice.enums.PickedUp;
+import com.ironhack.proxyloanedbookservice.enums.LOAN_STATE;
+import com.ironhack.proxyloanedbookservice.enums.PICKED_UP;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -11,27 +11,25 @@ import java.time.LocalDate;
 @Table(name = "info_loaned_book")
 public class LoanedBook {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long loanedBookId;
     @Id
     @NotNull
     private Long ean;
+
     @Enumerated(EnumType.STRING)
-    private LoanState loanState;
+    private LOAN_STATE loanState;
     private LocalDate loanDate;
     private LocalDate returnDate;
 
     @Enumerated(EnumType.STRING)
-    private PickedUp pickedUp;
+    private PICKED_UP pickedUp;
     private Long userId;
 
 
     public LoanedBook() {
     }
 
-    public LoanedBook(Long ean, LoanState loanState, LocalDate loanDate, LocalDate returnDate,
-                      PickedUp pickedUp, Long userId) {
+    public LoanedBook(Long ean, LOAN_STATE loanState, LocalDate loanDate,
+                      LocalDate returnDate, PICKED_UP pickedUp, Long userId) {
         this.ean = ean;
         this.loanState = loanState;
         this.loanDate = loanDate;
@@ -40,29 +38,19 @@ public class LoanedBook {
         this.userId = userId;
     }
 
-
-
     public Long getEan() {
         return ean;
     }
-
-  /*  public Long getLoanedBookId() {
-        return loanedBookId;
-    }
-
-    public void setLoanedBookId(Long loanedBookId) {
-        this.loanedBookId = loanedBookId;
-    }*/
 
     public void setEan(Long ean) {
         this.ean = ean;
     }
 
-    public LoanState getLoanState() {
+    public LOAN_STATE getLoanState() {
         return loanState;
     }
 
-    public void setLoanState(LoanState loanState) {
+    public void setLoanState(LOAN_STATE loanState) {
         this.loanState = loanState;
     }
 
@@ -90,11 +78,11 @@ public class LoanedBook {
         this.userId = userId;
     }
 
-    public PickedUp getPickUp() {
+    public PICKED_UP getPickedUp() {
         return pickedUp;
     }
 
-    public void setPickUp(PickedUp pickedUp) {
+    public void setPickedUp(PICKED_UP pickedUp) {
         this.pickedUp = pickedUp;
     }
 }

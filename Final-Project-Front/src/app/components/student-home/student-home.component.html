@@ -4,23 +4,22 @@
 <div>
   <h1>Loaned Books</h1>
   <div>
-    <table>
-      <tr>
-        <th>EAN</th>
-        <th>STATE</th>
-        <th>LOAN DATE</th>
-        <th>RETURN DATE</th>
-      </tr>
+    <mat-card>
       <div *ngFor="let loanedBook of loanedBooks, let i = index">
-        <p>{{loanedBook.ean}}</p>
-        <p>{{loanedBook.loanState}}</p>
-        <p>{{loanedBook.loanDate}}</p>
-        <p>{{loanedBook.returnDate}}</p>
-        <button (click)="returnBook(loanedBook.ean)">Return</button>
+        <mat-card-header>
+<!--          <mat-card-title>{{showTitle(loanedBook.ean)}}</mat-card-title>-->
+          <mat-card-title>{{loanedBook.ean}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p [ngClass]="{'overdue': loanedBook.loanState==='OVERDUE'}">{{loanedBook.loanState}}</p>
+          <p>{{loanedBook.loanDate}}</p>
+          <p [ngClass]="{'overdue': loanedBook.loanState==='OVERDUE'}">{{loanedBook.returnDate}}</p>
+          <p>{{loanedBook.pickedUp}}</p>
+        </mat-card-content>
+
+
         <p *ngIf="isOverdueLoanedBook">OVERDUEEEEEEEEEEEEEE</p>
       </div>
-
-    </table>
-
+    </mat-card>
   </div>
 </div>

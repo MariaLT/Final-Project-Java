@@ -1,6 +1,6 @@
 package com.ironhack.edgeservice.enums;
 
-public enum LoanState {
+public enum LOAN_STATE {
     LOANED,
     OVERDUE,
     LOST,

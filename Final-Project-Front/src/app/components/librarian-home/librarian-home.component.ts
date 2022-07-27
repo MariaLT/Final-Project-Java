@@ -7,9 +7,10 @@ import {LoanedBook} from "../../models/LoanedBook";
 import {Book} from "../../models/Book";
 import {User} from "../../models/User";
 import {PickedUpDTO} from "../../models/PickedUpDTO";
-import {LoanState} from "../../models/LoanState";
-import {PickedUp} from "../../models/PickedUp";
+import {LOAN_STATE} from "../../models/LOAN_STATE";
+import {PICKED_UP} from "../../models/PICKED_UP";
 import {LoanStateDTO} from "../../models/LoanStateDTO";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -24,7 +25,7 @@ export class LibrarianHomeComponent implements OnInit {
   goDelete: boolean;
   goCreateLoanedBookRegister: boolean;
   goFindSingleLoanedBook: boolean;
-  showBook : boolean;
+  showBook: boolean;
   isAllLoanedBook: boolean;
   isOverdueBook: boolean;
   isAvailableBook: boolean;
@@ -39,7 +40,7 @@ export class LibrarianHomeComponent implements OnInit {
   eanToDeleteInput: FormControl;
 
   allLoanedBooks: LoanedBook[];
-  singleLoanedBook: LoanedBook;
+  singleLoanedBook: LoanedBook [];
   overdueBooks: LoanedBook [];
   availableBooks: LoanedBook [];
   loanedBooks: LoanedBook[];
@@ -64,6 +65,7 @@ export class LibrarianHomeComponent implements OnInit {
   constructor(
     private bookService: BooksService,
     private librarianService: LibrarianService,
+    private router: Router
   ) {
 
     // Controls for close buttons and invisible divs
@@ -88,8 +90,7 @@ export class LibrarianHomeComponent implements OnInit {
       }
     );
     this.allLoanedBooks = [];
-    this.singleLoanedBook = new LoanedBook(0, LoanState.AVAILABLE, new Date(),
-      new Date(), PickedUp.NO, 0);
+    this.singleLoanedBook = []
     this.overdueBooks = [];
     this.availableBooks = [];
     this.loanedBooks = [];
@@ -141,7 +142,7 @@ export class LibrarianHomeComponent implements OnInit {
       this.goCreateLoanedBookRegister = false;
     } else if (this.goFindSingleLoanedBook === true) {
       this.goFindSingleLoanedBook = false;
-    } else if (this.goChangeStatus === true){
+    } else if (this.goChangeStatus === true) {
       this.goChangeStatus = false;
     }
   }
@@ -168,10 +169,11 @@ export class LibrarianHomeComponent implements OnInit {
 
   // Show a single book by ean
 
-  showSingleBook(): void {
+  showSingleBook() {
+    this.singleLoanedBook = [];
     this.librarianService.getLoanedBook(this.bookForm.get("ean")?.value).subscribe(
       loanedBookBack => {
-        this.singleLoanedBook = loanedBookBack;
+        this.singleLoanedBook.push(loanedBookBack);
       }
     );
     this.showBook = true;
@@ -197,7 +199,6 @@ export class LibrarianHomeComponent implements OnInit {
       bookListBack => {
         this.allLoanedBooks = bookListBack;
       });
-
   }
 
   // Show all loaned books register overdue
@@ -242,33 +243,6 @@ export class LibrarianHomeComponent implements OnInit {
       });
   }
 
-  // Show all loaned books register loaned
-  showLoanedBooks(): void {
-    if (this.counter % 2 === 0) {
-      this.librarianService.getLoanedBooks().subscribe(
-        bookListBack => {
-          this.loanedBooks = bookListBack;
-        });
-      this.totalLoanedBooks = this.loanedBooks.length;
-      this.isLoanedBook = true;
-    } else {
-      this.isLoanedBook = false;
-    }
-  }
-
-  // Update pickedUp Loaned Book
-  updatePickUpLoanedBook(ean: number) {
-    this.pickedUpDTO = new PickedUpDTO(ean);
-    this.librarianService.updatePickedUpLoanedBook(ean, this.pickedUpDTO).subscribe();
-  }
-
-
-  showLoanedBooksPag() {
-    this.librarianService.getLoanedBooks().subscribe(
-      bookListBack => {
-        this.loanedBooks = bookListBack;
-      });
-  }
 
   // Show all loaned books register lost
   showLostBooks(): void {
@@ -312,9 +286,10 @@ export class LibrarianHomeComponent implements OnInit {
       this.isShowUser = false;
     }
   }
+
   changeStatus() {
     const ean = this.bookForm.get("ean")?.value;
-    let loanStatus = new LoanStateDTO(LoanState.LOST);
+    let loanStatus = new LoanStateDTO(LOAN_STATE.LOST);
     this.librarianService.updateLoanedBook(ean, loanStatus).subscribe();
     this.goChangeStatus = true;
     this.bookForm.reset();
@@ -323,12 +298,36 @@ export class LibrarianHomeComponent implements OnInit {
 
   // Return book
   returnBook(ean: number) {
-    this.librarianService.returnBook(ean).subscribe(
-      bookBack => {
-        this.loanedBooks.splice(this.loanedBooks.indexOf(bookBack), 1);
-      }
-    );
+    this.librarianService.returnBook(ean).subscribe();
+    this.isLoanedBook = false;
   }
 
+  showLoanedBooks(): void {
+    if (this.counter % 2 === 0) {
+      this.librarianService.getLoanedBooks().subscribe(
+        bookListBack => {
+          this.loanedBooks = bookListBack;
+        });
+      this.totalLoanedBooks = this.loanedBooks.length;
+      this.isLoanedBook = true;
+    } else {
+      this.isLoanedBook = false;
+    }
+  }
+
+  // Update pickedUp Loaned Book
+  updatePickUpLoanedBook(ean: number) {
+    this.pickedUpDTO = new PickedUpDTO(ean);
+    this.librarianService.updatePickedUpLoanedBook(ean, this.pickedUpDTO).subscribe();
+    this.isLoanedBook = false;
+  }
+
+
+  showLoanedBooksPag() {
+    this.librarianService.getLoanedBooks().subscribe(
+      bookListBack => {
+        this.loanedBooks = bookListBack;
+      });
+  }
 }
 

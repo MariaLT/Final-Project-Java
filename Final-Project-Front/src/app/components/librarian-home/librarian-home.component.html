@@ -121,13 +121,14 @@
     </form>
 
     <div *ngIf="showBook">
-      <p>{{this.singleLoanedBook.loanState}}</p>
-      <p>{{this.singleLoanedBook.pickedUp}}</p>
-      <p>{{this.singleLoanedBook.loanDate}}</p>
-      <p>{{this.singleLoanedBook.returnDate}}</p>
-      <p>{{this.singleLoanedBook.userId}}</p>
+      <div *ngFor="let singleBook of singleLoanedBook">
+      <p>State {{singleBook.loanState}}</p>
+      <p>Recogido {{singleBook.pickedUp}}</p>
+      <p>LoanDate {{this.singleBook.loanDate}}</p>
+      <p>Return {{this.singleBook.returnDate}}</p>
+      <p>UserId {{this.singleBook.userId}}</p>
+      </div>
     </div>
-
 
 
   </div>
@@ -177,9 +178,10 @@
       <div class="registers-items-for" *ngFor="let loanedBook of allLoanedBooks | paginate: { itemsPerPage: 5, currentPage: page,
     totalItems: totalAllLoanedBooks}">
         <!--        <p>Loaned book id: {{loanedBook.loanedBookId}}</p>-->
-                <p>User ID: {{loanedBook.userId}}</p>
+        <p>User ID: {{loanedBook.userId}}</p>
         <p>Ean: {{loanedBook.ean}}</p>
-        <p [ngClass]="{'overdue': loanedBook.loanState==='OVERDUE'}" >State: {{loanedBook.loanState}}</p>
+        <p [ngClass]="{'overdue': loanedBook.loanState==='OVERDUE'}">State: {{loanedBook.loanState}}</p>
+        <p>Recogido: {{loanedBook.pickedUp}}</p>
 
         <!--        <p>Loan date: {{loanedBook.loanDate}}</p>-->
         <!--        <p>Return date: {{loanedBook.returnDate}}</p>-->
@@ -201,18 +203,16 @@
   <mat-card-content>
     <div *ngIf="isLoanedBook">
       <div *ngFor="let loanedBook of loanedBooks | paginate: { itemsPerPage: 5, currentPage: page,
-    totalItems: totalLoanedBooks}">
+    totalItems: totalLoanedBooks};  let i =index ">
         <mat-card>
           <mat-card-title>Ean: {{loanedBook.ean}}</mat-card-title>
           <mat-card-subtitle>State: {{loanedBook.loanState}}</mat-card-subtitle>
           <mat-card-content>User ID: {{loanedBook.userId}}</mat-card-content>
           <mat-card-content>Loan date: {{loanedBook.loanDate}}</mat-card-content>
           <mat-card-content>Return date: {{loanedBook.returnDate}}</mat-card-content>
-          <mat-card-content>
-            <p>Picked Up: {{loanedBook.pickedUp}}</p>
-            <button (click)="updatePickUpLoanedBook(loanedBook.ean)">Pick Up</button>
+          <mat-card-content>Picked Up: {{loanedBook.pickedUp}}</mat-card-content>
 
-          </mat-card-content>
+          <button (click)="updatePickUpLoanedBook(loanedBook.ean)">Pick Up</button>
           <button (click)="returnBook(loanedBook.ean)">Return</button>
         </mat-card>
       </div>
@@ -220,7 +220,6 @@
         (pageChange)="page = $event; loanedBooks = []; showLoanedBooksPag()"></pagination-controls>
     </div>
   </mat-card-content>
-
 
 
   <mat-card-header>
@@ -240,6 +239,8 @@
           <mat-card-content>User ID: {{overdueBook.userId}}</mat-card-content>
           <mat-card-content>Loan date: {{overdueBook.loanDate}}</mat-card-content>
           <mat-card-content>Return date: {{overdueBook.returnDate}}</mat-card-content>
+
+          <button (click)="returnBook(overdueBook.ean)">Return</button>
         </mat-card>
       </div>
       <pagination-controls
@@ -273,9 +274,6 @@
         (pageChange)="page = $event; availableBooks = []; showAvailableBooksPag()"></pagination-controls>
     </div>
   </mat-card-content>
-
-
-
 
 
   <mat-card-header>

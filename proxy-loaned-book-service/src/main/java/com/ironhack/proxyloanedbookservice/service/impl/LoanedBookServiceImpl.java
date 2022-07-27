@@ -1,8 +1,8 @@
 package com.ironhack.proxyloanedbookservice.service.impl;
 
 import com.ironhack.proxyloanedbookservice.controller.dto.LoanedDTO;
-import com.ironhack.proxyloanedbookservice.enums.LoanState;
-import com.ironhack.proxyloanedbookservice.enums.PickedUp;
+import com.ironhack.proxyloanedbookservice.enums.LOAN_STATE;
+import com.ironhack.proxyloanedbookservice.enums.PICKED_UP;
 import com.ironhack.proxyloanedbookservice.models.LoanedBook;
 import com.ironhack.proxyloanedbookservice.repository.LoanedBookRepository;
 import com.ironhack.proxyloanedbookservice.service.interfaces.LoanedBookService;
@@ -24,19 +24,18 @@ public class LoanedBookServiceImpl implements LoanedBookService {
     @Override
     public LoanedBook loaningBook(LoanedDTO loanedDTO) {
         LoanedBook loanedBook = loanedBookRepository.findByEan(loanedDTO.getEan()).get();
-        if (loanedBook.getLoanState().equals(LoanState.LOANED)
-                || loanedBook.getLoanState().equals(LoanState.OVERDUE)) {
+        if (loanedBook.getLoanState().equals(LOAN_STATE.LOANED)
+                || loanedBook.getLoanState().equals(LOAN_STATE.OVERDUE)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book already loaned");
-        } else if (loanedBook.getLoanState().equals(LoanState.LOST)) {
+        } else if (loanedBook.getLoanState().equals(LOAN_STATE.LOST)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book lost");
         }
-//        LoanedBook loanedBook = new LoanedBook();
 
         loanedBook.setEan(loanedDTO.getEan());
-        loanedBook.setLoanState(LoanState.LOANED);
+        loanedBook.setLoanState(LOAN_STATE.LOANED);
         loanedBook.setLoanDate(LocalDate.now());
         loanedBook.setReturnDate(LocalDate.now().plusDays(21));
-        loanedBook.setPickUp(PickedUp.NO);
+        loanedBook.setPickedUp(PICKED_UP.NO);
         loanedBook.setUserId(loanedDTO.getUserId());
         return loanedBook;
     }
@@ -51,11 +50,11 @@ public class LoanedBookServiceImpl implements LoanedBookService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book does not loaned");
         }*/
 
-        loanedBook.setLoanState(LoanState.AVAILABLE);
+        loanedBook.setLoanState(LOAN_STATE.AVAILABLE);
         loanedBook.setUserId(null);
         loanedBook.setLoanDate(null);
         loanedBook.setReturnDate(null);
-        loanedBook.setPickUp(null);
+        loanedBook.setPickedUp(null);
 
         return loanedBook;
 
@@ -127,11 +126,11 @@ public class LoanedBookServiceImpl implements LoanedBookService {
     }
 
     @Override
-    public LoanedBook updateStatus(Long ean, LoanState loanState) {
+    public LoanedBook updateStatus(Long ean, LOAN_STATE LOANSTATE) {
         LoanedBook loanedBook = loanedBookRepository.findByEan(ean)
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
-        loanedBook.setLoanState(loanState);
+        loanedBook.setLoanState(LOANSTATE);
         return loanedBook;
     }
 
@@ -141,7 +140,7 @@ public class LoanedBookServiceImpl implements LoanedBookService {
         for (LoanedBook loanedBook : loanedBooks) {
             if (loanedBook.getReturnDate() != null) {
                 if (loanedBook.getReturnDate().isBefore(LocalDate.now())) {
-                    loanedBook.setLoanState(LoanState.OVERDUE);
+                    loanedBook.setLoanState(LOAN_STATE.OVERDUE);
 
                 }
             }
@@ -157,7 +156,7 @@ public class LoanedBookServiceImpl implements LoanedBookService {
         }
         LoanedBook loanedBookBack = new LoanedBook();
         loanedBookBack.setEan(ean);
-        loanedBookBack.setLoanState(LoanState.AVAILABLE);
+        loanedBookBack.setLoanState(LOAN_STATE.AVAILABLE);
         loanedBookBack.setLoanDate(null);
         loanedBookBack.setReturnDate(null);
         loanedBookBack.setUserId(null);
@@ -171,10 +170,10 @@ public class LoanedBookServiceImpl implements LoanedBookService {
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Register " +
                                 "Loaned Book not found"));
-        if (loanedBook.getPickUp() == PickedUp.YES) {
+        if (loanedBook.getPickedUp() == PICKED_UP.YES) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Already picked up");
         }
-        loanedBook.setPickUp(PickedUp.YES);
+        loanedBook.setPickedUp(PICKED_UP.YES);
         return loanedBook;
     }
 }

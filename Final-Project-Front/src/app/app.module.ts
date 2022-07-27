@@ -22,6 +22,7 @@ import { RegisterBookComponent } from './components/register-book/register-book.
 import { HeaderComponent } from './components/header/header.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LoanedBooksComponent } from './components/loaned-books/loaned-books.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FooterComponent,
     BookDetailsComponent,
     RegisterBookComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoanedBooksComponent
   ],
   imports: [
     BrowserModule,

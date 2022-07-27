@@ -1,23 +1,23 @@
 package com.ironhack.proxyloanedbookservice.controller.dto;
 
-import com.ironhack.proxyloanedbookservice.enums.LoanState;
+import com.ironhack.proxyloanedbookservice.enums.LOAN_STATE;
 
 public class LoanStateDTO {
 
-    private LoanState loanState;
+    private LOAN_STATE LOANSTATE;
 
     public LoanStateDTO() {
     }
 
-    public LoanStateDTO(LoanState loanState) {
-        this.loanState = loanState;
+    public LoanStateDTO(LOAN_STATE LOANSTATE) {
+        this.LOANSTATE = LOANSTATE;
     }
 
-    public LoanState getLoanState() {
-        return loanState;
+    public LOAN_STATE getLoanState() {
+        return LOANSTATE;
     }
 
-    public void setLoanState(LoanState loanState) {
-        this.loanState = loanState;
+    public void setLoanState(LOAN_STATE LOANSTATE) {
+        this.LOANSTATE = LOANSTATE;
     }
 }
