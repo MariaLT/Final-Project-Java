@@ -1,7 +1,7 @@
-INSERT INTO libros (isbn, title, author, genre, pag_number, lang, publication_year, publisher, url, plot)
+INSERT INTO book (ean, title, author, genre, pag_number, lang, publication_year, publisher, url, plot)
 VALUES 
 (9788445009598, 'El Señor de los Anillos nº 01/03 La Comunidad del Anillo', 'J.R.R. Tolkien', 'Fantasía épica', 488, 
-'Español',  2022, 'Minotauro', 'https://planetadelibroscom.cdnstatics2.com/usuaris/libros/fotos/325/m_libros/portada_el-senor-de-los-anillos-n-0103-la-comunidad-del-anillo-ne_j-r-r-tolkien_202203111219.jpg', 
+'Español', 2022, 'Minotauro', 'https://planetadelibroscom.cdnstatics2.com/usuaris/libros/fotos/325/m_libros/portada_el-senor-de-los-anillos-n-0103-la-comunidad-del-anillo-ne_j-r-r-tolkien_202203111219.jpg', 
 'En la adormecida e idílica Comarca, un joven hobbit recibe un encargo: custodiar el Anillo Único y emprender el viaje para su destrucción en 
 la Grieta del Destino.
 Acompañado por magos, hombres, elfos y enanos, atravesará la Tierra Media y se internará en las sombras de Mordor, perseguido siempre 
@@ -31,7 +31,7 @@ Sin embargo, no es oro todo lo que reluce.'),
 
 (9780194620918, 'A Christmas Carol', 'Charles Dickens', 'Foreign Language Study', 80,'English', 
 2016, 'Oxford University Press España', 
-'https://www.casadellibro.com/libro-obl3-a-christmas-carol-with-mp3-audio-download/9780194620918/3034427', 
+'https://pictures.abebooks.com/inventory/19509601968.jpg', 
 'Ideal for intermediate learners of English looking to improve or practise their English. The book is filled with useful vocabulary 
 that is carefully graded and easy to understand, it also comes with audio, so that you can listen to the story at the same time as 
 reading. Christmas is humbug, Scrooge says - just a time when you find yourself a year older and not a penny richer. The only thing 
@@ -47,5 +47,6 @@ Ahora, con diecisiete años, Charlie encuentra dos amigos inesperados: una perra
 El señor Bowditch es un ermitaño que vive en una colina enorme, en una casa enorme que tiene un cobertizo cerrado a cal y canto en 
 el patio trasero. A veces, sonidos extraños emergen de él.');
  
- 
+ use books;
  SELECT plot FROM libros where title = 'Dumbo. El circo de los sueños';
+ SELECT * FROM book;

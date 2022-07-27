@@ -17,7 +17,18 @@ public class SecurityConfiguration {
         http.httpBasic();
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/login").authenticated()
+                .antMatchers(HttpMethod.GET, "/login").authenticated()
+/*                .antMatchers(HttpMethod.GET, "/login", "/library/books", "/library/books/{ean}",
+                        "/library/loanedBooks/user/{userId}").authenticated()
+                .antMatchers(HttpMethod.GET, "/library/loanedBooks", "/library/loanedBooks/{ean}",
+                        "/library/loanedBooks/available", "/library/loanedBooks/lost",
+                        "/library/loanedBooks/loaned", "/library/loanedBooks/overdue",
+                        "/library/loanedBooks/update", "/users/profile").hasRole("LIBRARIAN")
+                .antMatchers(HttpMethod.POST, "/library/books", "/library/loanedBooks/{ean}").hasRole("LIBRARIAN")
+                .antMatchers(HttpMethod.DELETE, "/library/books/{ean}").hasRole("LIBRARIAN")
+                .antMatchers(HttpMethod.PATCH,"/library/loanedBooks/pickUp","/library/loanedBooks/{id}").hasRole("LIBRARIAN")
+                .antMatchers(HttpMethod.POST, "/library/loanedBooks").hasRole("STUDENT")
+                .antMatchers(HttpMethod.GET, "/library/loanedBooks/return/{ean}").hasRole("STUDENT")*/
                 .anyRequest().permitAll();
         return http.build();
     }

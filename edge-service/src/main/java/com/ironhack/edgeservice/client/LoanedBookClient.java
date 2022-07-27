@@ -48,12 +48,12 @@ public interface LoanedBookClient {
     @GetMapping("/loanedBooks/overdue")
     List<LoanedBook> findByLoanState_Overdue();
 
-    @PatchMapping("/loanedBooks/{id}/status")
-    void updateStatus(@PathVariable Long id, @RequestBody LoanStateDTO loanStateDTO);
+    @PatchMapping("/loanedBooks/{ean}/status")
+    LoanedBook updateStatus(@PathVariable Long ean, @RequestBody LoanStateDTO loanStateDTO);
 
     @GetMapping("/loanedBooks/status")
     List<LoanedBook> updateStatusLoans();
 
-    @PatchMapping("/loanedBooks/pickUp")
+    @PutMapping("/loanedBooks/pickUp/{ean}")
     public LoanedBook updatePickUp(PickUpDTO pickUpDTO);
 }

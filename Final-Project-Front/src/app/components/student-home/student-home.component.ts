@@ -50,7 +50,7 @@ export class StudentHomeComponent implements OnInit {
 
   overdueBooks() {
     for (let loanedBook of this.loanedBooks) {
-      if (loanedBook.loanState === 'OVERDUE') {
+      if (loanedBook.loanState.includes("Overdue")) {
         alert("You have overdue books!");
         console.log("Overdue");
         this.isOverdueLoanedBook = true;

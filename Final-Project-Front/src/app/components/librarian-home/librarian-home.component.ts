@@ -1,13 +1,15 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BooksService} from "../../services/library/books.service";
 import {LibrarianService} from "../../services/library/librarian.service";
 import {LoanedBook} from "../../models/LoanedBook";
-import {MatPaginator} from "@angular/material/paginator";
 import {Book} from "../../models/Book";
 import {User} from "../../models/User";
 import {PickedUpDTO} from "../../models/PickedUpDTO";
+import {LoanState} from "../../models/LoanState";
+import {PickedUp} from "../../models/PickedUp";
+import {LoanStateDTO} from "../../models/LoanStateDTO";
 
 
 @Component({
@@ -22,12 +24,14 @@ export class LibrarianHomeComponent implements OnInit {
   goDelete: boolean;
   goCreateLoanedBookRegister: boolean;
   goFindSingleLoanedBook: boolean;
+  showBook : boolean;
   isAllLoanedBook: boolean;
   isOverdueBook: boolean;
   isAvailableBook: boolean;
   isLoanedBook: boolean;
   isLostBook: boolean;
   isShowUser: boolean;
+  goChangeStatus: boolean;
   counter: number;
 
   bookForm: FormGroup;
@@ -67,12 +71,14 @@ export class LibrarianHomeComponent implements OnInit {
     this.goDelete = false;
     this.goCreateLoanedBookRegister = false;
     this.goFindSingleLoanedBook = false;
+    this.showBook = false;
     this.isAllLoanedBook = false;
     this.isOverdueBook = false;
     this.isAvailableBook = false;
     this.isLoanedBook = false;
     this.isLostBook = false;
     this.isShowUser = false;
+    this.goChangeStatus = false;
 
 
     this.eanToDeleteInput = new FormControl('', Validators.required);
@@ -82,7 +88,8 @@ export class LibrarianHomeComponent implements OnInit {
       }
     );
     this.allLoanedBooks = [];
-    this.singleLoanedBook = new LoanedBook(0, 0, 'AVAILABLE', new Date(), new Date(),'NO', 0);
+    this.singleLoanedBook = new LoanedBook(0, LoanState.AVAILABLE, new Date(),
+      new Date(), PickedUp.NO, 0);
     this.overdueBooks = [];
     this.availableBooks = [];
     this.loanedBooks = [];
@@ -109,6 +116,7 @@ export class LibrarianHomeComponent implements OnInit {
     this.librarianService.updateOverdueLoanedBooks().subscribe();
   }
 
+  // Open buttons
   openCreateLoanedBookRegister(): void {
     this.goCreateLoanedBookRegister = true;
   }
@@ -121,6 +129,10 @@ export class LibrarianHomeComponent implements OnInit {
     this.goFindSingleLoanedBook = true;
   }
 
+  changeOneStatus() {
+    this.goChangeStatus = true;
+  }
+
   // Close buttons
   goBack(): void {
     if (this.goDelete === true) {
@@ -129,6 +141,8 @@ export class LibrarianHomeComponent implements OnInit {
       this.goCreateLoanedBookRegister = false;
     } else if (this.goFindSingleLoanedBook === true) {
       this.goFindSingleLoanedBook = false;
+    } else if (this.goChangeStatus === true){
+      this.goChangeStatus = false;
     }
   }
 
@@ -160,6 +174,7 @@ export class LibrarianHomeComponent implements OnInit {
         this.singleLoanedBook = loanedBookBack;
       }
     );
+    this.showBook = true;
 
   }
 
@@ -240,12 +255,13 @@ export class LibrarianHomeComponent implements OnInit {
       this.isLoanedBook = false;
     }
   }
-  // Update pickedUp Loaned Book
-  updatePickUpLoanedBook(ean:number): void {
-    this.pickedUpDTO = new PickedUpDTO(ean);
-    this.librarianService.updatePickedUpLoanedBook(this.pickedUpDTO).subscribe();
 
+  // Update pickedUp Loaned Book
+  updatePickUpLoanedBook(ean: number) {
+    this.pickedUpDTO = new PickedUpDTO(ean);
+    this.librarianService.updatePickedUpLoanedBook(ean, this.pickedUpDTO).subscribe();
   }
+
 
   showLoanedBooksPag() {
     this.librarianService.getLoanedBooks().subscribe(
@@ -268,7 +284,7 @@ export class LibrarianHomeComponent implements OnInit {
     }
   }
 
-  showTitle(ean : number) : string {
+  showTitle(ean: number): string {
     this.bookService.getBookByEan(ean).subscribe(
       bookBack => {
         this.book = bookBack;
@@ -292,13 +308,27 @@ export class LibrarianHomeComponent implements OnInit {
         }
       );
       this.isShowUser = true;
-    }else {
+    } else {
       this.isShowUser = false;
     }
   }
+  changeStatus() {
+    const ean = this.bookForm.get("ean")?.value;
+    let loanStatus = new LoanStateDTO(LoanState.LOST);
+    this.librarianService.updateLoanedBook(ean, loanStatus).subscribe();
+    this.goChangeStatus = true;
+    this.bookForm.reset();
+  }
 
+
+  // Return book
+  returnBook(ean: number) {
+    this.librarianService.returnBook(ean).subscribe(
+      bookBack => {
+        this.loanedBooks.splice(this.loanedBooks.indexOf(bookBack), 1);
+      }
+    );
+  }
 
 }
-
-
 

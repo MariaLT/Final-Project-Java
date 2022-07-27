@@ -8,19 +8,58 @@
   width: 90%;
   border-radius: 0.5em;
 }
-h1{
+
+h1 {
   font-weight: bolder;
   text-decoration-line: underline;
 }
-mat-card-header{
+
+mat-card-header {
   display: flex;
   justify-content: space-between;
   margin: 1%;
 }
 
-.buttons{
+.buttons {
   display: flex;
   flex-flow: row;
   justify-content: center;
 }
 
+.registers {
+  background-color: darkolivegreen;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  margin: 1%;
+  border-radius: 0.5em;
+}
+
+/*.registers-items{
+  background-color: peachpuff;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin:2%;
+}*/
+
+.registers-items-for {
+  background-color: pink;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  margin: 2%;
+  padding: 1%;
+}
+
+pagination-controls {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  color: #efebec;
+}
+
+.overdue {
+  background-color: #d01233;
+  color: #e7ebee;
+}

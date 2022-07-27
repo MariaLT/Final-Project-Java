@@ -5,7 +5,7 @@ export class LoanedBook {
 
 
   constructor(
-    private _loanedBookId: number,
+    // private _loanedBookId: number,
     private _ean: number,
     private _loanState: LoanState,
     private _loanDate: Date,
@@ -14,14 +14,14 @@ export class LoanedBook {
     private _userId: number | null,
   ) {
   }
-
+/*
   get loanedBookId(): number {
     return this._loanedBookId;
   }
 
   set loanedBookId(value: number) {
     this._loanedBookId = value;
-  }
+  }*/
 
   get ean(): number {
     return this._ean;
@@ -75,7 +75,7 @@ export class LoanedBook {
 
   public toJSON(): any {
     return {
-      loanedBookId: this._loanedBookId,
+ /*     loanedBookId: this._loanedBookId,*/
       ean: this._ean,
       loanState: this._loanState,
       loanDate: this._loanDate,

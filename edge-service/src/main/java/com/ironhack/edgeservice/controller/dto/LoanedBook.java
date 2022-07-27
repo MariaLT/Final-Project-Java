@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class LoanedBook {
 
-    private Long loanedBookId;
+//    private Long loanedBookId;
     private Long ean;
     private LoanState loanState;
     private LocalDate loanDate;
@@ -28,13 +28,13 @@ public class LoanedBook {
         this.userId = userId;
     }
 
-    public Long getLoanedBookId() {
+/*    public Long getLoanedBookId() {
         return loanedBookId;
     }
 
     public void setLoanedBookId(Long loanedBookId) {
         this.loanedBookId = loanedBookId;
-    }
+    }*/
 
     public Long getEan() {
         return ean;

@@ -29,7 +29,7 @@ public interface LoanedBookService {
 
     List<LoanedBook> findByLoanState_Overdue();
 
-    void updateStatus(Long id, LoanState loanState);
+    LoanedBook updateStatus(Long id, LoanState loanState);
 
     List<LoanedBook> updateStatusLoans();
 

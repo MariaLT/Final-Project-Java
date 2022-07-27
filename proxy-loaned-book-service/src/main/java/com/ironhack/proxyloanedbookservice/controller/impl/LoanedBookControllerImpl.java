@@ -84,10 +84,11 @@ public class LoanedBookControllerImpl implements LoanedBookController {
         return loanedBookService.findByLoanState_Overdue();
     }
 
-    @PatchMapping("/loanedBooks/{id}/status")
+    @PatchMapping("/loanedBooks/{ean}/status")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateStatus(@PathVariable Long id, @RequestBody LoanStateDTO loanStateDTO) {
-        loanedBookService.updateStatus(id, loanStateDTO.getLoanState());
+    public LoanedBook updateStatus(@PathVariable Long ean, @RequestBody LoanStateDTO loanStateDTO) {
+
+        return loanedBookRepository.save(loanedBookService.updateStatus(ean, loanStateDTO.getLoanState()));
     }
 
     @GetMapping("/loanedBooks/status")
@@ -98,9 +99,9 @@ public class LoanedBookControllerImpl implements LoanedBookController {
 
     }
 
-    @PatchMapping("/loanedBooks/pickUp")
+    @PutMapping("/loanedBooks/pickUp/{ean}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public LoanedBook updatePickUp(@RequestBody PickUpDTO pickUpDTO) {
+    public LoanedBook updatePickUp(@PathVariable Long ean, @RequestBody PickUpDTO pickUpDTO) {
         return loanedBookRepository.save(loanedBookService.updatePickUp(pickUpDTO.getEan()));
     }
 

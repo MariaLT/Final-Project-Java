@@ -23,14 +23,14 @@ public class LoanedBookServiceImpl implements LoanedBookService {
 
     @Override
     public LoanedBook loaningBook(LoanedDTO loanedDTO) {
-/*        LoanedBook loanedBook = loanedBookRepository.findByEan(loanedDTO.getEan()).get();
+        LoanedBook loanedBook = loanedBookRepository.findByEan(loanedDTO.getEan()).get();
         if (loanedBook.getLoanState().equals(LoanState.LOANED)
                 || loanedBook.getLoanState().equals(LoanState.OVERDUE)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book already loaned");
         } else if (loanedBook.getLoanState().equals(LoanState.LOST)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book lost");
-        }*/
-        LoanedBook loanedBook = new LoanedBook();
+        }
+//        LoanedBook loanedBook = new LoanedBook();
 
         loanedBook.setEan(loanedDTO.getEan());
         loanedBook.setLoanState(LoanState.LOANED);
@@ -46,9 +46,11 @@ public class LoanedBookServiceImpl implements LoanedBookService {
         LoanedBook loanedBook = loanedBookRepository.findByEan(ean)
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book does not exist"));
-        if (loanedBook.getLoanState() != (LoanState.LOANED)) {
+
+/*        if (loanedBook.getLoanState() != (LoanState.LOANED) || loanedBook.getLoanState() != (LoanState.OVERDUE)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book does not loaned");
-        }
+        }*/
+
         loanedBook.setLoanState(LoanState.AVAILABLE);
         loanedBook.setUserId(null);
         loanedBook.setLoanDate(null);
@@ -125,11 +127,12 @@ public class LoanedBookServiceImpl implements LoanedBookService {
     }
 
     @Override
-    public void updateStatus(Long id, LoanState loanState) {
-        LoanedBook loanedBook = loanedBookRepository.findById(id)
+    public LoanedBook updateStatus(Long ean, LoanState loanState) {
+        LoanedBook loanedBook = loanedBookRepository.findByEan(ean)
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
         loanedBook.setLoanState(loanState);
+        return loanedBook;
     }
 
     @Override

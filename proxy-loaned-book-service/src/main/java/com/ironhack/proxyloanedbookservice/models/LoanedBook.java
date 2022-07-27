@@ -11,9 +11,10 @@ import java.time.LocalDate;
 @Table(name = "info_loaned_book")
 public class LoanedBook {
 
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long loanedBookId;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long loanedBookId;
     @NotNull
     private Long ean;
     @Enumerated(EnumType.STRING)
@@ -45,13 +46,13 @@ public class LoanedBook {
         return ean;
     }
 
-    public Long getLoanedBookId() {
+  /*  public Long getLoanedBookId() {
         return loanedBookId;
     }
 
     public void setLoanedBookId(Long loanedBookId) {
         this.loanedBookId = loanedBookId;
-    }
+    }*/
 
     public void setEan(Long ean) {
         this.ean = ean;

@@ -8,15 +8,20 @@ import {CatalogueComponent} from "./components/catalogue/catalogue.component";
 import {BookDetailsComponent} from "./components/book-details/book-details.component";
 import {RegisterBookComponent} from "./components/register-book/register-book.component";
 import {LibrarianGuardService} from "./services/authentication/librarian-guard.service";
+import {StudentGuardService} from "./services/authentication/student-guard.service";
 
 const routes: Routes = [
+  {
+    path: '',
+    component: UserLoginComponent
+  },
   {
     path: 'user-login',
     component: UserLoginComponent
   },
   {
     path: 'student-home',
-    canActivate: [AuthGuardService],
+    canActivate: [StudentGuardService],
     component: StudentHomeComponent
   },
   {

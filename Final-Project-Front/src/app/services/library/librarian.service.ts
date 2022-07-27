@@ -4,6 +4,7 @@ import { LoanedBook } from 'src/app/models/LoanedBook';
 import {Observable} from "rxjs";
 import {User} from "../../models/User";
 import {PickedUpDTO} from "../../models/PickedUpDTO";
+import {LoanStateDTO} from "../../models/LoanStateDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -62,8 +63,17 @@ export class LibrarianService {
   }
 
   // Update picked up loaned book
-  updatePickedUpLoanedBook(pickedUpDTO:PickedUpDTO): Observable<LoanedBook> {
-    return this.http.patch<LoanedBook>(this.BASE_URL + '/pickUp', pickedUpDTO);
+  updatePickedUpLoanedBook(ean: number,pickedUpDTO:PickedUpDTO): Observable<LoanedBook> {
+    return this.http.put<LoanedBook>(this.BASE_URL + '/pickUp/'+ ean, pickedUpDTO);
+  }
+
+   // Update loaned Book state
+  updateLoanedBook(ean: number, loanStateDTO: LoanStateDTO): Observable<LoanedBook> {
+    return this.http.patch<LoanedBook>(this.BASE_URL + '/' + ean, loanStateDTO);
+  }
+
+  // Return loaned book
+  returnBook(ean: number): Observable<LoanedBook> {
+    return this.http.get<LoanedBook>(`${this.BASE_URL}/return/${ean}`);
   }
 }
-

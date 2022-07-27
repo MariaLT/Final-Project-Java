@@ -1,12 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Book} from "../../models/Book";
 import {BooksService} from "../../services/library/books.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {StudentService} from "../../services/library/student.service";
 import {User} from "../../models/User";
 import {LoanedDTO} from "../../models/LoanedDTO";
 import {AuthService} from "../../services/authentication/auth.service";
 import {LoanedBook} from "../../models/LoanedBook";
+import {LoanState} from "../../models/LoanState";
+import {PickedUp} from "../../models/PickedUp";
 
 @Component({
   selector: 'app-book-details',
@@ -37,8 +39,8 @@ export class BookDetailsComponent implements OnInit {
 
     this.isLibrarian = false;
     this.isStudent = false;
-    this.loanedBook = new LoanedBook(0, 0, 'AVAILABLE', new Date(),
-      new Date(), 'NO', 0);
+    this.loanedBook = new LoanedBook( 0, LoanState.AVAILABLE, new Date(),
+      new Date(), PickedUp.NO, 0);
 
   }
 

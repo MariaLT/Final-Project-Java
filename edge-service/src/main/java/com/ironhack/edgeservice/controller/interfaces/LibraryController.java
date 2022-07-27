@@ -46,9 +46,9 @@ public interface LibraryController {
 
     List<LoanedBook> findByLoanState_Overdue();
 
-    void updateStatus(Long id, LoanStateDTO loanStateDTO);
+    LoanedBook updateStatus(Long ean, LoanStateDTO loanStateDTO);
 
     List<LoanedBook> updateStatusLoans();
 
-    LoanedBook updatePickUp(PickUpDTO pickUpDTO);
+    LoanedBook updatePickUp(Long ean,PickUpDTO pickUpDTO);
 }
