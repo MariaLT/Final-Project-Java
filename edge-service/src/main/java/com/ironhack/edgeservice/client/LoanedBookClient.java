@@ -21,8 +21,8 @@ public interface LoanedBookClient {
     public LoanedBook returnBook(@PathVariable Long ean);
 
     //    USER ADMIN
-    @PostMapping("/loanedBooks/{ean}")
-    public LoanedBook createLoanedBookRegister(@RequestParam Long ean);
+    @PostMapping("/loanedBooks/create")
+    public LoanedBook createLoanedBookRegister(@RequestBody Long ean);
 
     @GetMapping("/loanedBooks")
     List<LoanedBook> findAllLoanedBooks();

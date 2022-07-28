@@ -21,7 +21,7 @@ export class LibrarianService {
   // Create a new loaned book
 
   createLoanedBook(ean: number): Observable<LoanedBook> {
-    return this.http.post <LoanedBook>(this.BASE_URL + '/create', ean);
+    return this.http.post<LoanedBook>(this.BASE_URL + '/create', ean);
   }
 
   // All loaned books

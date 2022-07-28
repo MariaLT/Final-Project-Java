@@ -3,6 +3,7 @@ import {Book} from "../../models/Book";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BooksService} from "../../services/library/books.service";
 import {Router} from "@angular/router";
+import {LibrarianService} from "../../services/library/librarian.service";
 
 @Component({
   selector: 'app-register-book',
@@ -28,6 +29,7 @@ export class RegisterBookComponent implements OnInit {
 
   constructor(
     private bookService: BooksService,
+    private librarianService: LibrarianService,
     private router: Router
   ) {
     this.book = new Book(0, '', '', '', 0, '', 0,
@@ -77,9 +79,12 @@ export class RegisterBookComponent implements OnInit {
     console.log(book);
     this.bookService.createBook(book).subscribe(
       data => {
+        this.book = data;
         console.log(data);
       }
     );
+    this.librarianService.createLoanedBook(this.bookForm.get("ean")?.value).subscribe();
+    console.log(this.book.ean);
     alert('Book register created');
     this.router.navigate(['/librarian-home']);
   }

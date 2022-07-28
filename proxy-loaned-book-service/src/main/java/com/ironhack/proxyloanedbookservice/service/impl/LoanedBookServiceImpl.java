@@ -126,11 +126,11 @@ public class LoanedBookServiceImpl implements LoanedBookService {
     }
 
     @Override
-    public LoanedBook updateStatus(Long ean, LOAN_STATE LOANSTATE) {
+    public LoanedBook updateStatus(Long ean, LOAN_STATE loanState) {
         LoanedBook loanedBook = loanedBookRepository.findByEan(ean)
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
-        loanedBook.setLoanState(LOANSTATE);
+        loanedBook.setLoanState(loanState);
         return loanedBook;
     }
 

@@ -69,9 +69,9 @@ public class LibraryControllerImpl implements LibraryController {
 
     // ADMIN USER
 
-    @PostMapping("/library/loanedBooks/{ean}")
+    @PostMapping("/library/loanedBooks/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public LoanedBook createLoanedBookRegister(@RequestParam Long ean) {
+    public LoanedBook createLoanedBookRegister(@RequestBody Long ean) {
         return loanedBookClient.createLoanedBookRegister(ean);
     }
 

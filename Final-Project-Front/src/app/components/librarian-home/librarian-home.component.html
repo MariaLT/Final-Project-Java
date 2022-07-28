@@ -45,39 +45,39 @@
   </div>
 
 
-  <mat-card-header>
-    <mat-card-title>Create loaned book register</mat-card-title>
-    <button (click)="openCreateLoanedBookRegister()"
-            mat-mini-fab color="accent">
-      <mat-icon>plus_one</mat-icon>
-    </button>
-  </mat-card-header>
+<!--  <mat-card-header>-->
+<!--    <mat-card-title>Create loaned book register</mat-card-title>-->
+<!--    <button (click)="openCreateLoanedBookRegister()"-->
+<!--            mat-mini-fab color="accent">-->
+<!--      <mat-icon>plus_one</mat-icon>-->
+<!--    </button>-->
+<!--  </mat-card-header>-->
 
-  <div class="create-loaned" *ngIf="goCreateLoanedBookRegister">
-    <form (ngSubmit)="createLoanedBookRegister()" [formGroup]="bookForm">
-      <mat-card-content>
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>EAN</mat-label>
-          <input type="number" matInput formControlName="ean" placeholder="EAN">
-          <mat-error *ngIf="eanToDeleteInput.hasError('required') && eanToDeleteInput.touched">
-            EAN is required
-          </mat-error>
-        </mat-form-field>
+<!--  <div class="create-loaned" *ngIf="goCreateLoanedBookRegister">-->
+<!--    <form (ngSubmit)="createLoanedBookRegister()" [formGroup]="bookForm">-->
+<!--      <mat-card-content>-->
+<!--        <mat-form-field class="full-width" appearance="outline">-->
+<!--          <mat-label>EAN</mat-label>-->
+<!--          <input type="number" matInput formControlName="ean" placeholder="EAN">-->
+<!--          <mat-error *ngIf="eanToDeleteInput.hasError('required') && eanToDeleteInput.touched">-->
+<!--            EAN is required-->
+<!--          </mat-error>-->
+<!--        </mat-form-field>-->
 
-        <div class="buttons">
-          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
-                  (click)="createLoanedBookRegister()"
-          >Submit
+<!--        <div class="buttons">-->
+<!--          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"-->
+<!--                  (click)="createLoanedBookRegister()"-->
+<!--          >Submit-->
 
-          </button>
-          <button mat-raised-button color="warn" class="full-width"
-                  (click)="goBack()">Close
-          </button>
-        </div>
-      </mat-card-content>
+<!--          </button>-->
+<!--          <button mat-raised-button color="warn" class="full-width"-->
+<!--                  (click)="goBack()">Close-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </mat-card-content>-->
 
-    </form>
-  </div>
+<!--    </form>-->
+<!--  </div>-->
 
 </div>
 

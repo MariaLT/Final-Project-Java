@@ -36,9 +36,9 @@ public class LoanedBookControllerImpl implements LoanedBookController {
 
     //    USER ADMIN
 
-    @PostMapping("/loanedBooks/{ean}")
+    @PostMapping("/loanedBooks/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public LoanedBook createLoanedBookRegister(@RequestParam Long ean) {
+    public LoanedBook createLoanedBookRegister(@RequestBody Long ean) {
         return loanedBookRepository.save(loanedBookService.createLoanedBook(ean));
     }
     @GetMapping("/loanedBooks")
