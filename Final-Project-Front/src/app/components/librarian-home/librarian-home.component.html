@@ -1,4 +1,6 @@
 <app-nav-bar></app-nav-bar>
+
+<div class="all">
 <div class="management-container">
   <h1>Gestión del catálogo</h1>
 
@@ -18,8 +20,7 @@
     </button>
   </mat-card-header>
   <div class="delete" *ngIf="goDelete">
-    <form (ngSubmit)="deleteBook()" [formGroup]="bookForm">
-
+    <form (ngSubmit)="deleteBook()" [formGroup]="bookForm" class="delete">
       <mat-card-content>
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>EAN</mat-label>
@@ -29,11 +30,11 @@
           </mat-error>
         </mat-form-field>
 
-        <div class="buttons">
-          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
+        <div class="delete-button">
+          <button  type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
                   (click)="deleteBook()">Enviar
           </button>
-          <button mat-raised-button color="warn" class="full-width"
+          <button  mat-raised-button color="warn" class="full-width"
                   (click)="goBack()">Cerrar
           </button>
         </div>
@@ -41,42 +42,6 @@
 
     </form>
   </div>
-
-
-  <!--  <mat-card-header>-->
-  <!--    <mat-card-title>Create loaned book register</mat-card-title>-->
-  <!--    <button (click)="openCreateLoanedBookRegister()"-->
-  <!--            mat-mini-fab color="accent">-->
-  <!--      <mat-icon>plus_one</mat-icon>-->
-  <!--    </button>-->
-  <!--  </mat-card-header>-->
-
-  <!--  <div class="create-loaned" *ngIf="goCreateLoanedBookRegister">-->
-  <!--    <form (ngSubmit)="createLoanedBookRegister()" [formGroup]="bookForm">-->
-  <!--      <mat-card-content>-->
-  <!--        <mat-form-field class="full-width" appearance="outline">-->
-  <!--          <mat-label>EAN</mat-label>-->
-  <!--          <input type="number" matInput formControlName="ean" placeholder="EAN">-->
-  <!--          <mat-error *ngIf="eanToDeleteInput.hasError('required') && eanToDeleteInput.touched">-->
-  <!--            EAN is required-->
-  <!--          </mat-error>-->
-  <!--        </mat-form-field>-->
-
-  <!--        <div class="buttons">-->
-  <!--          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"-->
-  <!--                  (click)="createLoanedBookRegister()"-->
-  <!--          >Submit-->
-
-  <!--          </button>-->
-  <!--          <button mat-raised-button color="warn" class="full-width"-->
-  <!--                  (click)="goBack()">Close-->
-  <!--          </button>-->
-  <!--        </div>-->
-  <!--      </mat-card-content>-->
-
-  <!--    </form>-->
-  <!--  </div>-->
-
 </div>
 
 
@@ -104,7 +69,7 @@
           </mat-error>
         </mat-form-field>
 
-        <div class="buttons">
+        <div class="create-loaned-buttons">
           <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
                   (click)="showSingleBook()">Enviar
 
@@ -117,9 +82,9 @@
 
     </form>
 
-    <div *ngIf="showBook">
+    <div *ngIf="showBook" class="create-loaned">
       <div *ngFor="let singleBook of singleLoanedBook">
-        <mat-card>
+        <mat-card class="create-loaned-card">
           <mat-card-title>EAN: {{singleBook.ean}}</mat-card-title>
           <mat-card-content>ID de usuario: {{singleBook.userId}}</mat-card-content>
           <mat-card-content> Estado del préstamo: {{singleBook.loanState}}</mat-card-content>
@@ -140,7 +105,7 @@
       <mat-icon>cached</mat-icon>
     </button>
   </mat-card-header>
-  <div class="create-loaned" *ngIf="goChangeStatus">
+  <div class="create-loaned-lost" *ngIf="goChangeStatus">
     <form (ngSubmit)="changeStatus()" [formGroup]="bookForm">
       <mat-card-content>
         <mat-form-field class="full-width" appearance="outline">
@@ -151,7 +116,7 @@
           </mat-error>
         </mat-form-field>
 
-        <div class="buttons">
+        <div class="create-loaned-lost-buttons">
           <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
                   (click)="changeStatus()">Enviar
           </button>
@@ -172,12 +137,11 @@
       <mat-icon>line_weight</mat-icon>
     </button>
   </mat-card-header>
-  <mat-card-content class="registers">
-    <div *ngIf="isAllLoanedBook">
-      <div class="registers-items-for" *ngFor="let loanedBook of allLoanedBooks | paginate: { itemsPerPage: 5, currentPage: page,
+  <mat-card-content >
+    <div *ngIf="isAllLoanedBook" class="registers" >
+      <div *ngFor="let loanedBook of allLoanedBooks | paginate: { itemsPerPage: 5, currentPage: page,
     totalItems: totalAllLoanedBooks}">
-
-        <mat-card>
+        <mat-card class="registers-card">
           <mat-card-title>EAN: {{loanedBook.ean}}</mat-card-title>
           <mat-card-content>ID de usuario: {{loanedBook.userId}}</mat-card-content>
           <mat-card-content> Estado del préstamo: {{loanedBook.loanState}}</mat-card-content>
@@ -322,4 +286,4 @@
     </div>
   </mat-card-content>
 </div>
-
+</div>

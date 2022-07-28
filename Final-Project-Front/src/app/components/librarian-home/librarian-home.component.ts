@@ -327,6 +327,7 @@ export class LibrarianHomeComponent implements OnInit {
   returnBook(ean: number) {
     this.librarianService.returnBook(ean).subscribe();
     this.isLoanedBook = false;
+    this.isOverdueBook = false;
   }
 
   showLoanedBooks(): void {

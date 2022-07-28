@@ -12,19 +12,21 @@
   justify-content: left;
   align-items: center;
 }
-
+.navbar-item:hover {
+  background-color: #401801;
+  color: #c9c9c9;
+}
 .navbar-item {
   text-align: center;
-  background-color: #a99877;
-  color: #efebec;
-  border: #fff solid 1px;
+  background-color: #A1604F;
+  border: rgba(208, 203, 202, 0.91) solid 1px;
   width: 100%;
   height: auto;
 }
 
 a {
   text-decoration: none;
-  color: #fcfbfb;
+  color: #c9c9c9;
 }
 
 h1 {

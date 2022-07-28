@@ -1,11 +1,12 @@
 .management-container {
-  background-color: #dccdcd;
+  background-color: rgba(208, 203, 202, 0.91);
   display: flex;
   flex-flow: column;
-  justify-content: space-between;;
+  justify-content: space-between;
   margin: 3%;
   padding: 2%;
-  width: 90%;
+  margin-left: 6%;
+  width: 80%;
   border-radius: 0.5em;
 }
 
@@ -27,31 +28,26 @@ mat-card-header {
 }
 
 .registers {
-  background-color: darkolivegreen;
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
-  margin: 1%;
+  justify-content: center;
+  background-color: #F2F2F2;
   border-radius: 0.5em;
+  padding: 1%;
+  height: 40%;
 }
-
-/*.registers-items{
-  background-color: peachpuff;
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  margin:2%;
-}*/
-
-.registers-items-for {
-  background-color: pink;
+.registers-card{
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
-  margin: 2%;
+  justify-content: center;
+  background-color: #F2F2F2;
+  box-shadow: 10px 5px 5px  #0D0004;
+  border: #0D0004 solid 1px;
+  border-radius: 0.5em;
   padding: 1%;
+  height: 40%;
+  margin: 2%;
 }
-
 pagination-controls {
   display: flex;
   flex-flow: row;
@@ -59,7 +55,85 @@ pagination-controls {
   color: #efebec;
 }
 
+.all{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin-left: 4%;
+}
+
+.delete{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  background-color: #F2F2F2;
+  border-radius: 0.5em;
+  padding: 1%;
+  height: 40%;
+
+}
+
+.delete-button{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  width: 14%;
+  margin-left: 1%
+}
+
+.create-loaned{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  background-color: #F2F2F2;
+  border-radius: 0.5em;
+  padding: 1%;
+  height: 40%;
+}
+
+.create-loaned-card{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  background-color: #F2F2F2;
+  box-shadow: 10px 5px 5px #0D0004;
+  border: #0D0004 solid 1px;
+  border-radius: 0.5em;
+  padding: 1%;
+  height: 40%;
+}
+
+.create-loaned-buttons{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  width: 14%;
+  margin-left: 1%
+}
+
+.create-loaned-lost{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  background-color: #F2F2F2;
+  border-radius: 0.5em;
+  padding: 1%;
+  height: 40%;
+}
+
+.create-loaned-lost-buttons{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  width: 14%;
+  margin-left: 1%
+}
+
 .overdue {
   background-color: #d01233;
   color: #e7ebee;
+}
+
+.mat-mini-fab{
+  color: rgb(225, 223, 223);
 }

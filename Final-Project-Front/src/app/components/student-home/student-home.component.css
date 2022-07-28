@@ -2,3 +2,11 @@
   background-color: #d01233;
   color: #e7ebee;
 }
+
+.container{
+  background-color: #938a86;
+}
+
+mat-card{
+  background-color: #938a86;
+}

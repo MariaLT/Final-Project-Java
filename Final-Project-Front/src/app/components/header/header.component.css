@@ -1,9 +1,8 @@
 
 .header {
-  /*background-color: #d2bea1;*/
   background-image: url("../../../assets/header.jpeg");
   background-size: cover;
-  border: #fff solid 1px;
+  border: #938a86 solid 1px;
   height: 21%;
   display: flex;
   flex-flow: column;
@@ -13,9 +12,18 @@
 }
 
 .title {
-  color: #fff;
-  font-size: 500%;
-  font-weight: bold;
+ /* color:#0D0004;
+  font-size: 14em;
+  font-family: "Gill Sans MT Ext Condensed Bold";
   margin-top: 10px;
   margin-left: 10px;
+  !*-webkit-text-stroke: 0.5px #938a86;*!
+  */
+  color: #0D0004;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14em;
+  font-family: "Gill Sans MT Ext Condensed Bold";
+  text-shadow: -1px -2px 0 #938a86;
 }
