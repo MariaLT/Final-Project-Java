@@ -5,7 +5,7 @@
     <mat-card class="card">
       <mat-card-header>
         <mat-card-title>
-          <h1>New book register</h1>
+          <h1>Agregar libro al catálogo</h1>
         </mat-card-title>
       </mat-card-header>
 
@@ -18,82 +18,82 @@
                 <mat-label>EAN</mat-label>
                 <input type="number" matInput formControlName="ean" placeholder="EAN">
                 <mat-error *ngIf="eanInput.hasError('required') && eanInput.touched">
-                  EAN is required
+                  Es necesario ingresar un EAN
                 </mat-error>
               </mat-form-field>
 
               <mat-form-field class="full-width" appearance="outline">
-                <mat-label>TITLE</mat-label>
-                <input type="text" matInput formControlName="title" placeholder="Title">
+                <mat-label>Título</mat-label>
+                <input type="text" matInput formControlName="title" placeholder="Título">
                 <mat-error *ngIf="titleInput.hasError('required') && titleInput.touched">
-                  Title is required
+                  Es necesario ingresar un título
                 </mat-error>
               </mat-form-field>
 
               <mat-form-field class="full-width" appearance="outline">
-                <mat-label>AUTHOR</mat-label>
-                <input type="text" matInput formControlName="author" placeholder="Author">
+                <mat-label>Autor</mat-label>
+                <input type="text" matInput formControlName="author" placeholder="Autor">
                 <mat-error *ngIf="authorInput.hasError('required') && authorInput.touched">
-                  Author is required
+                  Es necesario ingresar un autor
                 </mat-error>
               </mat-form-field>
 
 
             <div class="input-container-two-items">
               <mat-form-field class="two-items" appearance="outline">
-                <mat-label>GENRE</mat-label>
-                <input type="text" matInput formControlName="genre" placeholder="Genre">
+                <mat-label>Género</mat-label>
+                <input type="text" matInput formControlName="genre" placeholder="Género">
                 <mat-error *ngIf="genreInput.hasError('required') && genreInput.touched">
-                  Genre is required
+                  Es necesario ingresar un género
                 </mat-error>
               </mat-form-field>
 
               <mat-form-field class="two-items" appearance="outline">
-                <mat-label>LANGUAGE</mat-label>
-                <input type="text" matInput formControlName="language" placeholder="Language">
+                <mat-label>Idioma</mat-label>
+                <input type="text" matInput formControlName="language" placeholder="Idioma">
                 <mat-error *ngIf="languageInput.hasError('required') && languageInput.touched">
-                  Language is required
+                  Es necesario ingresar un idioma
                 </mat-error>
               </mat-form-field>
             </div>
 
             <div class="input-container-two-items">
               <mat-form-field class="two-items" appearance="outline">
-                <mat-label>PAGES NUMBER</mat-label>
-                <input type="number" matInput formControlName="pagNumber" placeholder="Pages number">
+                <mat-label>Nº Páginas</mat-label>
+                <input type="number" matInput formControlName="pagNumber" placeholder="Número de páginas">
                 <mat-error *ngIf="pagNumberInput.hasError('required') && pagNumberInput.touched">
-                  The number of pages is required
+                  Es necesario ingresar un número de páginas
                 </mat-error>
               </mat-form-field>
 
 
               <mat-form-field class="two-items" appearance="outline">
-                <mat-label>PUBLICATION YEAR</mat-label>
-                <input type="number" matInput formControlName="publicationYear" placeholder="Publication year">
+                <mat-label>Año de publicación</mat-label>
+                <input type="number" matInput formControlName="publicationYear" placeholder="Año de publicación">
                 <mat-error *ngIf="publicationYearInput.hasError('required') && publicationYearInput.touched">
-                  Publication year is required
+                  Es necesario ingresar un año de publicación
                 </mat-error>
               </mat-form-field>
             </div>
             <div class="input-container-two-items">
               <mat-form-field class="two-items" appearance="outline">
-                <mat-label>PUBLISHER</mat-label>
-                <input type="text" matInput formControlName="publisher" placeholder="Publisher">
+                <mat-label>Editorial</mat-label>
+                <input type="text" matInput formControlName="publisher" placeholder="Editorial">
                 <mat-error *ngIf="publisherInput.hasError('required') && publisherInput.touched">
-                  Publisher is required
+                  Es necesario ingresar una editorial
                 </mat-error>
               </mat-form-field>
 
               <mat-form-field class="two-items" appearance="outline">
-                <mat-label>FRONT PAGE</mat-label>
-                <input type="text" matInput formControlName="image" placeholder="Front page">
+                <mat-label>Portada</mat-label>
+                <input type="text" matInput formControlName="image" placeholder="Portada">
               </mat-form-field>
 
             </div>
 
             <mat-form-field  class="full-width" appearance="outline">
-              <mat-label>PLOT</mat-label>
-              <textarea type="text" class="plot" matInput formControlName="plot" placeholder="Plot"></textarea>
+              <mat-label>Argumento</mat-label>
+              <textarea type="text" class="plot" matInput formControlName="plot" placeholder="Argumento"></textarea>
               <mat-error *ngIf="plotInput.hasError('required') && plotInput.touched">
                 Plot is required
               </mat-error>
@@ -101,11 +101,11 @@
 
               <div class="buttons">
                 <button type="submit" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
-                        >Submit
+                        >Enviar
                 </button>
 
                 <button mat-raised-button color="warn" class="full-width"
-                        [routerLink]="['/librarian-home']">Close
+                        [routerLink]="['/librarian-home']">Cerrar
                 </button>
               </div>
 

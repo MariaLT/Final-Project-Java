@@ -50,7 +50,6 @@ export class UserLoginComponent implements OnInit {
         localStorage.removeItem('currentUser');
         localStorage.setItem('currentUser', JSON.stringify(user));
 
-        alert('Login successful');
         this.loginForm.reset()
 
         for (let role of user.roles) {
@@ -64,7 +63,7 @@ export class UserLoginComponent implements OnInit {
 
         }
       }
-      , error => alert('Login failed'));
+      , error => alert('Identificación errónea'));
 
   }
 

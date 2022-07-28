@@ -1,8 +1,10 @@
 
 .header {
-  background-color: #d2bea1;
+  /*background-color: #d2bea1;*/
+  background-image: url("../../../assets/header.jpeg");
+  background-size: cover;
   border: #fff solid 1px;
-  height: 18%;
+  height: 21%;
   display: flex;
   flex-flow: column;
   margin: auto;
@@ -11,7 +13,7 @@
 }
 
 .title {
-  color: #171616;
+  color: #fff;
   font-size: 500%;
   font-weight: bold;
   margin-top: 10px;

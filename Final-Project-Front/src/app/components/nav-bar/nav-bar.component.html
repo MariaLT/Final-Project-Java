@@ -3,27 +3,27 @@
   <div class="navbar-menu">
     <div class="navbar-item">
       <a [routerLink]="['/user-login']">
-        <h1>Login</h1>
+        <h1>Identificación</h1>
       </a>
     </div>
     <div class="navbar-item" *ngIf="(isStudent||isLibrarian)">
       <a [routerLink]="['/']">
-        <h1  (click)="logout()" >Logout</h1>
+        <h1  (click)="logout()" >Desconectar</h1>
       </a>
     </div>
     <div class="navbar-item" *ngIf="isStudent">
       <a [routerLink]="['/student-home']">
-        <h1>Student</h1>
+        <h1>Estudiante</h1>
       </a>
     </div>
     <div class="navbar-item" *ngIf="isLibrarian">
       <a [routerLink]="['/librarian-home']">
-        <h1>Librarian</h1>
+        <h1>Administrador</h1>
       </a>
     </div>
     <div class="navbar-item" *ngIf="(isStudent||isLibrarian)">
       <a [routerLink]="['/catalogue']">
-        <h1>Catalogue</h1>
+        <h1>Catálogo</h1>
       </a>
     </div>
   </div>

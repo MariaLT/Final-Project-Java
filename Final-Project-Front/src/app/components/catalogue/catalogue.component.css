@@ -13,6 +13,11 @@ img {
   margin: auto;
 }
 
+img:hover {
+  transform: scale(0.8);
+}
+
+
 .book {
   background-color: rgba(242, 242, 242, 0.68);
   background-blend-mode: soft-light;

@@ -1,24 +1,24 @@
 <app-nav-bar></app-nav-bar>
-<h1>Personal Area</h1>
+
+<h1>Área personal</h1>
 
 <div>
   <h1>Loaned Books</h1>
   <div>
     <mat-card>
       <div *ngFor="let loanedBook of loanedBooks, let i = index">
-        <mat-card-header>
-<!--          <mat-card-title>{{showTitle(loanedBook.ean)}}</mat-card-title>-->
-          <mat-card-title>{{loanedBook.ean}}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p [ngClass]="{'overdue': loanedBook.loanState==='OVERDUE'}">{{loanedBook.loanState}}</p>
-          <p>{{loanedBook.loanDate}}</p>
-          <p [ngClass]="{'overdue': loanedBook.loanState==='OVERDUE'}">{{loanedBook.returnDate}}</p>
-          <p>{{loanedBook.pickedUp}}</p>
-        </mat-card-content>
-
-
-        <p *ngIf="isOverdueLoanedBook">OVERDUEEEEEEEEEEEEEE</p>
+        <mat-card>
+          <mat-card-title>EAN: {{loanedBook.ean}}</mat-card-title>
+          <mat-card-content>ID de usuario: {{loanedBook.userId}}</mat-card-content>
+          <mat-card-content> Estado del préstamo: {{loanedBook.loanState}}</mat-card-content>
+          <mat-card-content>Fecha del préstamo: {{loanedBook.loanDate | date:'dd/MM/yy'}}</mat-card-content>
+          <mat-card-content>Fecha de devolución: {{loanedBook.returnDate | date:'dd/MM/yy'}}</mat-card-content>
+          <mat-card-content>Recogido: {{loanedBook.pickedUp}}</mat-card-content>
+          <p *ngIf="loanedBook.loanState==='OVERDUE'"
+             [ngClass]="{'overdue': loanedBook.loanState==='OVERDUE'}"> El préstamo ha expirado<br>
+            por favor devuelva el
+            <br>libro a la biblioteca</p>
+        </mat-card>
       </div>
     </mat-card>
   </div>

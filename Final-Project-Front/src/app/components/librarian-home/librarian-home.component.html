@@ -1,9 +1,9 @@
 <app-nav-bar></app-nav-bar>
 <div class="management-container">
-  <h1>Catalogue Management</h1>
+  <h1>Gestión del catálogo</h1>
 
   <mat-card-header>
-    <mat-card-title>Create book register</mat-card-title>
+    <mat-card-title>Agregar libro al catálogo</mat-card-title>
     <button [routerLink]="['/register-book']"
             mat-mini-fab color="accent">
       <mat-icon>plus_one</mat-icon>
@@ -11,7 +11,7 @@
   </mat-card-header>
 
   <mat-card-header>
-    <mat-card-title>Delete book register</mat-card-title>
+    <mat-card-title>Borrar libro del catálogo</mat-card-title>
     <button (click)="openDeleteBook()"
             mat-mini-fab color="accent">
       <mat-icon>delete</mat-icon>
@@ -25,18 +25,16 @@
           <mat-label>EAN</mat-label>
           <input type="number" matInput formControlName="ean" placeholder="EAN">
           <mat-error *ngIf="eanToDeleteInput.hasError('required') && eanToDeleteInput.touched">
-            EAN is required
+            Es necesario ingresar un EAN.
           </mat-error>
         </mat-form-field>
 
         <div class="buttons">
           <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
-                  (click)="deleteBook()"
-          >Submit
-
+                  (click)="deleteBook()">Enviar
           </button>
           <button mat-raised-button color="warn" class="full-width"
-                  (click)="goBack()">Close
+                  (click)="goBack()">Cerrar
           </button>
         </div>
       </mat-card-content>
@@ -45,39 +43,39 @@
   </div>
 
 
-<!--  <mat-card-header>-->
-<!--    <mat-card-title>Create loaned book register</mat-card-title>-->
-<!--    <button (click)="openCreateLoanedBookRegister()"-->
-<!--            mat-mini-fab color="accent">-->
-<!--      <mat-icon>plus_one</mat-icon>-->
-<!--    </button>-->
-<!--  </mat-card-header>-->
+  <!--  <mat-card-header>-->
+  <!--    <mat-card-title>Create loaned book register</mat-card-title>-->
+  <!--    <button (click)="openCreateLoanedBookRegister()"-->
+  <!--            mat-mini-fab color="accent">-->
+  <!--      <mat-icon>plus_one</mat-icon>-->
+  <!--    </button>-->
+  <!--  </mat-card-header>-->
 
-<!--  <div class="create-loaned" *ngIf="goCreateLoanedBookRegister">-->
-<!--    <form (ngSubmit)="createLoanedBookRegister()" [formGroup]="bookForm">-->
-<!--      <mat-card-content>-->
-<!--        <mat-form-field class="full-width" appearance="outline">-->
-<!--          <mat-label>EAN</mat-label>-->
-<!--          <input type="number" matInput formControlName="ean" placeholder="EAN">-->
-<!--          <mat-error *ngIf="eanToDeleteInput.hasError('required') && eanToDeleteInput.touched">-->
-<!--            EAN is required-->
-<!--          </mat-error>-->
-<!--        </mat-form-field>-->
+  <!--  <div class="create-loaned" *ngIf="goCreateLoanedBookRegister">-->
+  <!--    <form (ngSubmit)="createLoanedBookRegister()" [formGroup]="bookForm">-->
+  <!--      <mat-card-content>-->
+  <!--        <mat-form-field class="full-width" appearance="outline">-->
+  <!--          <mat-label>EAN</mat-label>-->
+  <!--          <input type="number" matInput formControlName="ean" placeholder="EAN">-->
+  <!--          <mat-error *ngIf="eanToDeleteInput.hasError('required') && eanToDeleteInput.touched">-->
+  <!--            EAN is required-->
+  <!--          </mat-error>-->
+  <!--        </mat-form-field>-->
 
-<!--        <div class="buttons">-->
-<!--          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"-->
-<!--                  (click)="createLoanedBookRegister()"-->
-<!--          >Submit-->
+  <!--        <div class="buttons">-->
+  <!--          <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"-->
+  <!--                  (click)="createLoanedBookRegister()"-->
+  <!--          >Submit-->
 
-<!--          </button>-->
-<!--          <button mat-raised-button color="warn" class="full-width"-->
-<!--                  (click)="goBack()">Close-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </mat-card-content>-->
+  <!--          </button>-->
+  <!--          <button mat-raised-button color="warn" class="full-width"-->
+  <!--                  (click)="goBack()">Close-->
+  <!--          </button>-->
+  <!--        </div>-->
+  <!--      </mat-card-content>-->
 
-<!--    </form>-->
-<!--  </div>-->
+  <!--    </form>-->
+  <!--  </div>-->
 
 </div>
 
@@ -85,10 +83,10 @@
 <!--borrowed books management-->
 
 <div class="management-container">
-  <h1>Borrowed Books Management</h1>
+  <h1>Gestión de libros prestados</h1>
 
   <mat-card-header>
-    <mat-card-title>Find loaned book register</mat-card-title>
+    <mat-card-title>Consultar un registro</mat-card-title>
     <button (click)="findSingleLoanedBook()"
             mat-mini-fab color="accent">
       <mat-icon>lens</mat-icon>
@@ -102,18 +100,17 @@
           <mat-label>EAN</mat-label>
           <input type="number" matInput formControlName="ean" placeholder="EAN">
           <mat-error *ngIf="eanToDeleteInput.hasError('required') && eanToDeleteInput.touched">
-            EAN is required
+            Es necesario ingresar un EAN.
           </mat-error>
         </mat-form-field>
 
         <div class="buttons">
           <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
-                  (click)="showSingleBook()"
-          >Submit
+                  (click)="showSingleBook()">Enviar
 
           </button>
           <button mat-raised-button color="warn" class="full-width"
-                  (click)="goBack()">Close
+                  (click)="goBack()">Cerrar
           </button>
         </div>
       </mat-card-content>
@@ -122,11 +119,14 @@
 
     <div *ngIf="showBook">
       <div *ngFor="let singleBook of singleLoanedBook">
-      <p>State {{singleBook.loanState}}</p>
-      <p>Recogido {{singleBook.pickedUp}}</p>
-      <p>LoanDate {{this.singleBook.loanDate}}</p>
-      <p>Return {{this.singleBook.returnDate}}</p>
-      <p>UserId {{this.singleBook.userId}}</p>
+        <mat-card>
+          <mat-card-title>EAN: {{singleBook.ean}}</mat-card-title>
+          <mat-card-content>ID de usuario: {{singleBook.userId}}</mat-card-content>
+          <mat-card-content> Estado del préstamo: {{singleBook.loanState}}</mat-card-content>
+          <mat-card-content>Fecha del préstamo: {{singleBook.loanDate| date:'dd/MM/yy'}}</mat-card-content>
+          <mat-card-content>Fecha de devolución: {{singleBook.returnDate | date:'dd/MM/yy'}}</mat-card-content>
+          <mat-card-content>Recogido: {{singleBook.pickedUp}}</mat-card-content>
+        </mat-card>
       </div>
     </div>
 
@@ -134,7 +134,7 @@
   </div>
 
   <mat-card-header>
-    <mat-card-title>Book LOST</mat-card-title>
+    <mat-card-title>Registrar libro perdido</mat-card-title>
     <button (click)="changeOneStatus()"
             mat-mini-fab color="accent">
       <mat-icon>cached</mat-icon>
@@ -147,17 +147,16 @@
           <mat-label>EAN</mat-label>
           <input type="number" matInput formControlName="ean" placeholder="EAN">
           <mat-error *ngIf="eanToDeleteInput.hasError('required') && eanToDeleteInput.touched">
-            EAN is required
+            Es necesario ingresar un EAN.
           </mat-error>
         </mat-form-field>
 
         <div class="buttons">
           <button type="button" [disabled]="bookForm.invalid" mat-raised-button color="accent" class="full-width"
-                  (click)="changeStatus()"
-          >Submit
+                  (click)="changeStatus()">Enviar
           </button>
           <button mat-raised-button color="warn" class="full-width"
-                  (click)="goBack()">Close
+                  (click)="goBack()">Cerrar
           </button>
         </div>
       </mat-card-content>
@@ -167,8 +166,8 @@
 
 
   <mat-card-header>
-    <mat-card-title>Registers of Books</mat-card-title>
-    <button (click)="showAllLoanedBooks()" (click)="increaseCounter()"
+    <mat-card-title>Consultar registro de todos los préstamos</mat-card-title>
+    <button (click)="showAllLoanedBooks()" (click)="increaseCounter1()"
             mat-mini-fab color="accent">
       <mat-icon>line_weight</mat-icon>
     </button>
@@ -177,14 +176,16 @@
     <div *ngIf="isAllLoanedBook">
       <div class="registers-items-for" *ngFor="let loanedBook of allLoanedBooks | paginate: { itemsPerPage: 5, currentPage: page,
     totalItems: totalAllLoanedBooks}">
-        <!--        <p>Loaned book id: {{loanedBook.loanedBookId}}</p>-->
-        <p>User ID: {{loanedBook.userId}}</p>
-        <p>Ean: {{loanedBook.ean}}</p>
-        <p [ngClass]="{'overdue': loanedBook.loanState==='OVERDUE'}">State: {{loanedBook.loanState}}</p>
-        <p>Recogido: {{loanedBook.pickedUp}}</p>
 
-        <!--        <p>Loan date: {{loanedBook.loanDate}}</p>-->
-        <!--        <p>Return date: {{loanedBook.returnDate}}</p>-->
+        <mat-card>
+          <mat-card-title>EAN: {{loanedBook.ean}}</mat-card-title>
+          <mat-card-content>ID de usuario: {{loanedBook.userId}}</mat-card-content>
+          <mat-card-content> Estado del préstamo: {{loanedBook.loanState}}</mat-card-content>
+          <mat-card-content>Fecha del préstamo: {{loanedBook.loanDate| date:'dd/MM/yy'}}</mat-card-content>
+          <mat-card-content>Fecha de devolución: {{loanedBook.returnDate | date:'dd/MM/yy'}}</mat-card-content>
+          <mat-card-content>Recogido: {{loanedBook.pickedUp}}</mat-card-content>
+        </mat-card>
+
       </div>
       <pagination-controls class="paginator"
                            (pageChange)="page = $event; allLoanedBooks = []; showAllLoanedBooksPag()"></pagination-controls>
@@ -194,8 +195,8 @@
 
 
   <mat-card-header>
-    <mat-card-title>Loaned Books</mat-card-title>
-    <button (click)="showLoanedBooks()" (click)="increaseCounter()"
+    <mat-card-title>Libros prestados</mat-card-title>
+    <button (click)="showLoanedBooks()" (click)="increaseCounter6()"
             mat-mini-fab color="accent">
       <mat-icon>nature_people</mat-icon>
     </button>
@@ -205,15 +206,15 @@
       <div *ngFor="let loanedBook of loanedBooks | paginate: { itemsPerPage: 5, currentPage: page,
     totalItems: totalLoanedBooks};  let i =index ">
         <mat-card>
-          <mat-card-title>Ean: {{loanedBook.ean}}</mat-card-title>
-          <mat-card-subtitle>State: {{loanedBook.loanState}}</mat-card-subtitle>
-          <mat-card-content>User ID: {{loanedBook.userId}}</mat-card-content>
-          <mat-card-content>Loan date: {{loanedBook.loanDate}}</mat-card-content>
-          <mat-card-content>Return date: {{loanedBook.returnDate}}</mat-card-content>
-          <mat-card-content>Picked Up: {{loanedBook.pickedUp}}</mat-card-content>
+          <mat-card-title>EAN: {{loanedBook.ean}}</mat-card-title>
+          <mat-card-content>ID de usuario: {{loanedBook.userId}}</mat-card-content>
+          <mat-card-content> Estado del préstamo: {{loanedBook.loanState}}</mat-card-content>
+          <mat-card-content>Fecha del préstamo: {{loanedBook.loanDate | date:'dd/MM/yy'}}</mat-card-content>
+          <mat-card-content>Fecha de devolución: {{loanedBook.returnDate | date:'dd/MM/yy'}}</mat-card-content>
+          <mat-card-content>Recogido: {{loanedBook.pickedUp}}</mat-card-content>
 
-          <button (click)="updatePickUpLoanedBook(loanedBook.ean)">Pick Up</button>
-          <button (click)="returnBook(loanedBook.ean)">Return</button>
+          <button (click)="updatePickUpLoanedBook(loanedBook.ean)" (click)="increaseCounter6()">Recogido</button>
+          <button (click)="returnBook(loanedBook.ean)">Devuelto</button>
         </mat-card>
       </div>
       <pagination-controls
@@ -223,8 +224,8 @@
 
 
   <mat-card-header>
-    <mat-card-title>Overdue Books</mat-card-title>
-    <button (click)="showOverdueBooks()" (click)="increaseCounter()"
+    <mat-card-title>Préstamos expirados</mat-card-title>
+    <button (click)="showOverdueBooks()" (click)="increaseCounter2()"
             mat-mini-fab color="accent">
       <mat-icon>hourglass_empty</mat-icon>
     </button>
@@ -234,11 +235,12 @@
       <div *ngFor="let overdueBook of overdueBooks | paginate: { itemsPerPage: 5, currentPage: page,
     totalItems: totalOverdueBooks}">
         <mat-card>
-          <mat-card-title>Ean: {{overdueBook.ean}}</mat-card-title>
-          <mat-card-subtitle>State: {{overdueBook.loanState}}</mat-card-subtitle>
-          <mat-card-content>User ID: {{overdueBook.userId}}</mat-card-content>
-          <mat-card-content>Loan date: {{overdueBook.loanDate}}</mat-card-content>
-          <mat-card-content>Return date: {{overdueBook.returnDate}}</mat-card-content>
+          <mat-card-title>EAN: {{overdueBook.ean}}</mat-card-title>
+          <mat-card-content>ID de usuario: {{overdueBook.userId}}</mat-card-content>
+          <mat-card-content> Estado del préstamo: {{overdueBook.loanState}}</mat-card-content>
+          <mat-card-content>Fecha del préstamo: {{overdueBook.loanDate | date:'dd/MM/yy'}}</mat-card-content>
+          <mat-card-content>Fecha de devolución: {{overdueBook.returnDate | date:'dd/MM/yy'}}</mat-card-content>
+          <mat-card-content>Recogido: {{overdueBook.pickedUp}}</mat-card-content>
 
           <button (click)="returnBook(overdueBook.ean)">Return</button>
         </mat-card>
@@ -250,8 +252,8 @@
 
 
   <mat-card-header>
-    <mat-card-title>Available Books</mat-card-title>
-    <button (click)="showAvailableBooks()" (click)="increaseCounter()"
+    <mat-card-title>Libros disponibles</mat-card-title>
+    <button (click)="showAvailableBooks()" (click)="increaseCounter3()"
             mat-mini-fab color="accent">
       <mat-icon>book</mat-icon>
     </button>
@@ -261,15 +263,11 @@
       <div *ngFor="let availableBook of availableBooks | paginate: { itemsPerPage: 5, currentPage: page,
     totalItems: totalAvailableBooks }">
         <mat-card>
-          <mat-card-title>Ean: {{availableBook.ean}}</mat-card-title>
-          <mat-card-subtitle>State: {{availableBook.loanState}}</mat-card-subtitle>
+          <mat-card-title>EAN: {{availableBook.ean}}</mat-card-title>
+          <mat-card-subtitle>{{availableBook.loanState}}</mat-card-subtitle>
         </mat-card>
       </div>
-      <!--      <mat-paginator [length]="100"
-                           [pageSize]="10"
-                           [pageSizeOptions]="[5, 10, 25, 100]"
-                           aria-label="Select page">
-            </mat-paginator>-->
+
       <pagination-controls
         (pageChange)="page = $event; availableBooks = []; showAvailableBooksPag()"></pagination-controls>
     </div>
@@ -277,8 +275,8 @@
 
 
   <mat-card-header>
-    <mat-card-title>Lost Books</mat-card-title>
-    <button (click)="showLostBooks()" (click)="increaseCounter()"
+    <mat-card-title>Libros perdidos</mat-card-title>
+    <button (click)="showLostBooks()" (click)="increaseCounter4()"
             mat-mini-fab color="accent">
       <mat-icon>error</mat-icon>
     </button>
@@ -288,13 +286,13 @@
       <div *ngFor="let lostBook of lostBooks | paginate: { itemsPerPage: 5, currentPage: page,
     totalItems: totalLostBooks}">
         <mat-card>
-          <!--          <mat-card-header>Title: {{showTitle(lostBook.ean)}}</mat-card-header>-->
-          <mat-card-title>Ean: {{lostBook.ean}}</mat-card-title>
-          <mat-card-subtitle>State: {{lostBook.loanState}}</mat-card-subtitle>
-          <mat-card-content>User ID: {{lostBook.userId}}</mat-card-content>
-          <mat-card-content>Loan date: {{lostBook.loanDate}}</mat-card-content>
-          <mat-card-content>Return date: {{lostBook.returnDate}}</mat-card-content>
-        </mat-card>
+            <mat-card-title>EAN: {{lostBook.ean}}</mat-card-title>
+            <mat-card-content>ID de usuario: {{lostBook.userId}}</mat-card-content>
+            <mat-card-content> Estado del préstamo: {{lostBook.loanState}}</mat-card-content>
+            <mat-card-content>Fecha del préstamo: {{lostBook.loanDate | date:'dd/MM/yy'}}</mat-card-content>
+            <mat-card-content>Fecha de devolución: {{lostBook.returnDate | date:'dd/MM/yy'}}</mat-card-content>
+            <mat-card-content>Recogido: {{lostBook.pickedUp}}</mat-card-content>
+          </mat-card>
       </div>
       <pagination-controls
         (pageChange)="page = $event; lostBooks = []; showLostBooksPag()"></pagination-controls>
@@ -303,11 +301,11 @@
 </div>
 
 <div class="management-container">
-  <h1>User Management</h1>
+  <h1>Gestión de usuarios</h1>
 
   <mat-card-header>
-    <mat-card-title>Show users</mat-card-title>
-    <button (click)="showUsers()" (click)="increaseCounter()"
+    <mat-card-title>Mostrar usuarios</mat-card-title>
+    <button (click)="showUsers()" (click)="increaseCounter5()"
             mat-mini-fab color="accent">
       <mat-icon>people</mat-icon>
     </button>
@@ -316,8 +314,8 @@
     <div *ngIf="isShowUser">
       <div *ngFor="let user of userList">
         <mat-card>
-          <p>User ID: {{user.id}}</p>
-          <p>Name: {{user.username}}</p>
+          <p>ID de usuario: {{user.id}}</p>
+          <p>Nombre de usuario: {{user.username}}</p>
         </mat-card>
       </div>
 

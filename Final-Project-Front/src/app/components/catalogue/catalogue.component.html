@@ -2,11 +2,11 @@
 <div class="container">
   <mat-card class="book" *ngFor="let book of bookList">
     <mat-card-header>
-      <mat-card-title>Title: {{book.title}}</mat-card-title>
+      <mat-card-title>Título: {{book.title}}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image src="{{book.image}}" alt="">
+    <img mat-card-image src="{{book.image}}" alt="Portada del libro" [routerLink]="['/catalogue',book.ean]">
     <mat-card-actions>
-      <button mat-raised-button [routerLink]="['/catalogue',book.ean]">Details</button>
+      <button mat-raised-button [routerLink]="['/catalogue',book.ean]">Detalles</button>
     </mat-card-actions>
   </mat-card>
 </div>

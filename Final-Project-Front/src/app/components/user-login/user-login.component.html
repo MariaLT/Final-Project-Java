@@ -3,29 +3,29 @@
     <mat-card class="card">
       <form (ngSubmit)="login()" [formGroup]="loginForm">
         <mat-card-header>
-          <mat-card-title>Login</mat-card-title>
+          <mat-card-title>Identificación</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <div class="login-container">
             <div class="input-container">
               <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Username</mat-label>
-                <input type="text" matInput formControlName="username" placeholder="Username...">
+                <mat-label>Nombre de usuario</mat-label>
+                <input type="text" matInput formControlName="username" placeholder="Nombre de usuario">
                 <mat-error *ngIf="usernameInput.hasError('required') && usernameInput.touched">
-                  Username is required
+                  Nombre de usuario requerido
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Password</mat-label>
-                <input [type]="hide ? 'password' : 'text'" matInput formControlName="password" placeholder="Password...">
+                <mat-label>Contraseña</mat-label>
+                <input [type]="hide ? 'password' : 'text'" matInput formControlName="password" placeholder="Contraseña">
                 <button mat-icon-button matSuffix (click)="hide = !hide">
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-error *ngIf="passwordInput.hasError('required') && passwordInput.touched">
-                  Password is required
+                  Contraseña requerida
                 </mat-error>
               </mat-form-field>
-              <button type="submit" mat-raised-button color="accent" class="full-width" [disabled]="loginForm.invalid">LOGIN</button>
+              <button type="submit" mat-raised-button color="accent" class="full-width" [disabled]="loginForm.invalid">ENVIAR</button>
             </div>
           </div>
         </mat-card-content>
