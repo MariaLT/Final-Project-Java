@@ -1,13 +1,11 @@
 <app-nav-bar></app-nav-bar>
 
-<h1>Área personal</h1>
+<div class="all">
 
-<div>
-  <h1>Loaned Books</h1>
   <div class="container">
-    <mat-card>
+      <h1>Loaned Books</h1>
       <div *ngFor="let loanedBook of loanedBooks, let i = index">
-        <mat-card>
+        <mat-card class="card">
           <mat-card-title>EAN: {{loanedBook.ean}}</mat-card-title>
           <mat-card-content>ID de usuario: {{loanedBook.userId}}</mat-card-content>
           <mat-card-content> Estado del préstamo: {{loanedBook.loanState}}</mat-card-content>
@@ -20,6 +18,5 @@
             <br>libro a la biblioteca</p>
         </mat-card>
       </div>
-    </mat-card>
   </div>
 </div>

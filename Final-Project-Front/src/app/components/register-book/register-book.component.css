@@ -4,34 +4,35 @@ mat-card-header{
   justify-content: center;
   align-items: center;
   padding: 3%;
+  color: #0D0004;
 }
 h1{
   font-size: 2em;
 }
 .container {
+  background-color:  #F2F2F2;
   display: flex;
   flex-flow: column;
   justify-content: center;
   margin: auto;
-  width: 90%;
+  width: 85%;
   height: auto;
 }
 .book-container{
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
-  align-items: left;
+  justify-content: space-evenly;
   margin: auto;
 }
-.input-container-two-items{
-  /*background-color: green;*/
+.input-container-two-items {
   display: flex;
   flex-flow: row;
-  justify-content: space-around;
-  margin: 0%;
+  justify-content: space-evenly;
+  width: 100%;
 }
 .two-items{
-  width: 100%;
+  width: 45%;
+  margin: auto;
 }
 .buttons{
   display: flex;
@@ -43,4 +44,8 @@ button{
   margin: 2%;
   width: 10%;
   height: auto;
+}
+.full-width{
+  margin-left: 2.5%;
+  margin-right: 2.5%;
 }

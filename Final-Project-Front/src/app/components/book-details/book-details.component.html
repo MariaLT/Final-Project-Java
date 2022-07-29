@@ -20,7 +20,7 @@
     <mat-card-actions class="loan" *ngIf="isStudent && isAvailable">
       <button  mat-raised-button color="primary" (click)="loaningBook()">Prestar</button>
     </mat-card-actions>
-    <mat-card-content *ngIf="isLoaned">El libro esta en préstamo hasta el {{this.returnDate | date:'dd/MM/yy'}}</mat-card-content>
+    <mat-card-content class="date" *ngIf="isLoaned">El libro esta en préstamo hasta el {{this.returnDate | date:'dd/MM/yy'}}</mat-card-content>
   </mat-card>
 
 

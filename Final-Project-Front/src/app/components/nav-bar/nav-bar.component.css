@@ -14,11 +14,11 @@
 }
 .navbar-item:hover {
   background-color: #401801;
-  color: #c9c9c9;
+  color:  #efebec;
 }
 .navbar-item {
   text-align: center;
-  background-color: #A1604F;
+  background-color: #D07B4B;
   border: rgba(208, 203, 202, 0.91) solid 1px;
   width: 100%;
   height: auto;
@@ -26,10 +26,11 @@
 
 a {
   text-decoration: none;
-  color: #c9c9c9;
+  color:  #efebec;
 }
 
 h1 {
   padding-top: 4%;
   font-size: 200%;
 }
+

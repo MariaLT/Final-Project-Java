@@ -22,8 +22,11 @@ mat-card-content{
   flex-direction: column;
   align-items: left;
   justify-content: left;
+  margin-top: 4%;
   padding: 5%;
   text-align: justify;
+  background-color: #efebec;
+  border-radius: 2%;
 }
 .loan{
   display: flex;
@@ -38,3 +41,15 @@ mat-card-content{
 }
 
 
+button:hover {
+  transform: scale(1.1);
+  background-color: #401801;
+  color: #efebec;
+  border: solid 1px #efebec;
+}
+
+.date{
+  text-align: center;
+  color: #0D0004;
+  font-size: 1em;
+}

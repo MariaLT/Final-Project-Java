@@ -6,10 +6,9 @@
     </mat-card-header>
     <img mat-card-image src="{{book.image}}" alt="Portada del libro" [routerLink]="['/catalogue',book.ean]">
     <mat-card-actions>
-      <button mat-raised-button [routerLink]="['/catalogue',book.ean]">Detalles</button>
+      <button class="button" mat-raised-button [routerLink]="['/catalogue',book.ean]">Detalles</button>
     </mat-card-actions>
   </mat-card>
 </div>
 
-<!--<pagination-controls (pageChange)="page = $event; bookList = []; getAllBooks()"></pagination-controls>-->
-<!--| paginate: { itemsPerPage: 24, currentPage: page, totalItems: totalBooks-->
+

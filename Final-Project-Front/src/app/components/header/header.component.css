@@ -2,6 +2,8 @@
 .header {
   background-image: url("../../../assets/header.jpeg");
   background-size: cover;
+  /*background-blend-mode: luminosity;*/
+  background-blend-mode: hard-light;
   border: #938a86 solid 1px;
   height: 21%;
   display: flex;
@@ -12,18 +14,12 @@
 }
 
 .title {
- /* color:#0D0004;
-  font-size: 14em;
-  font-family: "Gill Sans MT Ext Condensed Bold";
-  margin-top: 10px;
-  margin-left: 10px;
-  !*-webkit-text-stroke: 0.5px #938a86;*!
-  */
-  color: #0D0004;
+  color: #211601;
   margin: 0 auto;
   text-align: center;
   font-weight: 700;
-  font-size: 14em;
+  font-size: 8em;
   font-family: "Gill Sans MT Ext Condensed Bold";
-  text-shadow: -1px -2px 0 #938a86;
+  text-shadow: 3px 0px 0 #b7b6b6;
+  -webkit-text-stroke: 1px #b7b6b6;
 }

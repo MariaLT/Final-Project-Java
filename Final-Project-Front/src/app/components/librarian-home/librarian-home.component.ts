@@ -352,13 +352,13 @@ export class LibrarianHomeComponent implements OnInit {
   updatePickUpLoanedBook(ean: number) {
     this.pickedUpDTO = new PickedUpDTO(ean);
     this.librarianService.updatePickedUpLoanedBook(ean, this.pickedUpDTO).subscribe();
-    this.librarianService.getLoanedBooks().subscribe(
+/*    this.librarianService.getLoanedBooks().subscribe(
       bookListBack => {
         this.loanedBooks = bookListBack;
       });
-    this.totalLoanedBooks = this.loanedBooks.length;
+    this.totalLoanedBooks = this.loanedBooks.length;*/
     this.isLoanedBook = true;
-    // this.isLoanedBook = false;
+    this.isLoanedBook = false;
   }
 
   refresh(): void {

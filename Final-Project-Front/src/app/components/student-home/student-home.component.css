@@ -1,12 +1,52 @@
 .overdue {
+  padding: 2%;
+  text-align: center;
   background-color: #d01233;
   color: #e7ebee;
+  border-radius: 0.5em;
+}
+
+.card{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  background-color: #F2F2F2;
+  box-shadow: 10px 5px 5px #0D0004;
+  border: #0D0004 solid 1px;
+  border-radius: 0.5em;
+  width: 70%;
+  margin-left: 10%;
+  margin-top: 5%;
+
 }
 
 .container{
-  background-color: #938a86;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  background-color: #F2F2F2;
+  border-radius: 0.5em;
+  width: 60%;
+  margin-left: 15%;
+  padding: 5%;
+  margin-bottom: 20%;
+  margin-top:-3%;
+
 }
 
-mat-card{
-  background-color: #938a86;
+.
+.all{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  margin-left: 20%;
+
+}
+
+
+h1{
+  text-align: center;
+  color: #0D0004;
+  font-size: 2em;
+  font-weight: bold;
 }
