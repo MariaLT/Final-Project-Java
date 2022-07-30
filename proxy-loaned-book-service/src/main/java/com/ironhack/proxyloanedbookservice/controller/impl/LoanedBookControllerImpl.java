@@ -96,7 +96,6 @@ public class LoanedBookControllerImpl implements LoanedBookController {
     public List<LoanedBook> updateStatusLoans() {
         return loanedBookRepository.saveAll(loanedBookService.updateStatusLoans());
 
-
     }
 
     @PutMapping("/loanedBooks/pickUp/{ean}")
