@@ -1,6 +1,6 @@
 DROP
 DATABASE books;
-DROP TABLE info_loaned_book;
+
 DROP TABLE book;
 
 CREATE SCHEMA books;
@@ -19,7 +19,6 @@ CREATE TABLE book
     publication_year int,
     publisher        VARCHAR(250),
     url              VARCHAR(250),
-    plot             LONGTEXT,
-    PRIMARY KEY (isbn)
+    plot             VARCHAR(1500),
+    PRIMARY KEY (ean)
 );
-
