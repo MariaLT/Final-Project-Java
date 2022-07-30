@@ -280,17 +280,6 @@ export class LibrarianHomeComponent implements OnInit {
     this.counter4++;
   }
 
-  /*
-    showTitle(ean: number): string {
-      this.bookService.getBookByEan(ean).subscribe(
-        bookBack => {
-          this.book = bookBack;
-        }
-      );
-      return this.book.title;
-    }
-  */
-
   showLostBooksPag() {
     this.librarianService.getLostBooks().subscribe(
       bookListBack => {
@@ -328,6 +317,8 @@ export class LibrarianHomeComponent implements OnInit {
     this.librarianService.returnBook(ean).subscribe();
     this.isLoanedBook = false;
     this.isOverdueBook = false;
+    this.counter6++;
+    alert('Libro devuelto')
   }
 
   showLoanedBooks(): void {
@@ -359,7 +350,9 @@ export class LibrarianHomeComponent implements OnInit {
     this.totalLoanedBooks = this.loanedBooks.length;*/
     this.isLoanedBook = true;
     this.isLoanedBook = false;
+    this.counter6++;
   }
+
 
   refresh(): void {
     this.librarianService.getLoanedBooks().subscribe(

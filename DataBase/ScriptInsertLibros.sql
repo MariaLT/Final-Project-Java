@@ -17,7 +17,7 @@ final con las fuerzas del Señor del Mal.'),
 
 (9788445009611, 'El Señor de los Anillos nº 03/03 El Retorno del Rey', 'J.R.R. Tolkien', 'Fantasía épica', 520,
 'Español', 2022 ,'Minotauro',
-'planetadelibroscom.cdnstatics2.com/usuaris/libros/fotos/325/m_libros/portada_el-senor-de-los-anillos-n-0303-el-retorno-del-rey-ne_j-r-r-tolkien_202203111320.jpg', 
+'https://images-na.ssl-images-amazon.com/images/I/91CZONTFNgL.jpg', 
 'Los ejércitos del Señor Oscuro van extendiendo cada vez más su maléfica sombra por la Tierra Media. Hombres, elfos y enanos unen sus 
 fuerzas para presentar batalla a Sauron y sus huestes. Ajenos a estos preparativos, Frodo y Sam siguen adentrándose en el país de 
 Mordor en su heroico viaje para destruir el Anillo de Poder en las Grietas del Destino.'),
@@ -45,7 +45,37 @@ diez años, su madre fue víctima de un atropello y la pena empujó a su padre a
 que aprender a cuidarse solo... y también a ocuparse de su padre.
 Ahora, con diecisiete años, Charlie encuentra dos amigos inesperados: una perra llamada Radar y Howard Bowditch, su anciano dueño. 
 El señor Bowditch es un ermitaño que vive en una colina enorme, en una casa enorme que tiene un cobertizo cerrado a cal y canto en 
-el patio trasero. A veces, sonidos extraños emergen de él.');
+el patio trasero. A veces, sonidos extraños emergen de él.'),
+('9788424672775','El león sobre la puerta', 'Onjali Q. Raúf','Juvenil', 
+360, 'Español', 2022, 'La Galera', 'https://www.lagaleraeditorial.com//uploads/20220729/9788424672775_imatge_portada_llibre_detall_9788424672775.jpg',
+'Desde que tengo uso de la razón, la gente siempre se nos ha quedado mirando, a mi familia y a mí. Mi padre dice que es 
+porque somos «especiales». Nunca hay nadie que se parezca a nosotros, o a mi amiga Sangeeta, en mis libros de historia 
+del colegio. Sin embargo, este año es diferente. Porque en una excusión escolar para estudiar la Segunda Guerra Mundial,
+he visto mi nombre esculpido encima de una de las puertas de la iglesia, bajo un león dorado. Todavía no sé quién fue 
+esta persona que compartía mi nombre, pero lo que sí que sé es que fue un héroe. Y eso lo cambia todo. De hecho, es 
+posible que, con mi ayuda, sea capaz de cambiar la historia. El león sobre la puerta pone el foco en los testimonios 
+que nuestros libros de historia han olvidado, y en el poder de la amistad a través de las generaciones.'),
+('9788418002496','1. Sombra y hueso', 'Leigh Bardugo', 'Fantasía y magia',416,'Español', 2019,
+'Hidra', 'https://images-na.ssl-images-amazon.com/images/I/71ApA-ao6RL.jpg','Alina Starkov no espera mucho de la vida. Se quedó 
+huérfana después de la guerra y lo único que tiene en el mundo es a su amigo Mal. A raíz de un ataque que recibe Mal 
+al entrar en La Sombra, una oscuridad antinatural repleta de monstruos que ha aislado el país, Alina revela un poder 
+latente que ni ella misma sabía que tenía. Tras ese episodio, Alina es conducida a la fuerza hasta la corte real para 
+ser entrenada como un miembro de los Grisha, un grupo de magos de élite comandado por un individuo misterioso que se 
+hace llamar El Oscuro.'),
+('9788418002502','2. Asedio y tormenta','Leigh Bardugo','Fantasía y magia',448,'Español', 2019,
+'Hidra', 'https://imagessl2.casadellibro.com/a/l/t7/02/9788418002502.jpg', 'En su intento por huir de Ravka y dejar 
+atrás a los Grisha, Alina y Malyen se embarcan en un viaje a través del Mar Auténtico. Pero por mucho que lo deseen, 
+hay tres cosas de las que Alina jamás podrá escapar: Su pasado. Su poder. Y su destino. Alina pronto va a tener que 
+enfrentarse a una terrible verdad. LA OSCURIDAD NUNCA MUERE. Perseguida a través del Mar Auténtico, atormentada por 
+las vidas con las que acabó en la Sombra, Alina trata de sobrevivir junto a Mal en una tierra extraña, a la vez que 
+mantiene en secreto su identidad como Invocadora del Sol. Pero no podrá huir durante mucho tiempo ni de su pasado ni 
+de su destino.'),
+('9788418002519', '3. Ruina y ascenso','Leigh Bardugo','Fantasía y magia',448,'Español', 2019,
+'Hidra', 'https://imagessl9.casadellibro.com/a/l/t7/19/9788418002519.jpg', 'Bajo tierra, en la red de túneles y cuevas 
+que forman la Catedral Blanca, Alina es a la vez prisionera y objeto de adoración. Está muy débil, y la idea 
+de embarcarse en un nuevo viaje en busca del tercer amplificador, el pájaro de fuego, parece una locura. Pero 
+su poder ha cambiado desde la última batalla, y sus nuevas habilidades podrían aterrorizar incluso a sus propios 
+aliados.');
  
  use books;
  SELECT plot FROM libros where title = 'Dumbo. El circo de los sueños';

@@ -11,9 +11,6 @@ import java.util.Optional;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-//    @Query("SELECT b FROM Book b WHERE b.ean = :ean")
-//    Book findByEan(Long ean);
 
-//    Optional<Book> findById(Long ean);
 }
 

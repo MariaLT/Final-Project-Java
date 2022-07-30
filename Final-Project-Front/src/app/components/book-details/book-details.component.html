@@ -7,7 +7,7 @@
       <mat-card-title><p>{{book.title}}</mat-card-title>
       <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="{{book.image}}" alt="Portada del libro">
+    <img mat-card-image src="{{book.image}}" alt={{book.title}}>
     <mat-card-content>
       <p>EAN: {{book.ean}}</p>
       <p>Género: {{book.genre}}</p>
