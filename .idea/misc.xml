@@ -8,6 +8,11 @@
         <option value="$PROJECT_DIR$/edge-service/pom.xml" />
         <option value="$PROJECT_DIR$/config-service/pom.xml" />
         <option value="$PROJECT_DIR$/proxy-loaned-book-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Final-Project-Back/config-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Final-Project-Back/edge-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Final-Project-Back/eureka-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Final-Project-Back/proxy-books-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Final-Project-Back/proxy-loaned-book-service/pom.xml" />
       </list>
     </option>
   </component>
