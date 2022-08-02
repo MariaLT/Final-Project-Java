@@ -1,5 +1,10 @@
 USE users;
 
+
+
+
+
+
 DROP TABLE role_table;
 DROP TABLE user_table;
 
