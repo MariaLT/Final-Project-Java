@@ -231,4 +231,5 @@ Ejecutar en la terminal
 ```
 
 ### Proyecto realizado por:
-[María LT](https://github.com/MariaLT)
+[María LT](https://github.com/MariaLT) como proyecto final para 
+Ironhack ES JAVAFT MAY22 BOOTCAMP
