@@ -20,9 +20,11 @@ libros prestados.
 
 ### Diagrama casos de uso
 
+(https://github.com/MariaLT/Final-Project-Java/blob/main/diagramaCasosDeUso.png)
+
 ### Configuración externalizada
 
-[Repositorio con la configuración](https://github.com/MariaLT/config-repo-final)
+![png][Repositorio con la configuración](https://github.com/MariaLT/config-repo-final)
 
 
 
